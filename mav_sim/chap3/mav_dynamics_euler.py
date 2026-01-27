@@ -158,7 +158,7 @@ class DynamicStateEuler:
 
         return output
 
-def derivatives_euler(state: types.DynamicStateEuler, forces_moments: types.ForceMoment) -> types.DynamicStateEuler:
+def derivatives_euler(state: DynamicStateEuler, forces_moments: types.ForceMoment) -> types.DynamicStateEuler:
     """Implements the dynamics xdot = f(x, u) where u is the force/moment vector
 
     Args:
@@ -168,6 +168,17 @@ def derivatives_euler(state: types.DynamicStateEuler, forces_moments: types.Forc
     Returns:
         Time derivative of the state ( f(x,u), where u is the force/moment vector )
     """
+    s = np.sin
+    c = np.cos
+
+    ned_motion_mat = np.array([
+        [c(state.theta)*c(state.psi), s(state.phi)*s(state.theta)*c(state.psi) - c(state.phi)*s(state.psi), c(state.phi)*s(state.theta)*c(state.psi) + s(state.phi)*s(state.psi)],
+        [c(state.theta)*s(state.psi), s(state.phi)*s(state.theta)*s(state.psi) + c(state.phi)*c(state.psi), c(state.phi)*s(state.theta)*s(state.psi) - s(state.phi)*c(state.psi)],
+        [-s(state.theta), s(state.phi)*c(state.theta), c(state.phi)*c(state.theta)]
+    ])
+
+
+
     # collect the derivative of the states
     x_dot = np.empty( (IND_EULER.NUM_STATES,1) )
     x_dot[IND_EULER.NORTH] = 0.
