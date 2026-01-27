@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mav_sim.chap12.run_sim module &#8212; mav_sim 26 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=80b53944"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mav_sim.chap12.world_viewer module" href="mav_sim.chap12.world_viewer.html" />
+    <link rel="prev" title="mav_sim.chap12.rrt_straight_line module" href="mav_sim.chap12.rrt_straight_line.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-mav_sim.chap12.run_sim">
+<span id="mav-sim-chap12-run-sim-module"></span><h1>mav_sim.chap12.run_sim module<a class="headerlink" href="#module-mav_sim.chap12.run_sim" title="Link to this heading">¶</a></h1>
+<p>Run the chapter 12 simulation
+mavsim_python</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Chapter 12 assignment for Beard &amp; McLain, PUP, 2012</p></li>
+<li><dl class="simple">
+<dt>Last Update:</dt><dd><p>2/2/2019 - RWB
+4/22 - GND</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="py function">
+<dt class="sig sig-object py" id="mav_sim.chap12.run_sim.run_sim">
+<span class="sig-prename descclassname"><span class="pre">mav_sim.chap12.run_sim.</span></span><span class="sig-name descname"><span class="pre">run_sim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mav_sim.message_types.msg_sim_params.html#mav_sim.message_types.msg_sim_params.MsgSimParams" title="mav_sim.message_types.msg_sim_params.MsgSimParams"><span class="pre">MsgSimParams</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_pose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mav_sim.chap3.mav_dynamics.html#mav_sim.chap3.mav_dynamics.DynamicState" title="mav_sim.chap3.mav_dynamics.DynamicState"><span class="pre">DynamicState</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">world_view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mav_sim.chap12.world_viewer.html#mav_sim.chap12.world_viewer.WorldViewer" title="mav_sim.chap12.world_viewer.WorldViewer"><span class="pre">WorldViewer</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mav_sim.chap3.data_viewer.html#mav_sim.chap3.data_viewer.DataViewer" title="mav_sim.chap3.data_viewer.DataViewer"><span class="pre">DataViewer</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mav_sim.chap12.world_viewer.html#mav_sim.chap12.world_viewer.WorldViewer" title="mav_sim.chap12.world_viewer.WorldViewer"><span class="pre">WorldViewer</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="mav_sim.chap3.data_viewer.html#mav_sim.chap3.data_viewer.DataViewer" title="mav_sim.chap3.data_viewer.DataViewer"><span class="pre">DataViewer</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#mav_sim.chap12.run_sim.run_sim" title="Link to this definition">¶</a></dt>
+<dd><p>Runs the chapter 12 simulation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sim</strong> – Timing and file parameters for the simulation</p></li>
+<li><p><strong>end_pose</strong> – The desired final set of waypoints</p></li>
+<li><p><strong>init_state</strong> – Initial state of the MAV</p></li>
+<li><p><strong>waypoint_view</strong> – Viewing window to be used for the mav and its associated path</p></li>
+<li><p><strong>data_view</strong> – Viewing window to be used for the states</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Viewing window to be used for the mav and its associated path
+data_view: Viewing window to be used for the states</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>waypoint_view</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mav_sim</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mav_sim.html">mav_sim package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#running-the-simulator">Running the simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#code-compliance">Code Compliance</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="mav_sim.html">mav_sim package</a><ul>
+  <li><a href="mav_sim.chap12.html">mav_sim.chap12 package</a><ul>
+      <li>Previous: <a href="mav_sim.chap12.rrt_straight_line.html" title="previous chapter">mav_sim.chap12.rrt_straight_line module</a></li>
+      <li>Next: <a href="mav_sim.chap12.world_viewer.html" title="next chapter">mav_sim.chap12.world_viewer module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Greg Droge.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/mav_sim/mav_sim.chap12.run_sim.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

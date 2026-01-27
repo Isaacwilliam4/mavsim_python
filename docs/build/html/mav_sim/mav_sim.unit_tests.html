@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mav_sim.unit_tests package &#8212; mav_sim 26 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=80b53944"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mav_sim.unit_tests.all_unit_tests module" href="mav_sim.unit_tests.all_unit_tests.html" />
+    <link rel="prev" title="mav_sim.tools.wrap module" href="mav_sim.tools.wrap.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="mav-sim-unit-tests-package">
+<h1>mav_sim.unit_tests package<a class="headerlink" href="#mav-sim-unit-tests-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.all_unit_tests.html">mav_sim.unit_tests.all_unit_tests module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch10_additional_tests.html">mav_sim.unit_tests.ch10_additional_tests module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch10_additional_tests.html#mav_sim.unit_tests.ch10_additional_tests.follow_orbit_helper"><code class="docutils literal notranslate"><span class="pre">follow_orbit_helper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch10_additional_tests.html#mav_sim.unit_tests.ch10_additional_tests.follow_straight_line_helper"><code class="docutils literal notranslate"><span class="pre">follow_straight_line_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html">mav_sim.unit_tests.ch10_path_follower_test module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.follow_orbit_test"><code class="docutils literal notranslate"><span class="pre">follow_orbit_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.follow_straight_line_test"><code class="docutils literal notranslate"><span class="pre">follow_straight_line_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.gen_follow_orbit_vars"><code class="docutils literal notranslate"><span class="pre">gen_follow_orbit_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.gen_follow_straight_line_vars"><code class="docutils literal notranslate"><span class="pre">gen_follow_straight_line_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.gen_test_archive"><code class="docutils literal notranslate"><span class="pre">gen_test_archive()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html">mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.check_halfspace_type"><code class="docutils literal notranslate"><span class="pre">check_halfspace_type()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.check_msg_path_type"><code class="docutils literal notranslate"><span class="pre">check_msg_path_type()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.construct_fillet_circle_test"><code class="docutils literal notranslate"><span class="pre">construct_fillet_circle_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.construct_fillet_line_test"><code class="docutils literal notranslate"><span class="pre">construct_fillet_line_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.construct_line_test"><code class="docutils literal notranslate"><span class="pre">construct_line_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.gen_construct_fillet_circle_vars"><code class="docutils literal notranslate"><span class="pre">gen_construct_fillet_circle_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.gen_construct_fillet_line_vars"><code class="docutils literal notranslate"><span class="pre">gen_construct_fillet_line_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.gen_construct_line_vars"><code class="docutils literal notranslate"><span class="pre">gen_construct_line_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.gen_inHalfSpace_vars"><code class="docutils literal notranslate"><span class="pre">gen_inHalfSpace_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.gen_test_archive"><code class="docutils literal notranslate"><span class="pre">gen_test_archive()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.inHalfSpace_test"><code class="docutils literal notranslate"><span class="pre">inHalfSpace_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch11a_additional_tests.html">mav_sim.unit_tests.ch11a_additional_tests module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11a_additional_tests.html#mav_sim.unit_tests.ch11a_additional_tests.construct_fillet_circle_helper"><code class="docutils literal notranslate"><span class="pre">construct_fillet_circle_helper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11a_additional_tests.html#mav_sim.unit_tests.ch11a_additional_tests.construct_fillet_line_helper"><code class="docutils literal notranslate"><span class="pre">construct_fillet_line_helper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11a_additional_tests.html#mav_sim.unit_tests.ch11a_additional_tests.construct_line_helper"><code class="docutils literal notranslate"><span class="pre">construct_line_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch11b_additional_tests.html">mav_sim.unit_tests.ch11b_additional_tests module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_additional_tests.html#mav_sim.unit_tests.ch11b_additional_tests.calculate_lsl_helper"><code class="docutils literal notranslate"><span class="pre">calculate_lsl_helper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_additional_tests.html#mav_sim.unit_tests.ch11b_additional_tests.calculate_lsr_helper"><code class="docutils literal notranslate"><span class="pre">calculate_lsr_helper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_additional_tests.html#mav_sim.unit_tests.ch11b_additional_tests.construct_dubins_circle_end_helper"><code class="docutils literal notranslate"><span class="pre">construct_dubins_circle_end_helper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_additional_tests.html#mav_sim.unit_tests.ch11b_additional_tests.construct_dubins_line_helper"><code class="docutils literal notranslate"><span class="pre">construct_dubins_line_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html">mav_sim.unit_tests.ch11b_dubins_path_manager_test module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.check_duins_params_struct_types"><code class="docutils literal notranslate"><span class="pre">check_duins_params_struct_types()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.gen_dubins_vars"><code class="docutils literal notranslate"><span class="pre">gen_dubins_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.gen_test_archive"><code class="docutils literal notranslate"><span class="pre">gen_test_archive()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.lsl_test"><code class="docutils literal notranslate"><span class="pre">lsl_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.lsr_test"><code class="docutils literal notranslate"><span class="pre">lsr_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.rsl_test"><code class="docutils literal notranslate"><span class="pre">rsl_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.rsr_test"><code class="docutils literal notranslate"><span class="pre">rsr_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.run_tests"><code class="docutils literal notranslate"><span class="pre">run_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html">mav_sim.unit_tests.ch12_straight_line_rrt_test module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.check_msg_waypoints_struct_types"><code class="docutils literal notranslate"><span class="pre">check_msg_waypoints_struct_types()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.find_closest_configuration_test"><code class="docutils literal notranslate"><span class="pre">find_closest_configuration_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.find_shortest_path_test"><code class="docutils literal notranslate"><span class="pre">find_shortest_path_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.gen_rrt_straight_line_vars"><code class="docutils literal notranslate"><span class="pre">gen_rrt_straight_line_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.gen_test_archive"><code class="docutils literal notranslate"><span class="pre">gen_test_archive()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.plan_path_test"><code class="docutils literal notranslate"><span class="pre">plan_path_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.run_tests"><code class="docutils literal notranslate"><span class="pre">run_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.smooth_path_test"><code class="docutils literal notranslate"><span class="pre">smooth_path_test()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html">mav_sim.unit_tests.ch2_additional_tests module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.Pose"><code class="docutils literal notranslate"><span class="pre">Pose</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.Pose.altitude"><code class="docutils literal notranslate"><span class="pre">Pose.altitude</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.Pose.east"><code class="docutils literal notranslate"><span class="pre">Pose.east</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.Pose.north"><code class="docutils literal notranslate"><span class="pre">Pose.north</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.Pose.phi"><code class="docutils literal notranslate"><span class="pre">Pose.phi</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.Pose.psi"><code class="docutils literal notranslate"><span class="pre">Pose.psi</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.Pose.theta"><code class="docutils literal notranslate"><span class="pre">Pose.theta</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_b_to_s_test"><code class="docutils literal notranslate"><span class="pre">rot_b_to_s_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_b_to_v_test"><code class="docutils literal notranslate"><span class="pre">rot_b_to_v_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_s_to_w_test"><code class="docutils literal notranslate"><span class="pre">rot_s_to_w_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_v1_to_v2_test"><code class="docutils literal notranslate"><span class="pre">rot_v1_to_v2_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_v2_to_b_test"><code class="docutils literal notranslate"><span class="pre">rot_v2_to_b_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_v_to_b_test"><code class="docutils literal notranslate"><span class="pre">rot_v_to_b_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_v_to_v1_test"><code class="docutils literal notranslate"><span class="pre">rot_v_to_v1_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_x_test"><code class="docutils literal notranslate"><span class="pre">rot_x_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_y_test"><code class="docutils literal notranslate"><span class="pre">rot_y_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_z_test"><code class="docutils literal notranslate"><span class="pre">rot_z_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.trans_b_to_i_test"><code class="docutils literal notranslate"><span class="pre">trans_b_to_i_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.trans_i_to_b_test"><code class="docutils literal notranslate"><span class="pre">trans_i_to_b_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.trans_i_to_v_test"><code class="docutils literal notranslate"><span class="pre">trans_i_to_v_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.trans_v_to_i_test"><code class="docutils literal notranslate"><span class="pre">trans_v_to_i_test()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html">mav_sim.unit_tests.ch2_transforms_tests module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.SimpleRotationTest"><code class="docutils literal notranslate"><span class="pre">SimpleRotationTest</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.SimpleRotationTest.angle"><code class="docutils literal notranslate"><span class="pre">SimpleRotationTest.angle</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.SimpleRotationTest.output"><code class="docutils literal notranslate"><span class="pre">SimpleRotationTest.output</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.ThreeRotationTest"><code class="docutils literal notranslate"><span class="pre">ThreeRotationTest</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.ThreeRotationTest.output"><code class="docutils literal notranslate"><span class="pre">ThreeRotationTest.output</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.ThreeRotationTest.phi"><code class="docutils literal notranslate"><span class="pre">ThreeRotationTest.phi</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.ThreeRotationTest.psi"><code class="docutils literal notranslate"><span class="pre">ThreeRotationTest.psi</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.ThreeRotationTest.theta"><code class="docutils literal notranslate"><span class="pre">ThreeRotationTest.theta</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.TransformTest"><code class="docutils literal notranslate"><span class="pre">TransformTest</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.TransformTest.altitude"><code class="docutils literal notranslate"><span class="pre">TransformTest.altitude</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.TransformTest.east"><code class="docutils literal notranslate"><span class="pre">TransformTest.east</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.TransformTest.north"><code class="docutils literal notranslate"><span class="pre">TransformTest.north</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.TransformTest.output"><code class="docutils literal notranslate"><span class="pre">TransformTest.output</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.TransformTest.phi"><code class="docutils literal notranslate"><span class="pre">TransformTest.phi</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.TransformTest.points"><code class="docutils literal notranslate"><span class="pre">TransformTest.points</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.TransformTest.psi"><code class="docutils literal notranslate"><span class="pre">TransformTest.psi</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.TransformTest.theta"><code class="docutils literal notranslate"><span class="pre">TransformTest.theta</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_b_to_s_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_b_to_s_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_b_to_v_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_b_to_v_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_s_to_w_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_s_to_w_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_v1_to_v2_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_v1_to_v2_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_v2_to_b_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_v2_to_b_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_v_to_b_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_v_to_b_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_v_to_v1_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_v_to_v1_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_x_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_x_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_y_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_y_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_z_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_z_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_tests"><code class="docutils literal notranslate"><span class="pre">generate_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_trans_b_to_i_tests"><code class="docutils literal notranslate"><span class="pre">generate_trans_b_to_i_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_trans_i_to_b_tests"><code class="docutils literal notranslate"><span class="pre">generate_trans_i_to_b_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_trans_i_to_v_tests"><code class="docutils literal notranslate"><span class="pre">generate_trans_i_to_v_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_trans_v_to_i_tests"><code class="docutils literal notranslate"><span class="pre">generate_trans_v_to_i_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_b_to_s_tests"><code class="docutils literal notranslate"><span class="pre">rot_b_to_s_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_b_to_v_tests"><code class="docutils literal notranslate"><span class="pre">rot_b_to_v_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_s_to_w_tests"><code class="docutils literal notranslate"><span class="pre">rot_s_to_w_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_v1_to_v2_tests"><code class="docutils literal notranslate"><span class="pre">rot_v1_to_v2_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_v2_to_b_tests"><code class="docutils literal notranslate"><span class="pre">rot_v2_to_b_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_v_to_b_tests"><code class="docutils literal notranslate"><span class="pre">rot_v_to_b_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_v_to_v1_tests"><code class="docutils literal notranslate"><span class="pre">rot_v_to_v1_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_x_tests"><code class="docutils literal notranslate"><span class="pre">rot_x_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_y_tests"><code class="docutils literal notranslate"><span class="pre">rot_y_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_z_tests"><code class="docutils literal notranslate"><span class="pre">rot_z_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.trans_b_to_i_tests"><code class="docutils literal notranslate"><span class="pre">trans_b_to_i_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.trans_i_to_b_tests"><code class="docutils literal notranslate"><span class="pre">trans_i_to_b_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.trans_i_to_v_tests"><code class="docutils literal notranslate"><span class="pre">trans_i_to_v_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.trans_v_to_i_tests"><code class="docutils literal notranslate"><span class="pre">trans_v_to_i_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html">mav_sim.unit_tests.ch3_derivatives_test module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.DynamicsResults"><code class="docutils literal notranslate"><span class="pre">DynamicsResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.euler_derivatives_test"><code class="docutils literal notranslate"><span class="pre">euler_derivatives_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.generate_euler_tests"><code class="docutils literal notranslate"><span class="pre">generate_euler_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.generate_quat_tests"><code class="docutils literal notranslate"><span class="pre">generate_quat_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.generate_tests"><code class="docutils literal notranslate"><span class="pre">generate_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.quat_derivatives_test"><code class="docutils literal notranslate"><span class="pre">quat_derivatives_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.run_tests"><code class="docutils literal notranslate"><span class="pre">run_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.save_tests"><code class="docutils literal notranslate"><span class="pre">save_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch4_additional_tests.html">mav_sim.unit_tests.ch4_additional_tests module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_additional_tests.html#mav_sim.unit_tests.ch4_additional_tests.longitudinal_aerodynamics_helper"><code class="docutils literal notranslate"><span class="pre">longitudinal_aerodynamics_helper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_additional_tests.html#mav_sim.unit_tests.ch4_additional_tests.motor_thrust_torque_helper"><code class="docutils literal notranslate"><span class="pre">motor_thrust_torque_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html">mav_sim.unit_tests.ch4_dynamics_test module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.ForcesMomentsTest"><code class="docutils literal notranslate"><span class="pre">ForcesMomentsTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.GravitationalForceTest"><code class="docutils literal notranslate"><span class="pre">GravitationalForceTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.LateralDynamicsTest"><code class="docutils literal notranslate"><span class="pre">LateralDynamicsTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.LongitudinalDynamicsTest"><code class="docutils literal notranslate"><span class="pre">LongitudinalDynamicsTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.MotorThrustTorqueTest"><code class="docutils literal notranslate"><span class="pre">MotorThrustTorqueTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.UpdateVelocityTest"><code class="docutils literal notranslate"><span class="pre">UpdateVelocityTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.WindSimulationTest"><code class="docutils literal notranslate"><span class="pre">WindSimulationTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.forces_moments_test"><code class="docutils literal notranslate"><span class="pre">forces_moments_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.forces_moments_tests"><code class="docutils literal notranslate"><span class="pre">forces_moments_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_forces_moments_tests"><code class="docutils literal notranslate"><span class="pre">generate_forces_moments_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_gravitational_force_tests"><code class="docutils literal notranslate"><span class="pre">generate_gravitational_force_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_lateral_aerodynamic_tests"><code class="docutils literal notranslate"><span class="pre">generate_lateral_aerodynamic_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_longitudinal_aerodynamic_tests"><code class="docutils literal notranslate"><span class="pre">generate_longitudinal_aerodynamic_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_motor_thrust_torque_tests"><code class="docutils literal notranslate"><span class="pre">generate_motor_thrust_torque_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_tests"><code class="docutils literal notranslate"><span class="pre">generate_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_update_velocity_data_tests"><code class="docutils literal notranslate"><span class="pre">generate_update_velocity_data_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_wind_simulation_tests"><code class="docutils literal notranslate"><span class="pre">generate_wind_simulation_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.gravitational_force_tests"><code class="docutils literal notranslate"><span class="pre">gravitational_force_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.lateral_aerodynamics_tests"><code class="docutils literal notranslate"><span class="pre">lateral_aerodynamics_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.longitudinal_aerodynamics_tests"><code class="docutils literal notranslate"><span class="pre">longitudinal_aerodynamics_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.motor_thrust_torque_test"><code class="docutils literal notranslate"><span class="pre">motor_thrust_torque_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.motor_thrust_torque_tests"><code class="docutils literal notranslate"><span class="pre">motor_thrust_torque_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.run_auto_tests"><code class="docutils literal notranslate"><span class="pre">run_auto_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.update_velocity_data_test"><code class="docutils literal notranslate"><span class="pre">update_velocity_data_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.update_velocity_data_tests"><code class="docutils literal notranslate"><span class="pre">update_velocity_data_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.wind_simulation_test"><code class="docutils literal notranslate"><span class="pre">wind_simulation_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.wind_simulation_tests"><code class="docutils literal notranslate"><span class="pre">wind_simulation_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch5_additional_tests.html">mav_sim.unit_tests.ch5_additional_tests module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_additional_tests.html#mav_sim.unit_tests.ch5_additional_tests.trim_objective_fun_helper"><code class="docutils literal notranslate"><span class="pre">trim_objective_fun_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html">mav_sim.unit_tests.ch5_dynamics_test module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.TrimObjectiveFunTest"><code class="docutils literal notranslate"><span class="pre">TrimObjectiveFunTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.VariableBoundsTest"><code class="docutils literal notranslate"><span class="pre">VariableBoundsTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.VelocityConstraintPartialTest"><code class="docutils literal notranslate"><span class="pre">VelocityConstraintPartialTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.VelocityConstraintTest"><code class="docutils literal notranslate"><span class="pre">VelocityConstraintTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.generate_tests"><code class="docutils literal notranslate"><span class="pre">generate_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.generate_trim_objective_fun_tests"><code class="docutils literal notranslate"><span class="pre">generate_trim_objective_fun_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.generate_variable_bounds_tests"><code class="docutils literal notranslate"><span class="pre">generate_variable_bounds_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.generate_velocity_constraint_partial_tests"><code class="docutils literal notranslate"><span class="pre">generate_velocity_constraint_partial_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.generate_velocity_constraint_tests"><code class="docutils literal notranslate"><span class="pre">generate_velocity_constraint_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.run_auto_tests"><code class="docutils literal notranslate"><span class="pre">run_auto_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.trim_objective_fun_test"><code class="docutils literal notranslate"><span class="pre">trim_objective_fun_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.variable_bounds_test"><code class="docutils literal notranslate"><span class="pre">variable_bounds_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.velocity_constraint_partial_test"><code class="docutils literal notranslate"><span class="pre">velocity_constraint_partial_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.velocity_constraint_test"><code class="docutils literal notranslate"><span class="pre">velocity_constraint_test()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch6_additional_tests.html">mav_sim.unit_tests.ch6_additional_tests module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_additional_tests.html#mav_sim.unit_tests.ch6_additional_tests.autopilot_helper"><code class="docutils literal notranslate"><span class="pre">autopilot_helper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_additional_tests.html#mav_sim.unit_tests.ch6_additional_tests.pd_control_with_rate_helper"><code class="docutils literal notranslate"><span class="pre">pd_control_with_rate_helper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_additional_tests.html#mav_sim.unit_tests.ch6_additional_tests.pi_control_helper"><code class="docutils literal notranslate"><span class="pre">pi_control_helper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_additional_tests.html#mav_sim.unit_tests.ch6_additional_tests.tf_control_helper"><code class="docutils literal notranslate"><span class="pre">tf_control_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html">mav_sim.unit_tests.ch6_feedback_control_test module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.AutopilotTest"><code class="docutils literal notranslate"><span class="pre">AutopilotTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.PDControlWithRateTest"><code class="docutils literal notranslate"><span class="pre">PDControlWithRateTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.PIControlTest"><code class="docutils literal notranslate"><span class="pre">PIControlTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.TFControlTest"><code class="docutils literal notranslate"><span class="pre">TFControlTest</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.autopilot_test"><code class="docutils literal notranslate"><span class="pre">autopilot_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.autopilot_tests"><code class="docutils literal notranslate"><span class="pre">autopilot_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.compare_delta_msg"><code class="docutils literal notranslate"><span class="pre">compare_delta_msg()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.compare_state_msg"><code class="docutils literal notranslate"><span class="pre">compare_state_msg()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_autopilot_tests"><code class="docutils literal notranslate"><span class="pre">generate_autopilot_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_msg_state"><code class="docutils literal notranslate"><span class="pre">generate_msg_state()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_pd_with_rate_tests"><code class="docutils literal notranslate"><span class="pre">generate_pd_with_rate_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_pi_tests"><code class="docutils literal notranslate"><span class="pre">generate_pi_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_tests"><code class="docutils literal notranslate"><span class="pre">generate_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_tf_tests"><code class="docutils literal notranslate"><span class="pre">generate_tf_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.mod_angle"><code class="docutils literal notranslate"><span class="pre">mod_angle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.pd_control_with_rate_test"><code class="docutils literal notranslate"><span class="pre">pd_control_with_rate_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.pd_with_rate_tests"><code class="docutils literal notranslate"><span class="pre">pd_with_rate_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.pi_control_test"><code class="docutils literal notranslate"><span class="pre">pi_control_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.pi_control_tests"><code class="docutils literal notranslate"><span class="pre">pi_control_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.run_auto_tests"><code class="docutils literal notranslate"><span class="pre">run_auto_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.run_hand_tests"><code class="docutils literal notranslate"><span class="pre">run_hand_tests()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.tf_control_test"><code class="docutils literal notranslate"><span class="pre">tf_control_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.tf_control_tests"><code class="docutils literal notranslate"><span class="pre">tf_control_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch7_additional_tests.html">mav_sim.unit_tests.ch7_additional_tests module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_additional_tests.html#mav_sim.unit_tests.ch7_additional_tests.magnetometer_test"><code class="docutils literal notranslate"><span class="pre">magnetometer_test()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html">mav_sim.unit_tests.ch7_sensors_test module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.accelerometer_test"><code class="docutils literal notranslate"><span class="pre">accelerometer_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.calculate_sensor_readings_test"><code class="docutils literal notranslate"><span class="pre">calculate_sensor_readings_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_accelerometer_vars"><code class="docutils literal notranslate"><span class="pre">gen_accelerometer_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_calculate_sensor_readings_vars"><code class="docutils literal notranslate"><span class="pre">gen_calculate_sensor_readings_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_gps_error_trans_update_vars"><code class="docutils literal notranslate"><span class="pre">gen_gps_error_trans_update_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_gps_vars"><code class="docutils literal notranslate"><span class="pre">gen_gps_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_gyro_vars"><code class="docutils literal notranslate"><span class="pre">gen_gyro_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_magnometer_vars"><code class="docutils literal notranslate"><span class="pre">gen_magnometer_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_pressure_vars"><code class="docutils literal notranslate"><span class="pre">gen_pressure_vars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_test_archive"><code class="docutils literal notranslate"><span class="pre">gen_test_archive()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gps_error_trans_update_test"><code class="docutils literal notranslate"><span class="pre">gps_error_trans_update_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gps_test"><code class="docutils literal notranslate"><span class="pre">gps_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gyro_test"><code class="docutils literal notranslate"><span class="pre">gyro_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.magnometer_test"><code class="docutils literal notranslate"><span class="pre">magnometer_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.pressure_test"><code class="docutils literal notranslate"><span class="pre">pressure_test()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-mav_sim.unit_tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mav_sim.unit_tests" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mav_sim</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mav_sim.html">mav_sim package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#running-the-simulator">Running the simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#code-compliance">Code Compliance</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="mav_sim.html">mav_sim package</a><ul>
+      <li>Previous: <a href="mav_sim.tools.wrap.html" title="previous chapter">mav_sim.tools.wrap module</a></li>
+      <li>Next: <a href="mav_sim.unit_tests.all_unit_tests.html" title="next chapter">mav_sim.unit_tests.all_unit_tests module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Greg Droge.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/mav_sim/mav_sim.unit_tests.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mav_sim.chap8 package &#8212; mav_sim 26 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=80b53944"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mav_sim.chap8.filters module" href="mav_sim.chap8.filters.html" />
+    <link rel="prev" title="mav_sim.chap7.sensor_viewer module" href="mav_sim.chap7.sensor_viewer.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="mav-sim-chap8-package">
+<h1>mav_sim.chap8 package<a class="headerlink" href="#mav-sim-chap8-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap8.filters.html">mav_sim.chap8.filters module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap8.observer.html">mav_sim.chap8.observer module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.AlphaFilter"><code class="docutils literal notranslate"><span class="pre">AlphaFilter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.AlphaFilter.update"><code class="docutils literal notranslate"><span class="pre">AlphaFilter.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfAttitude"><code class="docutils literal notranslate"><span class="pre">EkfAttitude</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfAttitude.f"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.f()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfAttitude.h"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.h()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfAttitude.measurement_update"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.measurement_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfAttitude.propagate_model"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.propagate_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfAttitude.update"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfPosition"><code class="docutils literal notranslate"><span class="pre">EkfPosition</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfPosition.f"><code class="docutils literal notranslate"><span class="pre">EkfPosition.f()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfPosition.h_gps"><code class="docutils literal notranslate"><span class="pre">EkfPosition.h_gps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfPosition.h_pseudo"><code class="docutils literal notranslate"><span class="pre">EkfPosition.h_pseudo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfPosition.measurement_update"><code class="docutils literal notranslate"><span class="pre">EkfPosition.measurement_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfPosition.propagate_model"><code class="docutils literal notranslate"><span class="pre">EkfPosition.propagate_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfPosition.update"><code class="docutils literal notranslate"><span class="pre">EkfPosition.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.Observer"><code class="docutils literal notranslate"><span class="pre">Observer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.Observer.update"><code class="docutils literal notranslate"><span class="pre">Observer.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.jacobian"><code class="docutils literal notranslate"><span class="pre">jacobian()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html">mav_sim.chap8.observer_analyt module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfAttitude"><code class="docutils literal notranslate"><span class="pre">EkfAttitude</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfAttitude.f"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.f()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfAttitude.h"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.h()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfAttitude.measurement_update"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.measurement_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfAttitude.propagate_model"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.propagate_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfAttitude.update"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfPosition"><code class="docutils literal notranslate"><span class="pre">EkfPosition</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfPosition.f"><code class="docutils literal notranslate"><span class="pre">EkfPosition.f()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfPosition.h_gps"><code class="docutils literal notranslate"><span class="pre">EkfPosition.h_gps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfPosition.h_pseudo"><code class="docutils literal notranslate"><span class="pre">EkfPosition.h_pseudo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfPosition.measurement_update"><code class="docutils literal notranslate"><span class="pre">EkfPosition.measurement_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfPosition.propagate_model"><code class="docutils literal notranslate"><span class="pre">EkfPosition.propagate_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfPosition.update"><code class="docutils literal notranslate"><span class="pre">EkfPosition.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.Observer"><code class="docutils literal notranslate"><span class="pre">Observer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.Observer.update"><code class="docutils literal notranslate"><span class="pre">Observer.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap8.observer_full.html">mav_sim.chap8.observer_full module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.Observer"><code class="docutils literal notranslate"><span class="pre">Observer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.Observer.update"><code class="docutils literal notranslate"><span class="pre">Observer.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.ekfFullState"><code class="docutils literal notranslate"><span class="pre">ekfFullState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.ekfFullState.f"><code class="docutils literal notranslate"><span class="pre">ekfFullState.f()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.ekfFullState.h_analog"><code class="docutils literal notranslate"><span class="pre">ekfFullState.h_analog()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.ekfFullState.h_gps"><code class="docutils literal notranslate"><span class="pre">ekfFullState.h_gps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.ekfFullState.measurement_update"><code class="docutils literal notranslate"><span class="pre">ekfFullState.measurement_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.ekfFullState.propagate_model"><code class="docutils literal notranslate"><span class="pre">ekfFullState.propagate_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.ekfFullState.update"><code class="docutils literal notranslate"><span class="pre">ekfFullState.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.jacobian"><code class="docutils literal notranslate"><span class="pre">jacobian()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap8.observer_simple.html">mav_sim.chap8.observer_simple module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfAttitude"><code class="docutils literal notranslate"><span class="pre">EkfAttitude</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfAttitude.f"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.f()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfAttitude.h"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.h()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfAttitude.measurement_update"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.measurement_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfAttitude.propagate_model"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.propagate_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfAttitude.update"><code class="docutils literal notranslate"><span class="pre">EkfAttitude.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfPosition"><code class="docutils literal notranslate"><span class="pre">EkfPosition</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfPosition.f"><code class="docutils literal notranslate"><span class="pre">EkfPosition.f()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfPosition.h_gps"><code class="docutils literal notranslate"><span class="pre">EkfPosition.h_gps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfPosition.measurement_update"><code class="docutils literal notranslate"><span class="pre">EkfPosition.measurement_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfPosition.propagate_model"><code class="docutils literal notranslate"><span class="pre">EkfPosition.propagate_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfPosition.update"><code class="docutils literal notranslate"><span class="pre">EkfPosition.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.Observer"><code class="docutils literal notranslate"><span class="pre">Observer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.Observer.update"><code class="docutils literal notranslate"><span class="pre">Observer.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-mav_sim.chap8">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mav_sim.chap8" title="Link to this heading">¶</a></h2>
+<p>__init__.py: [summary of module].</p>
+<p>Copyright (c) (2021) Greg Droge</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mav_sim</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mav_sim.html">mav_sim package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#running-the-simulator">Running the simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#code-compliance">Code Compliance</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="mav_sim.html">mav_sim package</a><ul>
+      <li>Previous: <a href="mav_sim.chap7.sensor_viewer.html" title="previous chapter">mav_sim.chap7.sensor_viewer module</a></li>
+      <li>Next: <a href="mav_sim.chap8.filters.html" title="next chapter">mav_sim.chap8.filters module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Greg Droge.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/mav_sim/mav_sim.chap8.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

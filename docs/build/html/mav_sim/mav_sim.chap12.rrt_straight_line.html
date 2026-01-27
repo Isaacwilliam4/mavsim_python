@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mav_sim.chap12.rrt_straight_line module &#8212; mav_sim 26 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=80b53944"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mav_sim.chap12.run_sim module" href="mav_sim.chap12.run_sim.html" />
+    <link rel="prev" title="mav_sim.chap12.rrt_dubins module" href="mav_sim.chap12.rrt_dubins.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-mav_sim.chap12.rrt_straight_line">
+<span id="mav-sim-chap12-rrt-straight-line-module"></span><h1>mav_sim.chap12.rrt_straight_line module<a class="headerlink" href="#module-mav_sim.chap12.rrt_straight_line" title="Link to this heading">¶</a></h1>
+<p>rrt straight line path planner for mavsim_python</p>
+<dl class="simple">
+<dt>mavsim_python</dt><dd><ul class="simple">
+<li><p>Beard &amp; McLain, PUP, 2012</p></li>
+<li><dl class="simple">
+<dt>Last updated:</dt><dd><p>4/3/2019 - Brady Moon
+4/11/2019 - RWB
+3/31/2020 - RWB
+4/2022 - GND</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="mav_sim.chap12.rrt_straight_line.RRTStraightLine">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mav_sim.chap12.rrt_straight_line.</span></span><span class="sig-name descname"><span class="pre">RRTStraightLine</span></span><a class="headerlink" href="#mav_sim.chap12.rrt_straight_line.RRTStraightLine" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>RRT planner for straight line plans</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mav_sim.chap12.rrt_straight_line.RRTStraightLine.plot_map">
+<span class="sig-name descname"><span class="pre">plot_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mav_sim.message_types.msg_world_map.html#mav_sim.message_types.msg_world_map.MsgWorldMap" title="mav_sim.message_types.msg_world_map.MsgWorldMap"><span class="pre">MsgWorldMap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mav_sim.message_types.msg_waypoints.html#mav_sim.message_types.msg_waypoints.MsgWaypoints" title="mav_sim.message_types.msg_waypoints.MsgWaypoints"><span class="pre">MsgWaypoints</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">waypoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mav_sim.message_types.msg_waypoints.html#mav_sim.message_types.msg_waypoints.MsgWaypoints" title="mav_sim.message_types.msg_waypoints.MsgWaypoints"><span class="pre">MsgWaypoints</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">smoothed_waypoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mav_sim.message_types.msg_waypoints.html#mav_sim.message_types.msg_waypoints.MsgWaypoints" title="mav_sim.message_types.msg_waypoints.MsgWaypoints"><span class="pre">MsgWaypoints</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#mav_sim.chap12.rrt_straight_line.RRTStraightLine.plot_map" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the RRT tree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>world_map</strong> – definition of the world for planning</p></li>
+<li><p><strong>tree</strong> – Current set of waypoints in rrt search tree</p></li>
+<li><p><strong>waypoints</strong> – Non-smoothed, minimum length path</p></li>
+<li><p><strong>smoothed_waypoints</strong> – The path (waypoints) after smoothing</p></li>
+<li><p><strong>radius</strong> – minimum radius circle for the mav</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mav_sim.chap12.rrt_straight_line.RRTStraightLine.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_pose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_pose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Va</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">world_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mav_sim.message_types.msg_world_map.html#mav_sim.message_types.msg_world_map.MsgWorldMap" title="mav_sim.message_types.msg_world_map.MsgWorldMap"><span class="pre">MsgWorldMap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="mav_sim.message_types.msg_waypoints.html#mav_sim.message_types.msg_waypoints.MsgWaypoints" title="mav_sim.message_types.msg_waypoints.MsgWaypoints"><span class="pre">MsgWaypoints</span></a></span></span><a class="headerlink" href="#mav_sim.chap12.rrt_straight_line.RRTStraightLine.update" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a plan from the start pose to the end pose.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_pose</strong> – starting pose of the mav</p></li>
+<li><p><strong>end_pose</strong> – desired end pose of the mav</p></li>
+<li><p><strong>Va</strong> – airspeed</p></li>
+<li><p><strong>world_map</strong> – definition of the world for planning</p></li>
+<li><p><strong>num_paths</strong> – Number of paths to find before selecting the best path</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Waypoints defining the planned path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>waypoints</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mav_sim.chap12.rrt_straight_line.create_rrt_plan">
+<span class="sig-prename descclassname"><span class="pre">mav_sim.chap12.rrt_straight_line.</span></span><span class="sig-name descname"><span class="pre">create_rrt_plan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_pose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_pose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Va</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">world_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mav_sim.message_types.msg_world_map.html#mav_sim.message_types.msg_world_map.MsgWorldMap" title="mav_sim.message_types.msg_world_map.MsgWorldMap"><span class="pre">MsgWorldMap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="mav_sim.message_types.msg_waypoints.html#mav_sim.message_types.msg_waypoints.MsgWaypoints" title="mav_sim.message_types.msg_waypoints.MsgWaypoints"><span class="pre">MsgWaypoints</span></a></span></span><a class="headerlink" href="#mav_sim.chap12.rrt_straight_line.create_rrt_plan" title="Link to this definition">¶</a></dt>
+<dd><p>Update the plan using fillets for basic motion primitives</p>
+<p>Implements Algorithm 12 with a small modification. Instead of stopping
+once the first path is found to the goal, it stops once <cite>num_paths</cite> different
+paths have been found and then selects the shortest path found for the return.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_pose</strong> – starting pose of the mav</p></li>
+<li><p><strong>end_pose</strong> – desired end pose of the mav</p></li>
+<li><p><strong>Va</strong> – airspeed</p></li>
+<li><p><strong>world_map</strong> – definition of the world for planning</p></li>
+<li><p><strong>segment_length</strong> – standard length of path segments - maximum segment length</p></li>
+<li><p><strong>num_paths</strong> – Number of paths to find before selecting the best path</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Waypoints defining the planned path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>waypoints</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mav_sim.chap12.rrt_straight_line.draw_tree">
+<span class="sig-prename descclassname"><span class="pre">mav_sim.chap12.rrt_straight_line.</span></span><span class="sig-name descname"><span class="pre">draw_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mav_sim.message_types.msg_waypoints.html#mav_sim.message_types.msg_waypoints.MsgWaypoints" title="mav_sim.message_types.msg_waypoints.MsgWaypoints"><span class="pre">MsgWaypoints</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GLViewWidget</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#mav_sim.chap12.rrt_straight_line.draw_tree" title="Link to this definition">¶</a></dt>
+<dd><p>Draw the tree in the given window</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tree</strong> – Current set of waypoints in rrt search tree</p></li>
+<li><p><strong>color</strong> – color of tree</p></li>
+<li><p><strong>window</strong> – window in which to plot the tree</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mav_sim</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mav_sim.html">mav_sim package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#running-the-simulator">Running the simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#code-compliance">Code Compliance</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="mav_sim.html">mav_sim package</a><ul>
+  <li><a href="mav_sim.chap12.html">mav_sim.chap12 package</a><ul>
+      <li>Previous: <a href="mav_sim.chap12.rrt_dubins.html" title="previous chapter">mav_sim.chap12.rrt_dubins module</a></li>
+      <li>Next: <a href="mav_sim.chap12.run_sim.html" title="next chapter">mav_sim.chap12.run_sim module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Greg Droge.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/mav_sim/mav_sim.chap12.rrt_straight_line.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

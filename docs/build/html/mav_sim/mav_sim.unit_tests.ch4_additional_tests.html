@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mav_sim.unit_tests.ch4_additional_tests module &#8212; mav_sim 26 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=80b53944"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mav_sim.unit_tests.ch4_dynamics_test module" href="mav_sim.unit_tests.ch4_dynamics_test.html" />
+    <link rel="prev" title="mav_sim.unit_tests.ch3_derivatives_test module" href="mav_sim.unit_tests.ch3_derivatives_test.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-mav_sim.unit_tests.ch4_additional_tests">
+<span id="mav-sim-unit-tests-ch4-additional-tests-module"></span><h1>mav_sim.unit_tests.ch4_additional_tests module<a class="headerlink" href="#module-mav_sim.unit_tests.ch4_additional_tests" title="Link to this heading">¶</a></h1>
+<p>This module provides some additional tests for chapter 4 that can be used to help you
+debug if you are not passing the unit tests</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="mav_sim.unit_tests.ch4_additional_tests.longitudinal_aerodynamics_helper">
+<span class="sig-prename descclassname"><span class="pre">mav_sim.unit_tests.ch4_additional_tests.</span></span><span class="sig-name descname"><span class="pre">longitudinal_aerodynamics_helper</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#mav_sim.unit_tests.ch4_additional_tests.longitudinal_aerodynamics_helper" title="Link to this definition">¶</a></dt>
+<dd><p>This functions seemingly does nothing. However, if you run it in debug mode, you should be
+able to check the function for intermediary values. You should get the following values:</p>
+<blockquote>
+<div><p>CL = 0.7410005607025906
+CD = 3.7260788511899077
+F_lift = 0.07385052440528686
+F_drag = 0.27076556225480797
+f_lon = [[0.12533388054772146], [0.], [0.25111612462155364] ]
+torque_lon = [ [0.], [0.0657766245422738], [0.]]</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mav_sim.unit_tests.ch4_additional_tests.motor_thrust_torque_helper">
+<span class="sig-prename descclassname"><span class="pre">mav_sim.unit_tests.ch4_additional_tests.</span></span><span class="sig-name descname"><span class="pre">motor_thrust_torque_helper</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#mav_sim.unit_tests.ch4_additional_tests.motor_thrust_torque_helper" title="Link to this definition">¶</a></dt>
+<dd><p>This function seemingly does nothing. However, if you run it in debug mode, you should be
+able to check the function for intermediary values. You should get the following values:</p>
+<blockquote>
+<div><p>a = 5.683924001284114e-06
+b = 0.10408774785819767
+c = -32.06670169995605
+omega_p = 303.05838902739146
+thrust_prop = 7.081339420286007
+torque_prop = 0.3525206069786054</p>
+</div></blockquote>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mav_sim</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mav_sim.html">mav_sim package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#running-the-simulator">Running the simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#code-compliance">Code Compliance</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="mav_sim.html">mav_sim package</a><ul>
+  <li><a href="mav_sim.unit_tests.html">mav_sim.unit_tests package</a><ul>
+      <li>Previous: <a href="mav_sim.unit_tests.ch3_derivatives_test.html" title="previous chapter">mav_sim.unit_tests.ch3_derivatives_test module</a></li>
+      <li>Next: <a href="mav_sim.unit_tests.ch4_dynamics_test.html" title="next chapter">mav_sim.unit_tests.ch4_dynamics_test module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Greg Droge.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/mav_sim/mav_sim.unit_tests.ch4_additional_tests.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mav_sim package &#8212; mav_sim 26 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=80b53944"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mav_sim.appC package" href="mav_sim.appC.html" />
+    <link rel="prev" title="Welcome to the MAV Sim’s documentation!" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="mav-sim-package">
+<h1>mav_sim package<a class="headerlink" href="#mav-sim-package" title="Link to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.appC.html">mav_sim.appC package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.appC.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.appC.draw_sc.html">mav_sim.appC.draw_sc module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.appC.draw_sc.html#mav_sim.appC.draw_sc.DrawSc"><code class="docutils literal notranslate"><span class="pre">DrawSc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.appC.draw_sc.html#mav_sim.appC.draw_sc.get_points"><code class="docutils literal notranslate"><span class="pre">get_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.appC.draw_sc.html#mav_sim.appC.draw_sc.points_to_mesh"><code class="docutils literal notranslate"><span class="pre">points_to_mesh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.appC.draw_sc.html#mav_sim.appC.draw_sc.rotate_points"><code class="docutils literal notranslate"><span class="pre">rotate_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.appC.draw_sc.html#mav_sim.appC.draw_sc.translate_points"><code class="docutils literal notranslate"><span class="pre">translate_points()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.appC.sc_viewer.html">mav_sim.appC.sc_viewer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.appC.sc_viewer.html#mav_sim.appC.sc_viewer.ScViewer"><code class="docutils literal notranslate"><span class="pre">ScViewer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.appC.html#module-mav_sim.appC">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap10.html">mav_sim.chap10 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap10.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap10.draw_path.html">mav_sim.chap10.draw_path module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap10.draw_path.html#mav_sim.chap10.draw_path.DrawPath"><code class="docutils literal notranslate"><span class="pre">DrawPath</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap10.draw_path.html#mav_sim.chap10.draw_path.orbit_points"><code class="docutils literal notranslate"><span class="pre">orbit_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap10.draw_path.html#mav_sim.chap10.draw_path.straight_line_points"><code class="docutils literal notranslate"><span class="pre">straight_line_points()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap10.path_follower.html">mav_sim.chap10.path_follower module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap10.path_follower.html#mav_sim.chap10.path_follower.PathFollower"><code class="docutils literal notranslate"><span class="pre">PathFollower</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap10.path_follower.html#mav_sim.chap10.path_follower.follow_orbit"><code class="docutils literal notranslate"><span class="pre">follow_orbit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap10.path_follower.html#mav_sim.chap10.path_follower.follow_straight_line"><code class="docutils literal notranslate"><span class="pre">follow_straight_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap10.path_viewer.html">mav_sim.chap10.path_viewer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap10.path_viewer.html#mav_sim.chap10.path_viewer.PathViewer"><code class="docutils literal notranslate"><span class="pre">PathViewer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap10.run_sim.html">mav_sim.chap10.run_sim module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap10.run_sim.html#mav_sim.chap10.run_sim.run_sim"><code class="docutils literal notranslate"><span class="pre">run_sim()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap10.html#module-mav_sim.chap10">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap11.html">mav_sim.chap11 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap11.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap11.draw_waypoints.html">mav_sim.chap11.draw_waypoints module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.draw_waypoints.html#mav_sim.chap11.draw_waypoints.DrawWaypoints"><code class="docutils literal notranslate"><span class="pre">DrawWaypoints</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.draw_waypoints.html#mav_sim.chap11.draw_waypoints.dubins_points"><code class="docutils literal notranslate"><span class="pre">dubins_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.draw_waypoints.html#mav_sim.chap11.draw_waypoints.mod"><code class="docutils literal notranslate"><span class="pre">mod()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.draw_waypoints.html#mav_sim.chap11.draw_waypoints.straight_waypoint_points"><code class="docutils literal notranslate"><span class="pre">straight_waypoint_points()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap11.dubins_manager.html">mav_sim.chap11.dubins_manager module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_manager.html#mav_sim.chap11.dubins_manager.construct_dubins_circle_end"><code class="docutils literal notranslate"><span class="pre">construct_dubins_circle_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_manager.html#mav_sim.chap11.dubins_manager.construct_dubins_circle_start"><code class="docutils literal notranslate"><span class="pre">construct_dubins_circle_start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_manager.html#mav_sim.chap11.dubins_manager.construct_dubins_line"><code class="docutils literal notranslate"><span class="pre">construct_dubins_line()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_manager.html#mav_sim.chap11.dubins_manager.dubins_manager"><code class="docutils literal notranslate"><span class="pre">dubins_manager()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap11.dubins_parameters.html">mav_sim.chap11.dubins_parameters module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_parameters.html#mav_sim.chap11.dubins_parameters.DubinsParameters"><code class="docutils literal notranslate"><span class="pre">DubinsParameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_parameters.html#mav_sim.chap11.dubins_parameters.DubinsParamsStruct"><code class="docutils literal notranslate"><span class="pre">DubinsParamsStruct</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_parameters.html#mav_sim.chap11.dubins_parameters.DubinsPoints"><code class="docutils literal notranslate"><span class="pre">DubinsPoints</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_parameters.html#mav_sim.chap11.dubins_parameters.calculate_lsl"><code class="docutils literal notranslate"><span class="pre">calculate_lsl()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_parameters.html#mav_sim.chap11.dubins_parameters.calculate_lsr"><code class="docutils literal notranslate"><span class="pre">calculate_lsr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_parameters.html#mav_sim.chap11.dubins_parameters.calculate_rsl"><code class="docutils literal notranslate"><span class="pre">calculate_rsl()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_parameters.html#mav_sim.chap11.dubins_parameters.calculate_rsr"><code class="docutils literal notranslate"><span class="pre">calculate_rsr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_parameters.html#mav_sim.chap11.dubins_parameters.compute_parameters"><code class="docutils literal notranslate"><span class="pre">compute_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.dubins_parameters.html#mav_sim.chap11.dubins_parameters.mod"><code class="docutils literal notranslate"><span class="pre">mod()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap11.fillet_manager.html">mav_sim.chap11.fillet_manager module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.fillet_manager.html#mav_sim.chap11.fillet_manager.construct_fillet_circle"><code class="docutils literal notranslate"><span class="pre">construct_fillet_circle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.fillet_manager.html#mav_sim.chap11.fillet_manager.construct_fillet_line"><code class="docutils literal notranslate"><span class="pre">construct_fillet_line()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.fillet_manager.html#mav_sim.chap11.fillet_manager.fillet_manager"><code class="docutils literal notranslate"><span class="pre">fillet_manager()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap11.line_manager.html">mav_sim.chap11.line_manager module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.line_manager.html#mav_sim.chap11.line_manager.construct_line"><code class="docutils literal notranslate"><span class="pre">construct_line()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.line_manager.html#mav_sim.chap11.line_manager.line_manager"><code class="docutils literal notranslate"><span class="pre">line_manager()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap11.path_manager.html">mav_sim.chap11.path_manager module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.path_manager.html#mav_sim.chap11.path_manager.PathManager"><code class="docutils literal notranslate"><span class="pre">PathManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap11.path_manager_utilities.html">mav_sim.chap11.path_manager_utilities module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.path_manager_utilities.html#mav_sim.chap11.path_manager_utilities.HalfSpaceParams"><code class="docutils literal notranslate"><span class="pre">HalfSpaceParams</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.path_manager_utilities.html#mav_sim.chap11.path_manager_utilities.WaypointIndices"><code class="docutils literal notranslate"><span class="pre">WaypointIndices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.path_manager_utilities.html#mav_sim.chap11.path_manager_utilities.extract_waypoints"><code class="docutils literal notranslate"><span class="pre">extract_waypoints()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.path_manager_utilities.html#mav_sim.chap11.path_manager_utilities.get_airspeed"><code class="docutils literal notranslate"><span class="pre">get_airspeed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.path_manager_utilities.html#mav_sim.chap11.path_manager_utilities.inHalfSpace"><code class="docutils literal notranslate"><span class="pre">inHalfSpace()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap11.run_sim.html">mav_sim.chap11.run_sim module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.run_sim.html#mav_sim.chap11.run_sim.run_sim"><code class="docutils literal notranslate"><span class="pre">run_sim()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap11.waypoint_viewer.html">mav_sim.chap11.waypoint_viewer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap11.waypoint_viewer.html#mav_sim.chap11.waypoint_viewer.WaypointViewer"><code class="docutils literal notranslate"><span class="pre">WaypointViewer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap11.html#module-mav_sim.chap11">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap12.html">mav_sim.chap12 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap12.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap12.draw_map.html">mav_sim.chap12.draw_map module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.draw_map.html#mav_sim.chap12.draw_map.DrawMap"><code class="docutils literal notranslate"><span class="pre">DrawMap</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.draw_map.html#mav_sim.chap12.draw_map.building_vert_face"><code class="docutils literal notranslate"><span class="pre">building_vert_face()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap12.path_planner.html">mav_sim.chap12.path_planner module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.path_planner.html#mav_sim.chap12.path_planner.PathPlanner"><code class="docutils literal notranslate"><span class="pre">PathPlanner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.path_planner.html#mav_sim.chap12.path_planner.PlannerType"><code class="docutils literal notranslate"><span class="pre">PlannerType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap12.planner_utilities.html">mav_sim.chap12.planner_utilities module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.planner_utilities.html#mav_sim.chap12.planner_utilities.column"><code class="docutils literal notranslate"><span class="pre">column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.planner_utilities.html#mav_sim.chap12.planner_utilities.distance"><code class="docutils literal notranslate"><span class="pre">distance()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.planner_utilities.html#mav_sim.chap12.planner_utilities.exist_feasible_path"><code class="docutils literal notranslate"><span class="pre">exist_feasible_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.planner_utilities.html#mav_sim.chap12.planner_utilities.find_closest_configuration"><code class="docutils literal notranslate"><span class="pre">find_closest_configuration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.planner_utilities.html#mav_sim.chap12.planner_utilities.find_shortest_path"><code class="docutils literal notranslate"><span class="pre">find_shortest_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.planner_utilities.html#mav_sim.chap12.planner_utilities.generate_random_configuration"><code class="docutils literal notranslate"><span class="pre">generate_random_configuration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.planner_utilities.html#mav_sim.chap12.planner_utilities.height_above_ground"><code class="docutils literal notranslate"><span class="pre">height_above_ground()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.planner_utilities.html#mav_sim.chap12.planner_utilities.plan_path"><code class="docutils literal notranslate"><span class="pre">plan_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.planner_utilities.html#mav_sim.chap12.planner_utilities.points_along_path"><code class="docutils literal notranslate"><span class="pre">points_along_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.planner_utilities.html#mav_sim.chap12.planner_utilities.smooth_path"><code class="docutils literal notranslate"><span class="pre">smooth_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap12.rrt_dubins.html">mav_sim.chap12.rrt_dubins module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.rrt_dubins.html#mav_sim.chap12.rrt_dubins.RRTDubins"><code class="docutils literal notranslate"><span class="pre">RRTDubins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.rrt_dubins.html#mav_sim.chap12.rrt_dubins.column"><code class="docutils literal notranslate"><span class="pre">column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.rrt_dubins.html#mav_sim.chap12.rrt_dubins.distance"><code class="docutils literal notranslate"><span class="pre">distance()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.rrt_dubins.html#mav_sim.chap12.rrt_dubins.find_minimum_path"><code class="docutils literal notranslate"><span class="pre">find_minimum_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.rrt_dubins.html#mav_sim.chap12.rrt_dubins.height_above_ground"><code class="docutils literal notranslate"><span class="pre">height_above_ground()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.rrt_dubins.html#mav_sim.chap12.rrt_dubins.mod"><code class="docutils literal notranslate"><span class="pre">mod()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.rrt_dubins.html#mav_sim.chap12.rrt_dubins.random_pose"><code class="docutils literal notranslate"><span class="pre">random_pose()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap12.rrt_straight_line.html">mav_sim.chap12.rrt_straight_line module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.rrt_straight_line.html#mav_sim.chap12.rrt_straight_line.RRTStraightLine"><code class="docutils literal notranslate"><span class="pre">RRTStraightLine</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.rrt_straight_line.html#mav_sim.chap12.rrt_straight_line.create_rrt_plan"><code class="docutils literal notranslate"><span class="pre">create_rrt_plan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.rrt_straight_line.html#mav_sim.chap12.rrt_straight_line.draw_tree"><code class="docutils literal notranslate"><span class="pre">draw_tree()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap12.run_sim.html">mav_sim.chap12.run_sim module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.run_sim.html#mav_sim.chap12.run_sim.run_sim"><code class="docutils literal notranslate"><span class="pre">run_sim()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap12.world_viewer.html">mav_sim.chap12.world_viewer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap12.world_viewer.html#mav_sim.chap12.world_viewer.WorldViewer"><code class="docutils literal notranslate"><span class="pre">WorldViewer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap12.html#module-mav_sim.chap12">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap2.html">mav_sim.chap2 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap2.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap2.draw_mav.html">mav_sim.chap2.draw_mav module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.draw_mav.html#mav_sim.chap2.draw_mav.DrawMav"><code class="docutils literal notranslate"><span class="pre">DrawMav</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.draw_mav.html#mav_sim.chap2.draw_mav.get_points"><code class="docutils literal notranslate"><span class="pre">get_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.draw_mav.html#mav_sim.chap2.draw_mav.points_to_mesh"><code class="docutils literal notranslate"><span class="pre">points_to_mesh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.draw_mav.html#mav_sim.chap2.draw_mav.rotate_points"><code class="docutils literal notranslate"><span class="pre">rotate_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.draw_mav.html#mav_sim.chap2.draw_mav.translate_points"><code class="docutils literal notranslate"><span class="pre">translate_points()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap2.mav_viewer.html">mav_sim.chap2.mav_viewer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.mav_viewer.html#mav_sim.chap2.mav_viewer.MavViewer"><code class="docutils literal notranslate"><span class="pre">MavViewer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap2.transforms.html">mav_sim.chap2.transforms module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.rot_b_to_s"><code class="docutils literal notranslate"><span class="pre">rot_b_to_s()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.rot_b_to_v"><code class="docutils literal notranslate"><span class="pre">rot_b_to_v()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.rot_s_to_w"><code class="docutils literal notranslate"><span class="pre">rot_s_to_w()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.rot_v1_to_v2"><code class="docutils literal notranslate"><span class="pre">rot_v1_to_v2()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.rot_v2_to_b"><code class="docutils literal notranslate"><span class="pre">rot_v2_to_b()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.rot_v_to_b"><code class="docutils literal notranslate"><span class="pre">rot_v_to_b()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.rot_v_to_v1"><code class="docutils literal notranslate"><span class="pre">rot_v_to_v1()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.rot_x"><code class="docutils literal notranslate"><span class="pre">rot_x()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.rot_y"><code class="docutils literal notranslate"><span class="pre">rot_y()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.rot_z"><code class="docutils literal notranslate"><span class="pre">rot_z()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.trans_b_to_i"><code class="docutils literal notranslate"><span class="pre">trans_b_to_i()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.trans_i_to_b"><code class="docutils literal notranslate"><span class="pre">trans_i_to_b()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.trans_i_to_v"><code class="docutils literal notranslate"><span class="pre">trans_i_to_v()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap2.transforms.html#mav_sim.chap2.transforms.trans_v_to_i"><code class="docutils literal notranslate"><span class="pre">trans_v_to_i()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap2.html#module-mav_sim.chap2">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap3.html">mav_sim.chap3 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap3.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap3.data_viewer.html">mav_sim.chap3.data_viewer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.data_viewer.html#mav_sim.chap3.data_viewer.DataViewer"><code class="docutils literal notranslate"><span class="pre">DataViewer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap3.mav_dynamics.html">mav_sim.chap3.mav_dynamics module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.mav_dynamics.html#mav_sim.chap3.mav_dynamics.DynamicState"><code class="docutils literal notranslate"><span class="pre">DynamicState</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.mav_dynamics.html#mav_sim.chap3.mav_dynamics.ForceMoments"><code class="docutils literal notranslate"><span class="pre">ForceMoments</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.mav_dynamics.html#mav_sim.chap3.mav_dynamics.MavDynamics"><code class="docutils literal notranslate"><span class="pre">MavDynamics</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.mav_dynamics.html#mav_sim.chap3.mav_dynamics.StateIndices"><code class="docutils literal notranslate"><span class="pre">StateIndices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.mav_dynamics.html#mav_sim.chap3.mav_dynamics.derivatives"><code class="docutils literal notranslate"><span class="pre">derivatives()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap3.mav_dynamics_euler.html">mav_sim.chap3.mav_dynamics_euler module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.mav_dynamics_euler.html#mav_sim.chap3.mav_dynamics_euler.DynamicStateEuler"><code class="docutils literal notranslate"><span class="pre">DynamicStateEuler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.mav_dynamics_euler.html#mav_sim.chap3.mav_dynamics_euler.StateIndicesEuler"><code class="docutils literal notranslate"><span class="pre">StateIndicesEuler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.mav_dynamics_euler.html#mav_sim.chap3.mav_dynamics_euler.derivatives_euler"><code class="docutils literal notranslate"><span class="pre">derivatives_euler()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.mav_dynamics_euler.html#mav_sim.chap3.mav_dynamics_euler.euler_state_to_quat_state"><code class="docutils literal notranslate"><span class="pre">euler_state_to_quat_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.mav_dynamics_euler.html#mav_sim.chap3.mav_dynamics_euler.quat_state_to_euler_state"><code class="docutils literal notranslate"><span class="pre">quat_state_to_euler_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap3.run_sim.html">mav_sim.chap3.run_sim module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap3.run_sim.html#mav_sim.chap3.run_sim.run_sim"><code class="docutils literal notranslate"><span class="pre">run_sim()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap3.html#module-mav_sim.chap3">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap4.html">mav_sim.chap4 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap4.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap4.mav_dynamics.html">mav_sim.chap4.mav_dynamics module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap4.mav_dynamics.html#mav_sim.chap4.mav_dynamics.MavDynamics"><code class="docutils literal notranslate"><span class="pre">MavDynamics</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap4.mav_dynamics.html#mav_sim.chap4.mav_dynamics.forces_moments"><code class="docutils literal notranslate"><span class="pre">forces_moments()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap4.mav_dynamics.html#mav_sim.chap4.mav_dynamics.gravitational_force"><code class="docutils literal notranslate"><span class="pre">gravitational_force()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap4.mav_dynamics.html#mav_sim.chap4.mav_dynamics.lateral_aerodynamics"><code class="docutils literal notranslate"><span class="pre">lateral_aerodynamics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap4.mav_dynamics.html#mav_sim.chap4.mav_dynamics.longitudinal_aerodynamics"><code class="docutils literal notranslate"><span class="pre">longitudinal_aerodynamics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap4.mav_dynamics.html#mav_sim.chap4.mav_dynamics.motor_thrust_torque"><code class="docutils literal notranslate"><span class="pre">motor_thrust_torque()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap4.mav_dynamics.html#mav_sim.chap4.mav_dynamics.update_velocity_data"><code class="docutils literal notranslate"><span class="pre">update_velocity_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap4.model_coef.html">mav_sim.chap4.model_coef module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap4.run_sim.html">mav_sim.chap4.run_sim module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap4.run_sim.html#mav_sim.chap4.run_sim.run_sim"><code class="docutils literal notranslate"><span class="pre">run_sim()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap4.wind_simulation.html">mav_sim.chap4.wind_simulation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap4.wind_simulation.html#mav_sim.chap4.wind_simulation.WindSimulation"><code class="docutils literal notranslate"><span class="pre">WindSimulation</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap4.html#module-mav_sim.chap4">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap5.html">mav_sim.chap5 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap5.compute_models.html">mav_sim.chap5.compute_models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.compute_model"><code class="docutils literal notranslate"><span class="pre">compute_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.compute_ss_model"><code class="docutils literal notranslate"><span class="pre">compute_ss_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.compute_tf_model"><code class="docutils literal notranslate"><span class="pre">compute_tf_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.dT_dVa"><code class="docutils literal notranslate"><span class="pre">dT_dVa()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.dT_ddelta_t"><code class="docutils literal notranslate"><span class="pre">dT_ddelta_t()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.df_du"><code class="docutils literal notranslate"><span class="pre">df_du()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.df_dx"><code class="docutils literal notranslate"><span class="pre">df_dx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.euler_state"><code class="docutils literal notranslate"><span class="pre">euler_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.f_euler"><code class="docutils literal notranslate"><span class="pre">f_euler()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.quaternion_state"><code class="docutils literal notranslate"><span class="pre">quaternion_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap5.model_coef.html">mav_sim.chap5.model_coef module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap5.trim.html">mav_sim.chap5.trim module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.compute_trim"><code class="docutils literal notranslate"><span class="pre">compute_trim()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.compute_trim_euler"><code class="docutils literal notranslate"><span class="pre">compute_trim_euler()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.extract_state_input"><code class="docutils literal notranslate"><span class="pre">extract_state_input()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.trim_objective_fun"><code class="docutils literal notranslate"><span class="pre">trim_objective_fun()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.variable_bounds"><code class="docutils literal notranslate"><span class="pre">variable_bounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.velocity_constraint"><code class="docutils literal notranslate"><span class="pre">velocity_constraint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.velocity_constraint_partial"><code class="docutils literal notranslate"><span class="pre">velocity_constraint_partial()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.html#module-mav_sim.chap5">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap6.html">mav_sim.chap6 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap6.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap6.autopilot.html">mav_sim.chap6.autopilot module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap6.autopilot.html#mav_sim.chap6.autopilot.Autopilot"><code class="docutils literal notranslate"><span class="pre">Autopilot</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap6.autopilot.html#mav_sim.chap6.autopilot.SequentialLoopClosureParameters"><code class="docutils literal notranslate"><span class="pre">SequentialLoopClosureParameters</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap6.autopilot_tecs.html">mav_sim.chap6.autopilot_tecs module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap6.autopilot_tecs.html#mav_sim.chap6.autopilot_tecs.Autopilot"><code class="docutils literal notranslate"><span class="pre">Autopilot</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap6.pd_control_with_rate.html">mav_sim.chap6.pd_control_with_rate module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap6.pd_control_with_rate.html#mav_sim.chap6.pd_control_with_rate.PDControlWithRate"><code class="docutils literal notranslate"><span class="pre">PDControlWithRate</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap6.pi_control.html">mav_sim.chap6.pi_control module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap6.pi_control.html#mav_sim.chap6.pi_control.PIControl"><code class="docutils literal notranslate"><span class="pre">PIControl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap6.pid_control.html">mav_sim.chap6.pid_control module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap6.pid_control.html#mav_sim.chap6.pid_control.PIDControl"><code class="docutils literal notranslate"><span class="pre">PIDControl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap6.run_sim.html">mav_sim.chap6.run_sim module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap6.run_sim.html#mav_sim.chap6.run_sim.run_sim"><code class="docutils literal notranslate"><span class="pre">run_sim()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap6.tf_control.html">mav_sim.chap6.tf_control module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap6.tf_control.html#mav_sim.chap6.tf_control.TFControl"><code class="docutils literal notranslate"><span class="pre">TFControl</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap6.html#module-mav_sim.chap6">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap7.html">mav_sim.chap7 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap7.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap7.mav_dynamics.html">mav_sim.chap7.mav_dynamics module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap7.mav_dynamics.html#mav_sim.chap7.mav_dynamics.GpsTransient"><code class="docutils literal notranslate"><span class="pre">GpsTransient</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap7.mav_dynamics.html#mav_sim.chap7.mav_dynamics.MavDynamics"><code class="docutils literal notranslate"><span class="pre">MavDynamics</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap7.mav_dynamics.html#mav_sim.chap7.mav_dynamics.accelerometer"><code class="docutils literal notranslate"><span class="pre">accelerometer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap7.mav_dynamics.html#mav_sim.chap7.mav_dynamics.calculate_sensor_readings"><code class="docutils literal notranslate"><span class="pre">calculate_sensor_readings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap7.mav_dynamics.html#mav_sim.chap7.mav_dynamics.gps"><code class="docutils literal notranslate"><span class="pre">gps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap7.mav_dynamics.html#mav_sim.chap7.mav_dynamics.gps_error_trans_update"><code class="docutils literal notranslate"><span class="pre">gps_error_trans_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap7.mav_dynamics.html#mav_sim.chap7.mav_dynamics.gyro"><code class="docutils literal notranslate"><span class="pre">gyro()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap7.mav_dynamics.html#mav_sim.chap7.mav_dynamics.magnetometer"><code class="docutils literal notranslate"><span class="pre">magnetometer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap7.mav_dynamics.html#mav_sim.chap7.mav_dynamics.pressure"><code class="docutils literal notranslate"><span class="pre">pressure()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap7.run_sim.html">mav_sim.chap7.run_sim module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap7.run_sim.html#mav_sim.chap7.run_sim.run_sim"><code class="docutils literal notranslate"><span class="pre">run_sim()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap7.sensor_viewer.html">mav_sim.chap7.sensor_viewer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap7.sensor_viewer.html#mav_sim.chap7.sensor_viewer.SensorViewer"><code class="docutils literal notranslate"><span class="pre">SensorViewer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap7.html#module-mav_sim.chap7">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap8.html">mav_sim.chap8 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.filters.html">mav_sim.chap8.filters module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer.html">mav_sim.chap8.observer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.AlphaFilter"><code class="docutils literal notranslate"><span class="pre">AlphaFilter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfAttitude"><code class="docutils literal notranslate"><span class="pre">EkfAttitude</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.EkfPosition"><code class="docutils literal notranslate"><span class="pre">EkfPosition</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.Observer"><code class="docutils literal notranslate"><span class="pre">Observer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer.html#mav_sim.chap8.observer.jacobian"><code class="docutils literal notranslate"><span class="pre">jacobian()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html">mav_sim.chap8.observer_analyt module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfAttitude"><code class="docutils literal notranslate"><span class="pre">EkfAttitude</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.EkfPosition"><code class="docutils literal notranslate"><span class="pre">EkfPosition</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer_analyt.html#mav_sim.chap8.observer_analyt.Observer"><code class="docutils literal notranslate"><span class="pre">Observer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_full.html">mav_sim.chap8.observer_full module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.Observer"><code class="docutils literal notranslate"><span class="pre">Observer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.ekfFullState"><code class="docutils literal notranslate"><span class="pre">ekfFullState</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer_full.html#mav_sim.chap8.observer_full.jacobian"><code class="docutils literal notranslate"><span class="pre">jacobian()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.chap8.observer_simple.html">mav_sim.chap8.observer_simple module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfAttitude"><code class="docutils literal notranslate"><span class="pre">EkfAttitude</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.EkfPosition"><code class="docutils literal notranslate"><span class="pre">EkfPosition</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.chap8.observer_simple.html#mav_sim.chap8.observer_simple.Observer"><code class="docutils literal notranslate"><span class="pre">Observer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap8.html#module-mav_sim.chap8">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.message_types.html">mav_sim.message_types package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.message_types.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.message_types.msg_autopilot.html">mav_sim.message_types.msg_autopilot module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.message_types.msg_autopilot.html#mav_sim.message_types.msg_autopilot.MsgAutopilot"><code class="docutils literal notranslate"><span class="pre">MsgAutopilot</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.message_types.msg_delta.html">mav_sim.message_types.msg_delta module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.message_types.msg_delta.html#mav_sim.message_types.msg_delta.MsgDelta"><code class="docutils literal notranslate"><span class="pre">MsgDelta</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.message_types.msg_gust_params.html">mav_sim.message_types.msg_gust_params module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.message_types.msg_gust_params.html#mav_sim.message_types.msg_gust_params.MsgGustParams"><code class="docutils literal notranslate"><span class="pre">MsgGustParams</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.message_types.msg_path.html">mav_sim.message_types.msg_path module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.message_types.msg_path.html#mav_sim.message_types.msg_path.MsgPath"><code class="docutils literal notranslate"><span class="pre">MsgPath</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.message_types.msg_sensors.html">mav_sim.message_types.msg_sensors module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.message_types.msg_sensors.html#mav_sim.message_types.msg_sensors.MsgSensors"><code class="docutils literal notranslate"><span class="pre">MsgSensors</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.message_types.msg_sim_params.html">mav_sim.message_types.msg_sim_params module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.message_types.msg_sim_params.html#mav_sim.message_types.msg_sim_params.MsgSimParams"><code class="docutils literal notranslate"><span class="pre">MsgSimParams</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.message_types.msg_state.html">mav_sim.message_types.msg_state module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.message_types.msg_state.html#mav_sim.message_types.msg_state.MsgState"><code class="docutils literal notranslate"><span class="pre">MsgState</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.message_types.msg_waypoints.html">mav_sim.message_types.msg_waypoints module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.message_types.msg_waypoints.html#mav_sim.message_types.msg_waypoints.MsgWaypoints"><code class="docutils literal notranslate"><span class="pre">MsgWaypoints</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.message_types.msg_waypoints.html#mav_sim.message_types.msg_waypoints.Waypoint"><code class="docutils literal notranslate"><span class="pre">Waypoint</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.message_types.msg_world_map.html">mav_sim.message_types.msg_world_map module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.message_types.msg_world_map.html#mav_sim.message_types.msg_world_map.MsgWorldMap"><code class="docutils literal notranslate"><span class="pre">MsgWorldMap</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.message_types.msg_world_map.html#mav_sim.message_types.msg_world_map.map_height"><code class="docutils literal notranslate"><span class="pre">map_height()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.message_types.html#module-mav_sim.message_types">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.parameters.html">mav_sim.parameters package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.parameters.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.parameters.aerosonde_parameters.html">mav_sim.parameters.aerosonde_parameters module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.parameters.control_parameters.html">mav_sim.parameters.control_parameters module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.parameters.planner_parameters.html">mav_sim.parameters.planner_parameters module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.parameters.sensor_parameters.html">mav_sim.parameters.sensor_parameters module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.parameters.simulation_parameters.html">mav_sim.parameters.simulation_parameters module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.parameters.html#module-mav_sim.parameters">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.state_plotter.html">mav_sim.state_plotter package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.state_plotter.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.state_plotter.test.html">mav_sim.state_plotter.test namespace</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.state_plotter.test.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.state_plotter.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.state_plotter.plotter.html">mav_sim.state_plotter.plotter module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.state_plotter.plotter.html#mav_sim.state_plotter.plotter.Plotter"><code class="docutils literal notranslate"><span class="pre">Plotter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.state_plotter.plotter.html#mav_sim.state_plotter.plotter.define_plot_arg_parser"><code class="docutils literal notranslate"><span class="pre">define_plot_arg_parser()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.state_plotter.plotter_args.html">mav_sim.state_plotter.plotter_args module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.state_plotter.plotter_args.html#mav_sim.state_plotter.plotter_args.PlotArgs"><code class="docutils literal notranslate"><span class="pre">PlotArgs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.state_plotter.plotter_args.html#mav_sim.state_plotter.plotter_args.PlotboxArgs"><code class="docutils literal notranslate"><span class="pre">PlotboxArgs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.state_plotter.state_data.html">mav_sim.state_plotter.state_data module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.state_plotter.state_data.html#mav_sim.state_plotter.state_data.StateData"><code class="docutils literal notranslate"><span class="pre">StateData</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.state_plotter.state_data.html#mav_sim.state_plotter.state_data.angle_wrap"><code class="docutils literal notranslate"><span class="pre">angle_wrap()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.state_plotter.state_plot.html">mav_sim.state_plotter.state_plot module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.state_plotter.state_plot.html#mav_sim.state_plotter.state_plot.StatePlot"><code class="docutils literal notranslate"><span class="pre">StatePlot</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.state_plotter.state_plot.html#mav_sim.state_plotter.state_plot.get_ellipse"><code class="docutils literal notranslate"><span class="pre">get_ellipse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.state_plotter.state_plotbox.html">mav_sim.state_plotter.state_plotbox module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.state_plotter.state_plotbox.html#mav_sim.state_plotter.state_plotbox.StatePlotbox"><code class="docutils literal notranslate"><span class="pre">StatePlotbox</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.state_plotter.html#module-mav_sim.state_plotter">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.tools.html">mav_sim.tools package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.tools.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.tools.display_figures.html">mav_sim.tools.display_figures module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.display_figures.html#mav_sim.tools.display_figures.display_data_view"><code class="docutils literal notranslate"><span class="pre">display_data_view()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.display_figures.html#mav_sim.tools.display_figures.display_mav_view"><code class="docutils literal notranslate"><span class="pre">display_mav_view()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.tools.rotations.html">mav_sim.tools.rotations module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.rotations.html#mav_sim.tools.rotations.Euler2Quaternion"><code class="docutils literal notranslate"><span class="pre">Euler2Quaternion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.rotations.html#mav_sim.tools.rotations.Euler2Rotation"><code class="docutils literal notranslate"><span class="pre">Euler2Rotation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.rotations.html#mav_sim.tools.rotations.Quaternion2Euler"><code class="docutils literal notranslate"><span class="pre">Quaternion2Euler()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.rotations.html#mav_sim.tools.rotations.Quaternion2Rotation"><code class="docutils literal notranslate"><span class="pre">Quaternion2Rotation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.rotations.html#mav_sim.tools.rotations.Rotation2Quaternion"><code class="docutils literal notranslate"><span class="pre">Rotation2Quaternion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.rotations.html#mav_sim.tools.rotations.hat"><code class="docutils literal notranslate"><span class="pre">hat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.rotations.html#mav_sim.tools.rotations.rotz"><code class="docutils literal notranslate"><span class="pre">rotz()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.tools.signals.html">mav_sim.tools.signals module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.signals.html#mav_sim.tools.signals.Signals"><code class="docutils literal notranslate"><span class="pre">Signals</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.signals.html#mav_sim.tools.signals.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.tools.transfer_function.html">mav_sim.tools.transfer_function module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.transfer_function.html#mav_sim.tools.transfer_function.TransferFunction"><code class="docutils literal notranslate"><span class="pre">TransferFunction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.transfer_function.html#mav_sim.tools.transfer_function.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.tools.types.html">mav_sim.tools.types module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.AttitudeMeasurement"><code class="docutils literal notranslate"><span class="pre">AttitudeMeasurement</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.AttitudeState"><code class="docutils literal notranslate"><span class="pre">AttitudeState</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.Pose"><code class="docutils literal notranslate"><span class="pre">Pose</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.PositionMeasurement"><code class="docutils literal notranslate"><span class="pre">PositionMeasurement</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.PositionState"><code class="docutils literal notranslate"><span class="pre">PositionState</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.check_points"><code class="docutils literal notranslate"><span class="pre">check_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.check_quaternion"><code class="docutils literal notranslate"><span class="pre">check_quaternion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.check_rotation_matrix"><code class="docutils literal notranslate"><span class="pre">check_rotation_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.check_skew_symmetric_matrix"><code class="docutils literal notranslate"><span class="pre">check_skew_symmetric_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.check_valid_dimensions"><code class="docutils literal notranslate"><span class="pre">check_valid_dimensions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.check_vector"><code class="docutils literal notranslate"><span class="pre">check_vector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.types.html#mav_sim.tools.types.check_vector_size"><code class="docutils literal notranslate"><span class="pre">check_vector_size()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.tools.wrap.html">mav_sim.tools.wrap module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.wrap.html#mav_sim.tools.wrap.saturate"><code class="docutils literal notranslate"><span class="pre">saturate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.tools.wrap.html#mav_sim.tools.wrap.wrap"><code class="docutils literal notranslate"><span class="pre">wrap()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.tools.html#module-mav_sim.tools">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.unit_tests.html">mav_sim.unit_tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.all_unit_tests.html">mav_sim.unit_tests.all_unit_tests module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch10_additional_tests.html">mav_sim.unit_tests.ch10_additional_tests module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch10_additional_tests.html#mav_sim.unit_tests.ch10_additional_tests.follow_orbit_helper"><code class="docutils literal notranslate"><span class="pre">follow_orbit_helper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch10_additional_tests.html#mav_sim.unit_tests.ch10_additional_tests.follow_straight_line_helper"><code class="docutils literal notranslate"><span class="pre">follow_straight_line_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html">mav_sim.unit_tests.ch10_path_follower_test module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.follow_orbit_test"><code class="docutils literal notranslate"><span class="pre">follow_orbit_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.follow_straight_line_test"><code class="docutils literal notranslate"><span class="pre">follow_straight_line_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.gen_follow_orbit_vars"><code class="docutils literal notranslate"><span class="pre">gen_follow_orbit_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.gen_follow_straight_line_vars"><code class="docutils literal notranslate"><span class="pre">gen_follow_straight_line_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.gen_test_archive"><code class="docutils literal notranslate"><span class="pre">gen_test_archive()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch10_path_follower_test.html#mav_sim.unit_tests.ch10_path_follower_test.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html">mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.check_halfspace_type"><code class="docutils literal notranslate"><span class="pre">check_halfspace_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.check_msg_path_type"><code class="docutils literal notranslate"><span class="pre">check_msg_path_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.construct_fillet_circle_test"><code class="docutils literal notranslate"><span class="pre">construct_fillet_circle_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.construct_fillet_line_test"><code class="docutils literal notranslate"><span class="pre">construct_fillet_line_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.construct_line_test"><code class="docutils literal notranslate"><span class="pre">construct_line_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.gen_construct_fillet_circle_vars"><code class="docutils literal notranslate"><span class="pre">gen_construct_fillet_circle_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.gen_construct_fillet_line_vars"><code class="docutils literal notranslate"><span class="pre">gen_construct_fillet_line_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.gen_construct_line_vars"><code class="docutils literal notranslate"><span class="pre">gen_construct_line_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.gen_inHalfSpace_vars"><code class="docutils literal notranslate"><span class="pre">gen_inHalfSpace_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.gen_test_archive"><code class="docutils literal notranslate"><span class="pre">gen_test_archive()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.inHalfSpace_test"><code class="docutils literal notranslate"><span class="pre">inHalfSpace_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.html#mav_sim.unit_tests.ch11_line_and_fillet_path_manager_test.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch11a_additional_tests.html">mav_sim.unit_tests.ch11a_additional_tests module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11a_additional_tests.html#mav_sim.unit_tests.ch11a_additional_tests.construct_fillet_circle_helper"><code class="docutils literal notranslate"><span class="pre">construct_fillet_circle_helper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11a_additional_tests.html#mav_sim.unit_tests.ch11a_additional_tests.construct_fillet_line_helper"><code class="docutils literal notranslate"><span class="pre">construct_fillet_line_helper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11a_additional_tests.html#mav_sim.unit_tests.ch11a_additional_tests.construct_line_helper"><code class="docutils literal notranslate"><span class="pre">construct_line_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch11b_additional_tests.html">mav_sim.unit_tests.ch11b_additional_tests module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_additional_tests.html#mav_sim.unit_tests.ch11b_additional_tests.calculate_lsl_helper"><code class="docutils literal notranslate"><span class="pre">calculate_lsl_helper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_additional_tests.html#mav_sim.unit_tests.ch11b_additional_tests.calculate_lsr_helper"><code class="docutils literal notranslate"><span class="pre">calculate_lsr_helper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_additional_tests.html#mav_sim.unit_tests.ch11b_additional_tests.construct_dubins_circle_end_helper"><code class="docutils literal notranslate"><span class="pre">construct_dubins_circle_end_helper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_additional_tests.html#mav_sim.unit_tests.ch11b_additional_tests.construct_dubins_line_helper"><code class="docutils literal notranslate"><span class="pre">construct_dubins_line_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html">mav_sim.unit_tests.ch11b_dubins_path_manager_test module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.check_duins_params_struct_types"><code class="docutils literal notranslate"><span class="pre">check_duins_params_struct_types()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.gen_dubins_vars"><code class="docutils literal notranslate"><span class="pre">gen_dubins_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.gen_test_archive"><code class="docutils literal notranslate"><span class="pre">gen_test_archive()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.lsl_test"><code class="docutils literal notranslate"><span class="pre">lsl_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.lsr_test"><code class="docutils literal notranslate"><span class="pre">lsr_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.rsl_test"><code class="docutils literal notranslate"><span class="pre">rsl_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.rsr_test"><code class="docutils literal notranslate"><span class="pre">rsr_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch11b_dubins_path_manager_test.html#mav_sim.unit_tests.ch11b_dubins_path_manager_test.run_tests"><code class="docutils literal notranslate"><span class="pre">run_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html">mav_sim.unit_tests.ch12_straight_line_rrt_test module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.check_msg_waypoints_struct_types"><code class="docutils literal notranslate"><span class="pre">check_msg_waypoints_struct_types()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.find_closest_configuration_test"><code class="docutils literal notranslate"><span class="pre">find_closest_configuration_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.find_shortest_path_test"><code class="docutils literal notranslate"><span class="pre">find_shortest_path_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.gen_rrt_straight_line_vars"><code class="docutils literal notranslate"><span class="pre">gen_rrt_straight_line_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.gen_test_archive"><code class="docutils literal notranslate"><span class="pre">gen_test_archive()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.plan_path_test"><code class="docutils literal notranslate"><span class="pre">plan_path_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.run_tests"><code class="docutils literal notranslate"><span class="pre">run_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch12_straight_line_rrt_test.html#mav_sim.unit_tests.ch12_straight_line_rrt_test.smooth_path_test"><code class="docutils literal notranslate"><span class="pre">smooth_path_test()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html">mav_sim.unit_tests.ch2_additional_tests module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.Pose"><code class="docutils literal notranslate"><span class="pre">Pose</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_b_to_s_test"><code class="docutils literal notranslate"><span class="pre">rot_b_to_s_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_b_to_v_test"><code class="docutils literal notranslate"><span class="pre">rot_b_to_v_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_s_to_w_test"><code class="docutils literal notranslate"><span class="pre">rot_s_to_w_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_v1_to_v2_test"><code class="docutils literal notranslate"><span class="pre">rot_v1_to_v2_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_v2_to_b_test"><code class="docutils literal notranslate"><span class="pre">rot_v2_to_b_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_v_to_b_test"><code class="docutils literal notranslate"><span class="pre">rot_v_to_b_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_v_to_v1_test"><code class="docutils literal notranslate"><span class="pre">rot_v_to_v1_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_x_test"><code class="docutils literal notranslate"><span class="pre">rot_x_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_y_test"><code class="docutils literal notranslate"><span class="pre">rot_y_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.rot_z_test"><code class="docutils literal notranslate"><span class="pre">rot_z_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.trans_b_to_i_test"><code class="docutils literal notranslate"><span class="pre">trans_b_to_i_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.trans_i_to_b_test"><code class="docutils literal notranslate"><span class="pre">trans_i_to_b_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.trans_i_to_v_test"><code class="docutils literal notranslate"><span class="pre">trans_i_to_v_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_additional_tests.html#mav_sim.unit_tests.ch2_additional_tests.trans_v_to_i_test"><code class="docutils literal notranslate"><span class="pre">trans_v_to_i_test()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html">mav_sim.unit_tests.ch2_transforms_tests module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.SimpleRotationTest"><code class="docutils literal notranslate"><span class="pre">SimpleRotationTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.ThreeRotationTest"><code class="docutils literal notranslate"><span class="pre">ThreeRotationTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.TransformTest"><code class="docutils literal notranslate"><span class="pre">TransformTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_b_to_s_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_b_to_s_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_b_to_v_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_b_to_v_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_s_to_w_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_s_to_w_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_v1_to_v2_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_v1_to_v2_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_v2_to_b_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_v2_to_b_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_v_to_b_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_v_to_b_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_v_to_v1_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_v_to_v1_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_x_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_x_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_y_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_y_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_rot_z_tests"><code class="docutils literal notranslate"><span class="pre">generate_rot_z_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_tests"><code class="docutils literal notranslate"><span class="pre">generate_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_trans_b_to_i_tests"><code class="docutils literal notranslate"><span class="pre">generate_trans_b_to_i_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_trans_i_to_b_tests"><code class="docutils literal notranslate"><span class="pre">generate_trans_i_to_b_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_trans_i_to_v_tests"><code class="docutils literal notranslate"><span class="pre">generate_trans_i_to_v_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.generate_trans_v_to_i_tests"><code class="docutils literal notranslate"><span class="pre">generate_trans_v_to_i_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_b_to_s_tests"><code class="docutils literal notranslate"><span class="pre">rot_b_to_s_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_b_to_v_tests"><code class="docutils literal notranslate"><span class="pre">rot_b_to_v_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_s_to_w_tests"><code class="docutils literal notranslate"><span class="pre">rot_s_to_w_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_v1_to_v2_tests"><code class="docutils literal notranslate"><span class="pre">rot_v1_to_v2_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_v2_to_b_tests"><code class="docutils literal notranslate"><span class="pre">rot_v2_to_b_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_v_to_b_tests"><code class="docutils literal notranslate"><span class="pre">rot_v_to_b_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_v_to_v1_tests"><code class="docutils literal notranslate"><span class="pre">rot_v_to_v1_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_x_tests"><code class="docutils literal notranslate"><span class="pre">rot_x_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_y_tests"><code class="docutils literal notranslate"><span class="pre">rot_y_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.rot_z_tests"><code class="docutils literal notranslate"><span class="pre">rot_z_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.trans_b_to_i_tests"><code class="docutils literal notranslate"><span class="pre">trans_b_to_i_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.trans_i_to_b_tests"><code class="docutils literal notranslate"><span class="pre">trans_i_to_b_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.trans_i_to_v_tests"><code class="docutils literal notranslate"><span class="pre">trans_i_to_v_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch2_transforms_tests.html#mav_sim.unit_tests.ch2_transforms_tests.trans_v_to_i_tests"><code class="docutils literal notranslate"><span class="pre">trans_v_to_i_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html">mav_sim.unit_tests.ch3_derivatives_test module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.DynamicsResults"><code class="docutils literal notranslate"><span class="pre">DynamicsResults</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.euler_derivatives_test"><code class="docutils literal notranslate"><span class="pre">euler_derivatives_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.generate_euler_tests"><code class="docutils literal notranslate"><span class="pre">generate_euler_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.generate_quat_tests"><code class="docutils literal notranslate"><span class="pre">generate_quat_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.generate_tests"><code class="docutils literal notranslate"><span class="pre">generate_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.quat_derivatives_test"><code class="docutils literal notranslate"><span class="pre">quat_derivatives_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.run_tests"><code class="docutils literal notranslate"><span class="pre">run_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch3_derivatives_test.html#mav_sim.unit_tests.ch3_derivatives_test.save_tests"><code class="docutils literal notranslate"><span class="pre">save_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch4_additional_tests.html">mav_sim.unit_tests.ch4_additional_tests module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_additional_tests.html#mav_sim.unit_tests.ch4_additional_tests.longitudinal_aerodynamics_helper"><code class="docutils literal notranslate"><span class="pre">longitudinal_aerodynamics_helper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_additional_tests.html#mav_sim.unit_tests.ch4_additional_tests.motor_thrust_torque_helper"><code class="docutils literal notranslate"><span class="pre">motor_thrust_torque_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html">mav_sim.unit_tests.ch4_dynamics_test module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.ForcesMomentsTest"><code class="docutils literal notranslate"><span class="pre">ForcesMomentsTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.GravitationalForceTest"><code class="docutils literal notranslate"><span class="pre">GravitationalForceTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.LateralDynamicsTest"><code class="docutils literal notranslate"><span class="pre">LateralDynamicsTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.LongitudinalDynamicsTest"><code class="docutils literal notranslate"><span class="pre">LongitudinalDynamicsTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.MotorThrustTorqueTest"><code class="docutils literal notranslate"><span class="pre">MotorThrustTorqueTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.UpdateVelocityTest"><code class="docutils literal notranslate"><span class="pre">UpdateVelocityTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.WindSimulationTest"><code class="docutils literal notranslate"><span class="pre">WindSimulationTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.forces_moments_test"><code class="docutils literal notranslate"><span class="pre">forces_moments_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.forces_moments_tests"><code class="docutils literal notranslate"><span class="pre">forces_moments_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_forces_moments_tests"><code class="docutils literal notranslate"><span class="pre">generate_forces_moments_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_gravitational_force_tests"><code class="docutils literal notranslate"><span class="pre">generate_gravitational_force_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_lateral_aerodynamic_tests"><code class="docutils literal notranslate"><span class="pre">generate_lateral_aerodynamic_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_longitudinal_aerodynamic_tests"><code class="docutils literal notranslate"><span class="pre">generate_longitudinal_aerodynamic_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_motor_thrust_torque_tests"><code class="docutils literal notranslate"><span class="pre">generate_motor_thrust_torque_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_tests"><code class="docutils literal notranslate"><span class="pre">generate_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_update_velocity_data_tests"><code class="docutils literal notranslate"><span class="pre">generate_update_velocity_data_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.generate_wind_simulation_tests"><code class="docutils literal notranslate"><span class="pre">generate_wind_simulation_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.gravitational_force_tests"><code class="docutils literal notranslate"><span class="pre">gravitational_force_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.lateral_aerodynamics_tests"><code class="docutils literal notranslate"><span class="pre">lateral_aerodynamics_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.longitudinal_aerodynamics_tests"><code class="docutils literal notranslate"><span class="pre">longitudinal_aerodynamics_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.motor_thrust_torque_test"><code class="docutils literal notranslate"><span class="pre">motor_thrust_torque_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.motor_thrust_torque_tests"><code class="docutils literal notranslate"><span class="pre">motor_thrust_torque_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.run_auto_tests"><code class="docutils literal notranslate"><span class="pre">run_auto_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.update_velocity_data_test"><code class="docutils literal notranslate"><span class="pre">update_velocity_data_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.update_velocity_data_tests"><code class="docutils literal notranslate"><span class="pre">update_velocity_data_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.wind_simulation_test"><code class="docutils literal notranslate"><span class="pre">wind_simulation_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch4_dynamics_test.html#mav_sim.unit_tests.ch4_dynamics_test.wind_simulation_tests"><code class="docutils literal notranslate"><span class="pre">wind_simulation_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch5_additional_tests.html">mav_sim.unit_tests.ch5_additional_tests module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_additional_tests.html#mav_sim.unit_tests.ch5_additional_tests.trim_objective_fun_helper"><code class="docutils literal notranslate"><span class="pre">trim_objective_fun_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html">mav_sim.unit_tests.ch5_dynamics_test module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.TrimObjectiveFunTest"><code class="docutils literal notranslate"><span class="pre">TrimObjectiveFunTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.VariableBoundsTest"><code class="docutils literal notranslate"><span class="pre">VariableBoundsTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.VelocityConstraintPartialTest"><code class="docutils literal notranslate"><span class="pre">VelocityConstraintPartialTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.VelocityConstraintTest"><code class="docutils literal notranslate"><span class="pre">VelocityConstraintTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.generate_tests"><code class="docutils literal notranslate"><span class="pre">generate_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.generate_trim_objective_fun_tests"><code class="docutils literal notranslate"><span class="pre">generate_trim_objective_fun_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.generate_variable_bounds_tests"><code class="docutils literal notranslate"><span class="pre">generate_variable_bounds_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.generate_velocity_constraint_partial_tests"><code class="docutils literal notranslate"><span class="pre">generate_velocity_constraint_partial_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.generate_velocity_constraint_tests"><code class="docutils literal notranslate"><span class="pre">generate_velocity_constraint_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.run_auto_tests"><code class="docutils literal notranslate"><span class="pre">run_auto_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.trim_objective_fun_test"><code class="docutils literal notranslate"><span class="pre">trim_objective_fun_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.variable_bounds_test"><code class="docutils literal notranslate"><span class="pre">variable_bounds_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.velocity_constraint_partial_test"><code class="docutils literal notranslate"><span class="pre">velocity_constraint_partial_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch5_dynamics_test.html#mav_sim.unit_tests.ch5_dynamics_test.velocity_constraint_test"><code class="docutils literal notranslate"><span class="pre">velocity_constraint_test()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch6_additional_tests.html">mav_sim.unit_tests.ch6_additional_tests module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_additional_tests.html#mav_sim.unit_tests.ch6_additional_tests.autopilot_helper"><code class="docutils literal notranslate"><span class="pre">autopilot_helper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_additional_tests.html#mav_sim.unit_tests.ch6_additional_tests.pd_control_with_rate_helper"><code class="docutils literal notranslate"><span class="pre">pd_control_with_rate_helper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_additional_tests.html#mav_sim.unit_tests.ch6_additional_tests.pi_control_helper"><code class="docutils literal notranslate"><span class="pre">pi_control_helper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_additional_tests.html#mav_sim.unit_tests.ch6_additional_tests.tf_control_helper"><code class="docutils literal notranslate"><span class="pre">tf_control_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html">mav_sim.unit_tests.ch6_feedback_control_test module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.AutopilotTest"><code class="docutils literal notranslate"><span class="pre">AutopilotTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.PDControlWithRateTest"><code class="docutils literal notranslate"><span class="pre">PDControlWithRateTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.PIControlTest"><code class="docutils literal notranslate"><span class="pre">PIControlTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.TFControlTest"><code class="docutils literal notranslate"><span class="pre">TFControlTest</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.autopilot_test"><code class="docutils literal notranslate"><span class="pre">autopilot_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.autopilot_tests"><code class="docutils literal notranslate"><span class="pre">autopilot_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.compare_delta_msg"><code class="docutils literal notranslate"><span class="pre">compare_delta_msg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.compare_state_msg"><code class="docutils literal notranslate"><span class="pre">compare_state_msg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_autopilot_tests"><code class="docutils literal notranslate"><span class="pre">generate_autopilot_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_msg_state"><code class="docutils literal notranslate"><span class="pre">generate_msg_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_pd_with_rate_tests"><code class="docutils literal notranslate"><span class="pre">generate_pd_with_rate_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_pi_tests"><code class="docutils literal notranslate"><span class="pre">generate_pi_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_tests"><code class="docutils literal notranslate"><span class="pre">generate_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.generate_tf_tests"><code class="docutils literal notranslate"><span class="pre">generate_tf_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.mod_angle"><code class="docutils literal notranslate"><span class="pre">mod_angle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.pd_control_with_rate_test"><code class="docutils literal notranslate"><span class="pre">pd_control_with_rate_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.pd_with_rate_tests"><code class="docutils literal notranslate"><span class="pre">pd_with_rate_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.pi_control_test"><code class="docutils literal notranslate"><span class="pre">pi_control_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.pi_control_tests"><code class="docutils literal notranslate"><span class="pre">pi_control_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.run_auto_tests"><code class="docutils literal notranslate"><span class="pre">run_auto_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.run_hand_tests"><code class="docutils literal notranslate"><span class="pre">run_hand_tests()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.tf_control_test"><code class="docutils literal notranslate"><span class="pre">tf_control_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch6_feedback_control_test.html#mav_sim.unit_tests.ch6_feedback_control_test.tf_control_tests"><code class="docutils literal notranslate"><span class="pre">tf_control_tests()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch7_additional_tests.html">mav_sim.unit_tests.ch7_additional_tests module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_additional_tests.html#mav_sim.unit_tests.ch7_additional_tests.magnetometer_test"><code class="docutils literal notranslate"><span class="pre">magnetometer_test()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html">mav_sim.unit_tests.ch7_sensors_test module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.accelerometer_test"><code class="docutils literal notranslate"><span class="pre">accelerometer_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.calculate_sensor_readings_test"><code class="docutils literal notranslate"><span class="pre">calculate_sensor_readings_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_accelerometer_vars"><code class="docutils literal notranslate"><span class="pre">gen_accelerometer_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_calculate_sensor_readings_vars"><code class="docutils literal notranslate"><span class="pre">gen_calculate_sensor_readings_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_gps_error_trans_update_vars"><code class="docutils literal notranslate"><span class="pre">gen_gps_error_trans_update_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_gps_vars"><code class="docutils literal notranslate"><span class="pre">gen_gps_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_gyro_vars"><code class="docutils literal notranslate"><span class="pre">gen_gyro_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_magnometer_vars"><code class="docutils literal notranslate"><span class="pre">gen_magnometer_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_pressure_vars"><code class="docutils literal notranslate"><span class="pre">gen_pressure_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gen_test_archive"><code class="docutils literal notranslate"><span class="pre">gen_test_archive()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gps_error_trans_update_test"><code class="docutils literal notranslate"><span class="pre">gps_error_trans_update_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gps_test"><code class="docutils literal notranslate"><span class="pre">gps_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.gyro_test"><code class="docutils literal notranslate"><span class="pre">gyro_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.magnometer_test"><code class="docutils literal notranslate"><span class="pre">magnometer_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.pressure_test"><code class="docutils literal notranslate"><span class="pre">pressure_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mav_sim.unit_tests.ch7_sensors_test.html#mav_sim.unit_tests.ch7_sensors_test.run_all_tests"><code class="docutils literal notranslate"><span class="pre">run_all_tests()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.unit_tests.html#module-mav_sim.unit_tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.model_coef.html">mav_sim.model_coef module</a></li>
+</ul>
+</div>
+</section>
+<section id="module-mav_sim">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mav_sim" title="Link to this heading">¶</a></h2>
+<p>__init__.py: [summary of module].</p>
+<p>Copyright (c) (2021) Greg Droge</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mav_sim</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">mav_sim package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#running-the-simulator">Running the simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#code-compliance">Code Compliance</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to the MAV Sim’s documentation!</a></li>
+      <li>Next: <a href="mav_sim.appC.html" title="next chapter">mav_sim.appC package</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Greg Droge.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/mav_sim/mav_sim.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

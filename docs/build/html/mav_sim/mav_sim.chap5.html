@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mav_sim.chap5 package &#8212; mav_sim 26 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=80b53944"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mav_sim.chap5.compute_models module" href="mav_sim.chap5.compute_models.html" />
+    <link rel="prev" title="mav_sim.chap4.wind_simulation module" href="mav_sim.chap4.wind_simulation.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="mav-sim-chap5-package">
+<h1>mav_sim.chap5 package<a class="headerlink" href="#mav-sim-chap5-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap5.compute_models.html">mav_sim.chap5.compute_models module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.compute_model"><code class="docutils literal notranslate"><span class="pre">compute_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.compute_ss_model"><code class="docutils literal notranslate"><span class="pre">compute_ss_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.compute_tf_model"><code class="docutils literal notranslate"><span class="pre">compute_tf_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.dT_dVa"><code class="docutils literal notranslate"><span class="pre">dT_dVa()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.dT_ddelta_t"><code class="docutils literal notranslate"><span class="pre">dT_ddelta_t()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.df_du"><code class="docutils literal notranslate"><span class="pre">df_du()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.df_dx"><code class="docutils literal notranslate"><span class="pre">df_dx()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.euler_state"><code class="docutils literal notranslate"><span class="pre">euler_state()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.f_euler"><code class="docutils literal notranslate"><span class="pre">f_euler()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.compute_models.html#mav_sim.chap5.compute_models.quaternion_state"><code class="docutils literal notranslate"><span class="pre">quaternion_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap5.model_coef.html">mav_sim.chap5.model_coef module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mav_sim.chap5.trim.html">mav_sim.chap5.trim module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.compute_trim"><code class="docutils literal notranslate"><span class="pre">compute_trim()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.compute_trim_euler"><code class="docutils literal notranslate"><span class="pre">compute_trim_euler()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.extract_state_input"><code class="docutils literal notranslate"><span class="pre">extract_state_input()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.trim_objective_fun"><code class="docutils literal notranslate"><span class="pre">trim_objective_fun()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.variable_bounds"><code class="docutils literal notranslate"><span class="pre">variable_bounds()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.velocity_constraint"><code class="docutils literal notranslate"><span class="pre">velocity_constraint()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mav_sim.chap5.trim.html#mav_sim.chap5.trim.velocity_constraint_partial"><code class="docutils literal notranslate"><span class="pre">velocity_constraint_partial()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-mav_sim.chap5">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mav_sim.chap5" title="Link to this heading">¶</a></h2>
+<p>__init__.py: [summary of module].</p>
+<p>Copyright (c) (2021) Greg Droge</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mav_sim</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mav_sim.html">mav_sim package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#running-the-simulator">Running the simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#code-compliance">Code Compliance</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="mav_sim.html">mav_sim package</a><ul>
+      <li>Previous: <a href="mav_sim.chap4.wind_simulation.html" title="previous chapter">mav_sim.chap4.wind_simulation module</a></li>
+      <li>Next: <a href="mav_sim.chap5.compute_models.html" title="next chapter">mav_sim.chap5.compute_models module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Greg Droge.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/mav_sim/mav_sim.chap5.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
