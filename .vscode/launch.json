@@ -4,13 +4,21 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
+        {
+            "name": "Run Ch 3 Unit Tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch3_derivatives_test.py",
+            "console": "integratedTerminal"
+        },
         {
             "name": "Run Ch 2 Unit Tests",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mav_sim/unit_tests/ch2_transforms_tests.py",
             "console": "integratedTerminal"
-        }
+        },
+
+        
     ]
 }
