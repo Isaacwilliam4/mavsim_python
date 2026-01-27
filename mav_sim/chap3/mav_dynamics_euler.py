@@ -171,22 +171,57 @@ def derivatives_euler(state: DynamicStateEuler, forces_moments: types.ForceMomen
     s = np.sin
     c = np.cos
 
+    fx, fy, fz, l, m, n = forces_moments
+
+    force_vec = np.array([
+        [fx],
+        [fy],
+        [fz],
+    ])
+
+    # --- NED DT
     ned_motion_mat = np.array([
         [c(state.theta)*c(state.psi), s(state.phi)*s(state.theta)*c(state.psi) - c(state.phi)*s(state.psi), c(state.phi)*s(state.theta)*c(state.psi) + s(state.phi)*s(state.psi)],
         [c(state.theta)*s(state.psi), s(state.phi)*s(state.theta)*s(state.psi) + c(state.phi)*c(state.psi), c(state.phi)*s(state.theta)*s(state.psi) - s(state.phi)*c(state.psi)],
         [-s(state.theta), s(state.phi)*c(state.theta), c(state.phi)*c(state.theta)]
     ])
 
+    uvw_vec = np.array([
+        [state.u],
+        [state.v],
+        [state.w]
+        ])
+
+    ned_dt = ned_motion_mat@uvw_vec
+    ned_dt_flat = ned_dt.flatten()
+    # ---
+
+    # --- UVW DT
+
+    uvw_mot_vec = np.array([
+        [state.r*state.v - state.q*state.w],
+        [state.p*state.w - state.r*state.u],
+        [state.q*state.u - state.p*state.v]
+    ])
+
+    moments_vec = (1/m) * force_vec
+
+    uvw_dt = uvw_mot_vec + moments_vec
+    uvw_dt_flat = uvw_dt.flatten()
+    # ---
+
+
+
 
 
     # collect the derivative of the states
     x_dot = np.empty( (IND_EULER.NUM_STATES,1) )
-    x_dot[IND_EULER.NORTH] = 0.
-    x_dot[IND_EULER.EAST] = 0.
-    x_dot[IND_EULER.DOWN] = 0.
-    x_dot[IND_EULER.U] = 0.
-    x_dot[IND_EULER.V] = 0.
-    x_dot[IND_EULER.W] = 0.
+    x_dot[IND_EULER.NORTH] = ned_dt_flat[0]
+    x_dot[IND_EULER.EAST] = ned_dt_flat[1]
+    x_dot[IND_EULER.DOWN] = ned_dt_flat[2]
+    x_dot[IND_EULER.U] = uvw_dt_flat[0]
+    x_dot[IND_EULER.V] = uvw_dt_flat[1]
+    x_dot[IND_EULER.W] = uvw_dt_flat[2]
     x_dot[IND_EULER.PHI] = 0.
     x_dot[IND_EULER.THETA] = 0.
     x_dot[IND_EULER.PSI] = 0.
