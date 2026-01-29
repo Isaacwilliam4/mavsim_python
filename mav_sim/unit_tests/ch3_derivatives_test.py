@@ -90,7 +90,8 @@ def run_tests()->None:
 
         # Run the tests
         succ = euler_derivatives_test(tests=data["euler"]) #and \
-            #    quat_derivatives_test(tests=data["quat"])
+                 #quat_derivatives_test(tests=data["quat"])
+
         if not succ:
             raise ValueError("Tests failed")
 
