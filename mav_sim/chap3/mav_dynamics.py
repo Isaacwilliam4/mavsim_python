@@ -18,13 +18,14 @@ import numpy as np
 # load message types
 from mav_sim.message_types.msg_state import MsgState
 from mav_sim.tools import types
-from mav_sim.chap3.dt_helpers import get_ned_dt_quat, get_pqr_dt, get_quaternion_dt, get_uvw_dt
 from mav_sim.tools.rotations import (
     Euler2Quaternion,
     Quaternion2Euler,
-    Quaternion2Rotation,
 )
 
+s = np.sin
+c = np.cos
+t = np.tan
 
 # Indexing constants for state
 class StateIndices:
@@ -190,8 +191,6 @@ class ForceMoments:
 
         return cast(types.ForceMoment, force_moment)
 
-
-
 class MavDynamics:
     """Implements the dynamics of the MAV assuming forces and moments are directly input
     """
@@ -281,7 +280,124 @@ class MavDynamics:
         self.true_state.q = self._state.item(IND.Q)
         self.true_state.r = self._state.item(IND.R)
 
+def get_uvw_dt(state: DynamicState, forces_moments: ForceMoments) -> tuple[float, float, float]:
+    """Gets the uvw_dt values
 
+    Args:
+        state (types.DynamicStateEuler): state
+        forces_moments (types.ForceMoment): force moments
+    Returns:
+        tuple: tuple containing (u_dt, v_dt, w_dt)
+    """
+
+    force_vec = np.array([
+        [forces_moments.fx],
+        [forces_moments.fy],
+        [forces_moments.fz],
+    ])
+
+    uvw_mot_vec = np.array([
+        [state.r*state.v - state.q*state.w],
+        [state.p*state.w - state.r*state.u],
+        [state.q*state.u - state.p*state.v]
+    ])
+
+    force_accel_vec = (1/MAV.mass) * force_vec
+
+    uvw_dt = uvw_mot_vec + force_accel_vec
+    uvw_dt_flat = uvw_dt.flatten()
+
+    return uvw_dt_flat[0], uvw_dt_flat[1], uvw_dt_flat[2]
+
+def get_ned_dt_quat(dynamicstate: DynamicState) -> tuple[float, float, float]:
+    """Gets the ned_dt values
+
+    Args:
+        state (types.DynamicStateEuler): state
+    Returns:
+        tuple: tuple containing (n_dt, e_dt, d_dt)
+    """
+
+    quat = np.array([
+        [dynamicstate.e0],
+        [dynamicstate.e1],
+        [dynamicstate.e2],
+        [dynamicstate.e3],
+    ])
+
+    phi, theta, psi = Quaternion2Euler(quat)
+
+    # --- NED DT
+    ned_motion_mat = np.array([
+        [c(theta)*c(psi), s(phi)*s(theta)*c(psi) - c(phi)*s(psi), c(phi)*s(theta)*c(psi) + s(phi)*s(psi)],
+        [c(theta)*s(psi), s(phi)*s(theta)*s(psi) + c(phi)*c(psi), c(phi)*s(theta)*s(psi) - s(phi)*c(psi)],
+        [-s(theta), s(phi)*c(theta), c(phi)*c(theta)]
+    ])
+
+    uvw_vec = np.array([
+        [dynamicstate.u],
+        [dynamicstate.v],
+        [dynamicstate.w]
+        ])
+
+    ned_dt = ned_motion_mat@uvw_vec
+    ned_dt_flat = ned_dt.flatten()
+
+    return ned_dt_flat[0], ned_dt_flat[1], ned_dt_flat[2]
+
+def get_quaternion_dt(state: DynamicState) -> tuple[float, float, float, float]:
+    """gets the quaternion dt
+
+    Args:
+        state (DynamicState): dynamic state of the mav
+    Returns:
+        tuple: tuple with (e0, e1, e2, e3)
+    """
+
+    quat_mat = 0.5*np.array([
+        [0, -state.p, -state.q, -state.r],
+        [state.p, 0, state.r, -state.q],
+        [state.q, -state.r, 0, state.p],
+        [state.r, state.q, -state.p, 0]
+    ])
+
+    quat_vec = np.array([
+        [state.e0],
+        [state.e1],
+        [state.e2],
+        [state.e3],
+    ])
+
+    res = quat_mat@quat_vec
+
+    return res[0].item(), res[1].item(), res[2].item(), res[3].item() 
+
+def get_pqr_dt(state: DynamicState, forces_moments: ForceMoments) -> tuple[float, float, float]:
+    """Gets the pqr_dt values
+
+    Args:
+        state (types.DynamicStateEuler): state
+        forces_moments (types.ForceMoment): force moments
+    Returns:
+        tuple: tuple containing (p_dt, q_dt, r_dt)
+    """
+
+    pqr_mot_vec = np.array([
+        [MAV.gamma1*state.p*state.q - MAV.gamma2*state.q*state.r],
+        [MAV.gamma5*state.p*state.r - MAV.gamma6*(state.p**2 -state.r**2)],
+        [MAV.gamma7*state.p*state.q - MAV.gamma1*state.q*state.r]
+    ])
+
+    pqr_sum_vec = np.array([
+        [MAV.gamma3*forces_moments.l + MAV.gamma4*forces_moments.n],
+        [(1/MAV.Jy)*forces_moments.m],
+        [MAV.gamma4*forces_moments.l + MAV.gamma8*forces_moments.n]
+    ])
+
+    pqr_dt = pqr_mot_vec + pqr_sum_vec
+    pqr_dt_flat = pqr_dt.flatten()
+
+    return pqr_dt_flat[0], pqr_dt_flat[1], pqr_dt_flat[2]
 
 def derivatives(state: types.DynamicState, forces_moments: types.ForceMoment) -> types.DynamicState:
     """Implements the dynamics xdot = f(x, u) where u is the force/moment vector

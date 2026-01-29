@@ -30,8 +30,8 @@ class DrawMap:
                                                            map_msg.building_east[0, j],
                                                            map_msg.building_width,
                                                            map_msg.building_height[i, j])
-                fullMesh = np.concatenate((fullMesh, mesh), axis=0) # type: ignore
-                fullMeshColors = np.concatenate((fullMeshColors, meshColors), axis=0) # type: ignore
+                fullMesh = np.concatenate((fullMesh, mesh), axis=0)
+                fullMeshColors = np.concatenate((fullMeshColors, meshColors), axis=0)
         self.ground_mesh = gl.GLMeshItem(
             vertexes=fullMesh,  # defines the triangular mesh (Nx3x3)
             vertexColors=fullMeshColors,  # defines mesh colors (Nx1)
@@ -52,8 +52,8 @@ class DrawMap:
                                                            map_msg.building_east[0, j],
                                                            map_msg.building_width,
                                                            map_msg.building_height[i, j])
-                fullMesh = np.concatenate((fullMesh, mesh), axis=0) # type: ignore
-                fullMeshColors = np.concatenate((fullMeshColors, meshColors), axis=0) # type: ignore
+                fullMesh = np.concatenate((fullMesh, mesh), axis=0)
+                fullMeshColors = np.concatenate((fullMeshColors, meshColors), axis=0)
         self.ground_mesh.setData(vertexes=fullMesh, vertexColors=fullMeshColors)
 
 def building_vert_face(n: float, e: float, width: float, height: float) -> tuple[NP_MAT, NP_MAT]:
