@@ -18,6 +18,7 @@ import numpy as np
 # load message types
 from mav_sim.message_types.msg_state import MsgState
 from mav_sim.tools import types
+from mav_sim.chap3.dt_helpers import get_ned_dt_quat, get_pqr_dt, get_quaternion_dt, get_uvw_dt
 from mav_sim.tools.rotations import (
     Euler2Quaternion,
     Quaternion2Euler,
@@ -280,6 +281,8 @@ class MavDynamics:
         self.true_state.q = self._state.item(IND.Q)
         self.true_state.r = self._state.item(IND.R)
 
+
+
 def derivatives(state: types.DynamicState, forces_moments: types.ForceMoment) -> types.DynamicState:
     """Implements the dynamics xdot = f(x, u) where u is the force/moment vector
 
@@ -290,20 +293,40 @@ def derivatives(state: types.DynamicState, forces_moments: types.ForceMoment) ->
     Returns:
         Time derivative of the state ( f(x,u), where u is the force/moment vector )
     """
+
+    _state = DynamicState(state)
+    _forces_moments = ForceMoments(forces_moments)
+
+    # --- NED DT
+    n_dt, e_dt, d_dt = get_ned_dt_quat(_state)
+    # ---
+
+    # --- UVW DT
+    u_dt, v_dt, w_dt = get_uvw_dt(_state, _forces_moments)
+    # ---
+
+    # --- psi_theta_phi dt
+    e0_dt, e1_dt, e2_dt, e3_dt = get_quaternion_dt(_state)
+    # ---
+
+    # pqr dt
+    p_dt, q_dt, r_dt = get_pqr_dt(_state, _forces_moments)
+    #
+
     # collect the derivative of the states
     x_dot = np.empty( (IND.NUM_STATES,1) )
-    x_dot[IND.NORTH] = 0.
-    x_dot[IND.EAST] = 0.
-    x_dot[IND.DOWN] = 0.
-    x_dot[IND.U] = 0.
-    x_dot[IND.V] = 0.
-    x_dot[IND.W] = 0.
-    x_dot[IND.E0] = 0.
-    x_dot[IND.E1] = 0.
-    x_dot[IND.E2] = 0.
-    x_dot[IND.E3] = 0.
-    x_dot[IND.P] = 0.
-    x_dot[IND.Q] = 0.
-    x_dot[IND.R] = 0.
+    x_dot[IND.NORTH] = n_dt
+    x_dot[IND.EAST] = e_dt
+    x_dot[IND.DOWN] = d_dt
+    x_dot[IND.U] = u_dt
+    x_dot[IND.V] = v_dt
+    x_dot[IND.W] = w_dt
+    x_dot[IND.E0] = e0_dt
+    x_dot[IND.E1] = e1_dt
+    x_dot[IND.E2] = e2_dt
+    x_dot[IND.E3] = e3_dt
+    x_dot[IND.P] = p_dt
+    x_dot[IND.Q] = q_dt
+    x_dot[IND.R] = r_dt
 
     return x_dot
