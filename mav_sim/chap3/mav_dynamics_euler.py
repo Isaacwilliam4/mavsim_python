@@ -158,7 +158,7 @@ class DynamicStateEuler:
 
         return output
 
-def derivatives_euler(state: DynamicStateEuler, forces_moments: types.ForceMoment) -> types.DynamicStateEuler:
+def derivatives_euler(state: types.DynamicStateEuler, forces_moments: types.ForceMoment) -> types.DynamicStateEuler:
     """Implements the dynamics xdot = f(x, u) where u is the force/moment vector
 
     Args:
@@ -182,22 +182,17 @@ def derivatives_euler(state: DynamicStateEuler, forces_moments: types.ForceMomen
 
     # --- NED DT
     ned_motion_mat = np.array([
-        [c(state.theta)*c(state.psi), s(state.phi)*s(state.theta)*c(state.psi) - c(state.phi)*s(state.psi), c(state.phi)*s(state.theta)*c(state.psi) + s(state.phi)*s(state.psi)],
-        [c(state.theta)*s(state.psi), s(state.phi)*s(state.theta)*s(state.psi) + c(state.phi)*c(state.psi), c(state.phi)*s(state.theta)*s(state.psi) - s(state.phi)*c(state.psi)],
-        [-s(state.theta), s(state.phi)*c(state.theta), c(state.phi)*c(state.theta)]
+        [c(IND_EULER.THETA)*c(IND_EULER.PSI), s(IND_EULER.PHI)*s(IND_EULER.THETA)*c(IND_EULER.PSI) - c(IND_EULER.PHI)*s(IND_EULER.PSI), c(IND_EULER.PHI)*s(IND_EULER.THETA)*c(IND_EULER.PSI) + s(IND_EULER.PHI)*s(IND_EULER.PSI)],
+        [c(IND_EULER.THETA)*s(IND_EULER.PSI), s(IND_EULER.PHI)*s(IND_EULER.THETA)*s(IND_EULER.PSI) + c(IND_EULER.PHI)*c(IND_EULER.PSI), c(IND_EULER.PHI)*s(IND_EULER.THETA)*s(IND_EULER.PSI) - s(IND_EULER.PHI)*c(IND_EULER.PSI)],
+        [-s(IND_EULER.THETA), s(IND_EULER.PHI)*c(IND_EULER.THETA), c(IND_EULER.PHI)*c(IND_EULER.THETA)]
     ])
 
     uvw_vec = np.array([
-        [state.u],
-        [state.v],
-        [state.w]
+        [IND_EULER.U],
+        [IND_EULER.V],
+        [IND_EULER.W]
         ])
     
-    pqr_vec = np.array([
-        [state.p],
-        [state.q],
-        [state.r]
-    ])
 
     ned_dt = ned_motion_mat@uvw_vec
     ned_dt_flat = ned_dt.flatten()
@@ -205,9 +200,9 @@ def derivatives_euler(state: DynamicStateEuler, forces_moments: types.ForceMomen
 
     # --- UVW DT
     uvw_mot_vec = np.array([
-        [state.r*state.v - state.q*state.w],
-        [state.p*state.w - state.r*state.u],
-        [state.q*state.u - state.p*state.v]
+        [IND_EULER.R*IND_EULER.V - IND_EULER.Q*IND_EULER.W],
+        [IND_EULER.P*IND_EULER.W - IND_EULER.R*IND_EULER.U],
+        [IND_EULER.Q*IND_EULER.U - IND_EULER.P*IND_EULER.V]
     ])
 
     moments_vec = (1/m) * force_vec
@@ -217,19 +212,38 @@ def derivatives_euler(state: DynamicStateEuler, forces_moments: types.ForceMomen
     # ---
 
     # --- psi_theta_phi dt
+    pqr_vec = np.array([
+        [IND_EULER.P],
+        [IND_EULER.Q],
+        [IND_EULER.R]
+    ])
+
     psi_theta_phi_motion_mat = np.array([
-        [1, s(state.phi)*t(state.theta), c(state.phi)*t(state.theta)],
-        [0, c(state.phi), -s(state.phi)],
-        [0, s(state.phi)/c(state.theta), c(state.phi)/c(state.theta)],
+        [1, s(IND_EULER.PHI)*t(IND_EULER.THETA), c(IND_EULER.PHI)*t(IND_EULER.THETA)],
+        [0, c(IND_EULER.PHI), -s(IND_EULER.PHI)],
+        [0, s(IND_EULER.PHI)/c(IND_EULER.THETA), c(IND_EULER.PHI)/c(IND_EULER.THETA)],
     ])
 
     psi_theta_phi_dt = psi_theta_phi_motion_mat@pqr_vec
     psi_theta_phi_dt_flat = psi_theta_phi_dt.flatten()
     # ---
 
+    # pqr dt
+    pqr_mot_vec = np.array([
+        [MAV.gamma1*IND_EULER.P*IND_EULER.Q - MAV.gamma2*IND_EULER.Q*IND_EULER.R],
+        [MAV.gamma5*IND_EULER.P*IND_EULER.R - MAV.gamma6*(IND_EULER.P^2-IND_EULER.R^2)],
+        [MAV.gamma7*IND_EULER.P*IND_EULER.Q - MAV.gamma1*IND_EULER.Q*IND_EULER.R]
+    ])
 
+    pqr_sum_vec = np.array([
+        [MAV.gamma3*l + MAV.gamma4*n],
+        [(1/MAV.Jy)*m],
+        [MAV.gamma4*l + MAV.gamma8*n]
+    ])
 
-
+    pqr_dt = pqr_mot_vec + pqr_sum_vec
+    pqr_dt_flat = pqr_dt.flatten()
+    #
 
     # collect the derivative of the states
     x_dot = np.empty( (IND_EULER.NUM_STATES,1) )
@@ -242,8 +256,8 @@ def derivatives_euler(state: DynamicStateEuler, forces_moments: types.ForceMomen
     x_dot[IND_EULER.PHI] = psi_theta_phi_dt_flat[0]
     x_dot[IND_EULER.THETA] = psi_theta_phi_dt_flat[1]
     x_dot[IND_EULER.PSI] = psi_theta_phi_dt_flat[2]
-    x_dot[IND_EULER.P] = 0.
-    x_dot[IND_EULER.Q] = 0.
-    x_dot[IND_EULER.R] = 0.
+    x_dot[IND_EULER.P] = pqr_dt_flat[0]
+    x_dot[IND_EULER.Q] = pqr_dt_flat[1]
+    x_dot[IND_EULER.R] = pqr_dt_flat[2]
 
     return x_dot
