@@ -260,7 +260,22 @@ def forces_moments(state: types.DynamicState, delta: MsgDelta, Va: float, beta: 
 
     f_lift = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_lift(alpha)
     f_drag = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_drag(alpha)
-    
+    m = MAV.C_m_0 + MAV.C_m_alpha
+
+    force_vec = np.array([
+        [f_lift],
+        [f_drag]
+    ])
+
+    rot_arr = np.array([
+        [np.cos(alpha), -np.sin(alpha)],
+        [np.sin(alpha), np.cos(alpha)]
+    ])
+
+    res = rot_arr @ force_vec
+    res = res.flatten()
+    f_x, f_y = res[0], res[1]
+
 
     # Return combined vector
     force_torque_vec = np.array([
