@@ -196,6 +196,34 @@ class MavDynamics:
         self.true_state.wn = self._wind.item(0)
         self.true_state.we = self._wind.item(1)
 
+def sigma(alpha: float):
+    num = 1 + np.exp(MAV.M*(alpha - MAV.alpha0)) + np.exp(MAV.M(alpha + MAV.alpha0))
+    den = (1 + np.exp(-MAV.M*(alpha - MAV.alpha0))*(1 + np.exp(M*(alpha + MAV.alpha0))))
+    return num / den
+
+def get_linear_coefficient() -> float:
+    """Gets the linear coefficient, C_L_alpha
+
+    Returns:
+        float: linear coefficient
+    """
+
+    num = np.pi * MAV.AR
+    den = 1 + np.sqrt(1 + (MAV.AR/2)**2)
+
+    return num / den
+
+def get_lift(alpha: float) -> float:
+    """Returns the lift of the aircraft, C_L(alpha)
+
+    Args:
+        alpha (float): the attack angle
+
+    Returns:
+        float: lift
+    """
+    return (1 - sigma(alpha))(MAV.C_L_0 + get_linear_coefficient()) + sigma(alpha)*(2*np.sin(alpha)*np.sin(alpha)**2*np.cos(alpha))
+
 def forces_moments(state: types.DynamicState, delta: MsgDelta, Va: float, beta: float, alpha: float) -> types.ForceMoment:
     """
     Return the forces on the UAV based on the state, wind, and control surfaces
@@ -211,10 +239,14 @@ def forces_moments(state: types.DynamicState, delta: MsgDelta, Va: float, beta: 
     Returns:
         Forces and Moments on the UAV (in body frame) np.matrix(fx, fy, fz, Mx, My, Mz)
     """
+    st = DynamicState(state=state)
+
     # Extract angular rates
     p = state.item(IND.P)
     q = state.item(IND.Q)
     r = state.item(IND.R)
+
+    f_lift = 0.5* MAV.rho * (Va**2) * 
 
     # Return combined vector
     force_torque_vec = np.array([
