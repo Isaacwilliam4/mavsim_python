@@ -401,8 +401,8 @@ def run_auto_tests()->None:
         # if succ:
         #     succ = wind_simulation_tests(tests=data["wind_simulation"])
 
-        succ = forces_moments_tests(tests=data["forces_moments"])
-        # succ = gravitational_force_tests(tests=data["gravitational_force"])
+        # succ = forces_moments_tests(tests=data["forces_moments"])
+        succ = gravitational_force_tests(tests=data["gravitational_force"])
         # if succ:
         #     succ = lateral_aerodynamics_tests(tests=data["lateral_aerodyn"])
         # if succ:

@@ -317,8 +317,8 @@ def gravitational_force(quat: types.Quaternion) -> types.Vector:
         types.Vector: The gravitational force due to gravity
     """
     # compute gravitaional forces in body frame
-    R = Quaternion2Rotation(quat) # rotation from body to world frame
-    f_g = np.array([[0.], [0.], [0.]]) # Force of gravity in body frame
+    R = Quaternion2Rotation(quat).T # rotation from body to world frame
+    f_g = R@np.array([[0.], [0.], [MAV.mass*MAV.gravity]])# Force of gravity in body frame
     return f_g
 
 def lateral_aerodynamics(p: float, r: float,
