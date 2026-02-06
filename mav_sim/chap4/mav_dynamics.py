@@ -197,7 +197,7 @@ class MavDynamics:
         self.true_state.we = self._wind.item(1)
 
 def sigma(alpha: float):
-    num = 1 + np.exp(MAV.M*(alpha - MAV.alpha0)) + np.exp(MAV.M(alpha + MAV.alpha0))
+    num = 1 + np.exp(MAV.M*(alpha - MAV.alpha0)) + np.exp(MAV.M*(alpha + MAV.alpha0))
     den = (1 + np.exp(-MAV.M*(alpha - MAV.alpha0))*(1 + np.exp(MAV.M*(alpha + MAV.alpha0))))
     return num / den
 
@@ -222,7 +222,7 @@ def get_lift(alpha: float) -> float:
     Returns:
         float: lift
     """
-    return (1 - sigma(alpha))(MAV.C_L_0 + get_linear_coefficient()) + sigma(alpha)*(2*np.sin(alpha)*np.sin(alpha)**2*np.cos(alpha))
+    return (1 - sigma(alpha))*(MAV.C_L_0 + get_linear_coefficient()) + sigma(alpha)*(2*np.sin(alpha)*np.sin(alpha)**2*np.cos(alpha))
 
 def get_drag(alpha: float) -> float:
     """Gets the drag CD(alpha)
@@ -247,45 +247,64 @@ def forces_moments(state: types.DynamicState, delta: MsgDelta, Va: float, beta: 
         beta: Side slip angle
         alpha: Angle of attack
 
-
     Returns:
         Forces and Moments on the UAV (in body frame) np.matrix(fx, fy, fz, Mx, My, Mz)
     """
-    st = DynamicState(state=state)
+    if Va > 0:
+        st = DynamicState(state=state)
 
-    # Extract angular rates
-    p = state.item(IND.P)
-    q = state.item(IND.Q)
-    r = state.item(IND.R)
+        # Extract angular rates
+        p = state.item(IND.P)
+        q = state.item(IND.Q)
+        r = state.item(IND.R)
 
-    f_lift = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_lift(alpha)
-    f_drag = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_drag(alpha)
-    m = MAV.C_m_0 + MAV.C_m_alpha
+        f_lift = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_lift(alpha)
+        f_drag = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_drag(alpha)
+        C_m = MAV.C_m_0 + MAV.C_m_alpha
 
-    force_vec = np.array([
-        [f_lift],
-        [f_drag]
-    ])
+        force_vec = np.array([
+            [f_lift],
+            [f_drag]
+        ])
 
-    rot_arr = np.array([
-        [np.cos(alpha), -np.sin(alpha)],
-        [np.sin(alpha), np.cos(alpha)]
-    ])
+        rot_arr = np.array([
+            [np.cos(alpha), -np.sin(alpha)],
+            [np.sin(alpha), np.cos(alpha)]
+        ])
 
-    res = rot_arr @ force_vec
-    res = res.flatten()
-    f_x, f_y = res[0], res[1]
+        res = rot_arr @ force_vec
+        res = res.flatten()
+        f_x, f_z = res[0], res[1]
 
+        delta_a, delta_r, delta_e = delta.aileron, delta.rudder, delta.elevator
 
-    # Return combined vector
-    force_torque_vec = np.array([
-        [0.],
-        [0.],
-        [0.],
-        [0.],
-        [0.],
-        [0.]
-    ])
+        m = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * MAV.c * (MAV.C_m_0 + MAV.C_m_alpha*alpha + MAV.C_m_q * (MAV.c / 2*Va) * q + MAV.C_m_delta_e * delta_e)
+
+        f_y = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * (MAV.C_Y_0 + MAV.C_Y_beta*beta + MAV.C_Y_p*(MAV.b/(2*Va))*p + MAV.C_Y_r*(MAV.b/(2*Va))*r + MAV.C_Y_delta_a*delta_a + MAV.C_Y_delta_r*delta_r)
+
+        l = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * MAV.b * (MAV.C_ell_0 + MAV.C_ell_beta*beta + MAV.C_ell_p*(MAV.b/(2*Va))*p + MAV.C_ell_r*(MAV.b/(2*Va))*r + MAV.C_ell_delta_a*delta_a + MAV.C_ell_delta_r*delta_r)
+
+        n = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * MAV.b * (MAV.C_n_0 + MAV.C_n_beta*beta + MAV.C_n_p*(MAV.b/(2*Va))*p + MAV.C_n_r*(MAV.b/(2*Va))*r + MAV.C_n_delta_a*delta_a + MAV.C_n_delta_r*delta_r)
+
+        # Return combined vector
+        force_torque_vec = np.array([
+            [f_x],
+            [f_y],
+            [f_z],
+            [l],
+            [m],
+            [n]
+        ])
+    else:
+        force_torque_vec = np.array([
+            [0.],
+            [0.],
+            [0.],
+            [0.],
+            [0.],
+            [0.]
+        ])
+    
     return force_torque_vec
 
 def gravitational_force(quat: types.Quaternion) -> types.Vector:

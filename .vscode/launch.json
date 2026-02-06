@@ -22,7 +22,7 @@
             "name": "Run Ch 4 unit tests",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/book_assignments/ch4_dynamics_test.py",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch4_dynamics_test.py",
             "console": "integratedTerminal"
         },
         {
