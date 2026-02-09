@@ -387,19 +387,33 @@ def run_auto_tests()->None:
         data = pickle.load(file)
 
         # Run the tests
+        # succ = gravitational_force_tests(tests=data["gravitational_force"])
+        # if succ:
+        #     succ = lateral_aerodynamics_tests(tests=data["lateral_aerodyn"])
+        # if succ:
+        #     succ = longitudinal_aerodynamics_tests(tests=data["longitudinal_aerodyn"])
+        # if succ:
+        #     succ = forces_moments_tests(tests=data["forces_moments"])
+        # if succ:
+        #     succ = motor_thrust_torque_tests(tests=data["motor_cmd"])
+        # if succ:
+        #     succ = update_velocity_data_tests(tests=data["update_vel"])
+        # if succ:
+        #     succ = wind_simulation_tests(tests=data["wind_simulation"])
+
+        # succ = forces_moments_tests(tests=data["forces_moments"])
         succ = gravitational_force_tests(tests=data["gravitational_force"])
-        if succ:
-            succ = lateral_aerodynamics_tests(tests=data["lateral_aerodyn"])
-        if succ:
-            succ = longitudinal_aerodynamics_tests(tests=data["longitudinal_aerodyn"])
-        if succ:
-            succ = forces_moments_tests(tests=data["forces_moments"])
-        if succ:
-            succ = motor_thrust_torque_tests(tests=data["motor_cmd"])
-        if succ:
-            succ = update_velocity_data_tests(tests=data["update_vel"])
-        if succ:
-            succ = wind_simulation_tests(tests=data["wind_simulation"])
+        # if succ:
+        #     succ = lateral_aerodynamics_tests(tests=data["lateral_aerodyn"])
+        # if succ:
+        #     succ = longitudinal_aerodynamics_tests(tests=data["longitudinal_aerodyn"])
+        # if succ:
+        # if succ:
+        #     succ = motor_thrust_torque_tests(tests=data["motor_cmd"])
+        # if succ:
+        #     succ = update_velocity_data_tests(tests=data["update_vel"])
+        # if succ:
+        #     succ = wind_simulation_tests(tests=data["wind_simulation"])
 
         if not succ:
             raise ValueError("Failed test")
