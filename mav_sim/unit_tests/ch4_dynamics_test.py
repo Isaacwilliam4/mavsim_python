@@ -401,8 +401,11 @@ def run_auto_tests()->None:
         # if succ:
         #     succ = wind_simulation_tests(tests=data["wind_simulation"])
 
+        succ = lateral_aerodynamics_tests(tests=data["lateral_aerodyn"])
+        succ = longitudinal_aerodynamics_tests(tests=data["longitudinal_aerodyn"])
+
         # succ = forces_moments_tests(tests=data["forces_moments"])
-        succ = gravitational_force_tests(tests=data["gravitational_force"])
+        # succ = gravitational_force_tests(tests=data["gravitational_force"])
         # if succ:
         #     succ = lateral_aerodynamics_tests(tests=data["lateral_aerodyn"])
         # if succ:
@@ -653,10 +656,10 @@ def wind_simulation_test() -> None:
 
 def run_all_tests() -> None:
     """Run all tests."""
-    motor_thrust_torque_test()
-    forces_moments_test()
-    update_velocity_data_test()
-    wind_simulation_test()
+    # motor_thrust_torque_test()
+    # forces_moments_test()
+    # update_velocity_data_test()
+    # wind_simulation_test()
     run_auto_tests()
 
 

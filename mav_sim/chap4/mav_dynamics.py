@@ -197,8 +197,8 @@ class MavDynamics:
         self.true_state.we = self._wind.item(1)
 
 def sigma(alpha: float):
-    num = 1 + np.exp(MAV.M*(alpha - MAV.alpha0)) + np.exp(MAV.M*(alpha + MAV.alpha0))
-    den = (1 + np.exp(-MAV.M*(alpha - MAV.alpha0))*(1 + np.exp(MAV.M*(alpha + MAV.alpha0))))
+    num = 1 + np.exp(-MAV.M*(alpha - MAV.alpha0)) + np.exp(MAV.M*(alpha + MAV.alpha0))
+    den = (1 + np.exp(-MAV.M*(alpha - MAV.alpha0)))*(1 + np.exp(MAV.M*(alpha + MAV.alpha0)))
     return num / den
 
 def get_linear_coefficient() -> float:
@@ -222,7 +222,7 @@ def get_lift(alpha: float) -> float:
     Returns:
         float: lift
     """
-    return (1 - sigma(alpha))*(MAV.C_L_0 + get_linear_coefficient()) + sigma(alpha)*(2*np.sin(alpha)*np.sin(alpha)**2*np.cos(alpha))
+    return (1 - sigma(alpha))*(MAV.C_L_0 + get_linear_coefficient()*alpha) + sigma(alpha)*(2*np.sign(alpha)*np.sin(alpha)**2*np.cos(alpha))
 
 def get_drag(alpha: float) -> float:
     """Gets the drag CD(alpha)
@@ -234,7 +234,7 @@ def get_drag(alpha: float) -> float:
         float: The drage force.
     """
 
-    return MAV.C_D_p + (MAV.C_L_0 + MAV.C_L_alpha)**2 / (np.pi * MAV.e * MAV.AR)
+    return MAV.C_D_p + (MAV.C_L_0 + MAV.C_L_alpha*alpha)**2 / (np.pi * MAV.e * MAV.AR)
 
 def forces_moments(state: types.DynamicState, delta: MsgDelta, Va: float, beta: float, alpha: float) -> types.ForceMoment:
     """
@@ -280,11 +280,6 @@ def forces_moments(state: types.DynamicState, delta: MsgDelta, Va: float, beta: 
 
         m = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * MAV.c * (MAV.C_m_0 + MAV.C_m_alpha*alpha + MAV.C_m_q * (MAV.c / 2*Va) * q + MAV.C_m_delta_e * delta_e)
 
-        f_y = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * (MAV.C_Y_0 + MAV.C_Y_beta*beta + MAV.C_Y_p*(MAV.b/(2*Va))*p + MAV.C_Y_r*(MAV.b/(2*Va))*r + MAV.C_Y_delta_a*delta_a + MAV.C_Y_delta_r*delta_r)
-
-        l = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * MAV.b * (MAV.C_ell_0 + MAV.C_ell_beta*beta + MAV.C_ell_p*(MAV.b/(2*Va))*p + MAV.C_ell_r*(MAV.b/(2*Va))*r + MAV.C_ell_delta_a*delta_a + MAV.C_ell_delta_r*delta_r)
-
-        n = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * MAV.b * (MAV.C_n_0 + MAV.C_n_beta*beta + MAV.C_n_p*(MAV.b/(2*Va))*p + MAV.C_n_r*(MAV.b/(2*Va))*r + MAV.C_n_delta_a*delta_a + MAV.C_n_delta_r*delta_r)
 
         # Return combined vector
         force_torque_vec = np.array([
@@ -347,19 +342,25 @@ def lateral_aerodynamics(p: float, r: float,
             torque_lat: The lateral aerodynamic torque
     """
     # intermediate variables
+    delta_a, delta_r = aileron, rudder
 
     if Va == 0.:
-        print("calculate something different here")
+        f_y = 0.0
+        l = 0.0
+        n = 0.0
     else:
-        print("calculate something different here")
+        f_y = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * (MAV.C_Y_0 + MAV.C_Y_beta*beta + MAV.C_Y_p*(MAV.b/(2*Va))*p + MAV.C_Y_r*(MAV.b/(2*Va))*r + MAV.C_Y_delta_a*delta_a + MAV.C_Y_delta_r*delta_r)
+        l = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * MAV.b * (MAV.C_ell_0 + MAV.C_ell_beta*beta + MAV.C_ell_p*(MAV.b/(2*Va))*p + MAV.C_ell_r*(MAV.b/(2*Va))*r + MAV.C_ell_delta_a*delta_a + MAV.C_ell_delta_r*delta_r)
+        n = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * MAV.b * (MAV.C_n_0 + MAV.C_n_beta*beta + MAV.C_n_p*(MAV.b/(2*Va))*p + MAV.C_n_r*(MAV.b/(2*Va))*r + MAV.C_n_delta_a*delta_a + MAV.C_n_delta_r*delta_r)
+
 
     # compute lateral forces in body frame
     f_lat = np.array([[0.],
-                      [0.],
+                      [f_y],
                       [0.]  ])
 
     # compute lateral torques in body frame
-    torque_lat = np.array([[0.], [.0], [0.]])
+    torque_lat = np.array([[l], [.0], [n]])
 
     return (f_lat, torque_lat)
 
@@ -395,19 +396,37 @@ def longitudinal_aerodynamics(q: float,
 
     # intermediate variables
     if Va == 0.:
-        print("calculate something different here")
+        f_x = 0.0
+        f_z = 0.0
+        m = 0.0
     else:
-        print("calculate something different here")
+        # Extract angular rates
+        f_lift = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_lift(alpha)
+        f_drag = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_drag(alpha)
 
-    # compute Lift and Drag coefficients
+        force_vec = np.array([
+            [-f_drag],
+            [-f_lift]
+        ])
 
-    # compute Lift and Drag Forces
+        rot_arr = np.array([
+            [np.cos(alpha), -np.sin(alpha)],
+            [np.sin(alpha), np.cos(alpha)]
+        ])
+
+        res = rot_arr @ force_vec
+        res = res.flatten()
+        f_x, f_z = res[0], res[1]
+
+        delta_e = elevator
+
+        m = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * MAV.c * (MAV.C_m_0 + MAV.C_m_alpha*alpha + MAV.C_m_q * (MAV.c / (2*Va)) * q + MAV.C_m_delta_e * delta_e)
 
     # compute longitudinal forces in body frame
-    f_lon = np.array([[0.], [0.], [0.]])
+    f_lon = np.array([[f_x], [0.], [f_z]])
 
     # compute logitudinal torque in body frame (see (4.5) )
-    torque_lon = np.array([[0.], [0.], [0.]])
+    torque_lon = np.array([[0.], [m], [0.]])
 
     return (f_lon, torque_lon)
 
