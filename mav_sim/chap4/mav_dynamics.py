@@ -401,8 +401,10 @@ def longitudinal_aerodynamics(q: float,
         m = 0.0
     else:
         # Extract angular rates
-        f_lift = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_lift(alpha)
-        f_drag = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_drag(alpha)
+        C_L = get_lift(alpha)
+        C_D = get_drag(alpha)
+        f_lift = 0.5* MAV.rho * (Va**2) * MAV.S_wing * C_L
+        f_drag = 0.5* MAV.rho * (Va**2) * MAV.S_wing * C_D
 
         force_vec = np.array([
             [-f_drag],

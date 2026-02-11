@@ -15,7 +15,7 @@
             "name": "Run Ch 4 additional tests",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/book_assignments/ch4_additional_tests.py",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch4_additional_tests.py",
             "console": "integratedTerminal"
         },
         {
