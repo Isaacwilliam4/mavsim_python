@@ -222,7 +222,7 @@ def get_lift(alpha: float) -> float:
     Returns:
         float: lift
     """
-    return (1 - sigma(alpha))*(MAV.C_L_0 + get_linear_coefficient()*alpha) + sigma(alpha)*(2*np.sign(alpha)*np.sin(alpha)**2*np.cos(alpha))
+    return (1 - sigma(alpha))*(MAV.C_L_0 + MAV.C_L_alpha*alpha) + sigma(alpha)*(2*np.sign(alpha)*np.sin(alpha)**2*np.cos(alpha))
 
 def get_drag(alpha: float) -> float:
     """Gets the drag CD(alpha)
