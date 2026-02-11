@@ -250,55 +250,20 @@ def forces_moments(state: types.DynamicState, delta: MsgDelta, Va: float, beta: 
     Returns:
         Forces and Moments on the UAV (in body frame) np.matrix(fx, fy, fz, Mx, My, Mz)
     """
-    if Va > 0:
-        st = DynamicState(state=state)
 
-        # Extract angular rates
-        p = state.item(IND.P)
-        q = state.item(IND.Q)
-        r = state.item(IND.R)
-
-        f_lift = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_lift(alpha)
-        f_drag = 0.5* MAV.rho * (Va**2) * MAV.S_wing * get_drag(alpha)
-        C_m = MAV.C_m_0 + MAV.C_m_alpha
-
-        force_vec = np.array([
-            [f_lift],
-            [f_drag]
-        ])
-
-        rot_arr = np.array([
-            [np.cos(alpha), -np.sin(alpha)],
-            [np.sin(alpha), np.cos(alpha)]
-        ])
-
-        res = rot_arr @ force_vec
-        res = res.flatten()
-        f_x, f_z = res[0], res[1]
-
-        delta_a, delta_r, delta_e = delta.aileron, delta.rudder, delta.elevator
-
-        m = 0.5 * MAV.rho * (Va**2) * MAV.S_wing * MAV.c * (MAV.C_m_0 + MAV.C_m_alpha*alpha + MAV.C_m_q * (MAV.c / 2*Va) * q + MAV.C_m_delta_e * delta_e)
+    st = DynamicState(state)
+    
+    quat = np.array([
+        st.e0,
+        st.e1,
+        st.e2,
+        st.e3,
+    ])
+    g = gravitational_force(quat)
+    f_lat, torq_lat = lateral_aerodynamics(st.p, st.r, Va, beta, delta.aileron, delta.rudder)
+    f_lon, torq_lon = longitudinal_aerodynamics(st.q, Va, alpha, delta.elevator)
 
 
-        # Return combined vector
-        force_torque_vec = np.array([
-            [f_x],
-            [f_y],
-            [f_z],
-            [l],
-            [m],
-            [n]
-        ])
-    else:
-        force_torque_vec = np.array([
-            [0.],
-            [0.],
-            [0.],
-            [0.],
-            [0.],
-            [0.]
-        ])
     
     return force_torque_vec
 
@@ -432,6 +397,22 @@ def longitudinal_aerodynamics(q: float,
 
     return (f_lon, torque_lon)
 
+
+def get_J(Va: float):
+    return (2*np.pi*Va) / (MAV.D_prop)
+
+def get_CT():
+    return MAV.J
+
+def get_OMEGA_p(Va: float, delta_t: float):
+    Vin = MAV.V_max * delta_t
+
+    a = ((MAV.rho * MAV.D_prop**5) / (2 * np.pi)**2) * MAV.C_Q0
+    b = ((MAV.rho * MAV.D_prop**4) / (2 * np.pi)) * MAV.C_Q1 * Va + ((MAV.KQ * MAV.KV) / MAV.R_motor)
+    c = (MAV.rho * MAV.D_prop**3) * MAV.C_Q2 * Va**2 - ((MAV.KQ/MAV.R_motor) * Vin) + MAV.KQ * MAV.i0
+
+    return (-b + np.sqrt(b**2 - 4*a*c)) / 2*a
+
 def motor_thrust_torque(Va: float, delta_t: float) -> tuple[float, float]:
     """ compute thrust and torque due to propeller  (See addendum by McLain)
 
@@ -444,9 +425,10 @@ def motor_thrust_torque(Va: float, delta_t: float) -> tuple[float, float]:
         Q_p: Propeller torque
     """
     # thrust and torque due to propeller
-    thrust_prop = 0.
-    torque_prop = 0.
-    print('mav_dynamics::motor_thrust_torque() Needs to be implemented')
+    thrust_prop = ((MAV.rho * MAV.D_prop**4) / (4*np.pi**2)) * MAV.C_T0
+    torque_prop = ((MAV.rho * MAV.D_prop**4) / (4*np.pi**2)) * MAV.C_Q0
+
+
     return thrust_prop, torque_prop
 
 def update_velocity_data(state: types.DynamicState, \
