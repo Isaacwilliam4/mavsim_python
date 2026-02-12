@@ -262,10 +262,26 @@ def forces_moments(state: types.DynamicState, delta: MsgDelta, Va: float, beta: 
     g = gravitational_force(quat)
     f_lat, torq_lat = lateral_aerodynamics(st.p, st.r, Va, beta, delta.aileron, delta.rudder)
     f_lon, torq_lon = longitudinal_aerodynamics(st.q, Va, alpha, delta.elevator)
+    thrust, torq = motor_thrust_torque(Va, delta.throttle)
 
+    motor_thrust_f = np.array([
+        [thrust],
+        [0.],
+        [0.]
+    ])
 
+    motor_torq = np.array([
+        [torq],
+        [0.],
+        [0.]
+    ])
+
+    forces = g + f_lat + f_lon + motor_thrust_f
+    moments = torq_lat + torq_lon + motor_torq
+
+    res = np.concat([forces, moments])
     
-    return force_torque_vec
+    return res
 
 def gravitational_force(quat: types.Quaternion) -> types.Vector:
     """ Computes the gravitational force on the aircraft in the body frame
@@ -438,7 +454,7 @@ def motor_thrust_torque(Va: float, delta_t: float) -> tuple[float, float]:
     thrust_T_p = get_thrust_T_p(Va, omega_p)
     torque_Q_p = get_torque_Q_p(Va, omega_p)
 
-    return thrust_T_p, torque_Q_p
+    return thrust_T_p, -torque_Q_p
 
 def update_velocity_data(state: types.DynamicState, \
     wind: types.WindVector = np.zeros((6,1))  \
