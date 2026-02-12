@@ -52,14 +52,14 @@ class WindSimulation:
         
         a1 = sigma_v * (np.sqrt((3*Va)/(np.pi*Lv)))
         a2 = Va/(np.sqrt(3)*Lv)
-        b1 = (Va/Lv)
+        b1 = Va/Lv
         self.v_w = TransferFunction(num=np.array([[a1, a1*a2]]),
                                     den=np.array([[1, 2 * b1, b1**2]]),
                                     Ts=Ts)
         
         a1 = sigma_w * (np.sqrt((3*Va)/(np.pi*Lw)))
         a2 = Va/(np.sqrt(3)*Lw)
-        b1 = (Va/Lw)
+        b1 = Va/Lw
         self.w_w = TransferFunction(num=np.array([[a1, a1*a2]]),
                                     den=np.array([[1, 2 * b1, b1**2]]),
                                     Ts=Ts)

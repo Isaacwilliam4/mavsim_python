@@ -196,12 +196,20 @@ class MavDynamics:
         self.true_state.wn = self._wind.item(0)
         self.true_state.we = self._wind.item(1)
 
-def sigma(alpha: float):
+def sigma(alpha: float) -> np.float64:
+    """Returns the sigma function result as described in the book
+
+    Args:
+        alpha (float): The attack angle
+
+    Returns:
+        np.float64: The result
+    """
     num = 1 + np.exp(-MAV.M*(alpha - MAV.alpha0)) + np.exp(MAV.M*(alpha + MAV.alpha0))
     den = (1 + np.exp(-MAV.M*(alpha - MAV.alpha0)))*(1 + np.exp(MAV.M*(alpha + MAV.alpha0)))
-    return num / den
+    return np.float64(num / den)
 
-def get_linear_coefficient() -> float:
+def get_linear_coefficient() -> np.float64:
     """Gets the linear coefficient, C_L_alpha
 
     Returns:
@@ -211,9 +219,9 @@ def get_linear_coefficient() -> float:
     num = np.pi * MAV.AR
     den = 1 + np.sqrt(1 + (MAV.AR/2)**2)
 
-    return num / den
+    return np.float64(num / den) 
 
-def get_lift(alpha: float) -> float:
+def get_lift(alpha: float) -> np.float64:
     """Returns the lift of the aircraft, C_L(alpha)
 
     Args:
@@ -222,7 +230,7 @@ def get_lift(alpha: float) -> float:
     Returns:
         float: lift
     """
-    return (1 - sigma(alpha))*(MAV.C_L_0 + MAV.C_L_alpha*alpha) + sigma(alpha)*(2*np.sign(alpha)*np.sin(alpha)**2*np.cos(alpha))
+    return np.float64((1 - sigma(alpha))*(MAV.C_L_0 + MAV.C_L_alpha*alpha) + sigma(alpha)*(2*np.sign(alpha)*np.sin(alpha)**2*np.cos(alpha)))
 
 def get_drag(alpha: float) -> float:
     """Gets the drag CD(alpha)
@@ -295,7 +303,7 @@ def gravitational_force(quat: types.Quaternion) -> types.Vector:
     # compute gravitaional forces in body frame
     R = Quaternion2Rotation(quat).T # rotation from body to world frame
     f_g = R@np.array([[0.], [0.], [MAV.mass*MAV.gravity]])# Force of gravity in body frame
-    return f_g
+    return cast(types.Vector, f_g)
 
 def lateral_aerodynamics(p: float, r: float,
                          Va: float, beta: float,
@@ -413,25 +421,60 @@ def longitudinal_aerodynamics(q: float,
 
     return (f_lon, torque_lon)
 
-def rpm_per_V_to_V_sec_rad(kv:float):
+def rpm_per_V_to_V_sec_rad(kv:float) -> float:
+    """Converts the RPM/V to V-sec/rad
+
+    Args:
+        kv (float): kv in RPM/V
+
+    Returns:
+        float: The resulting V-sec/rad
+    """
     return 60 / (2 * np.pi * kv)
 
 
-def get_OMEGA_p(Va: float, Vin: float):
+def get_OMEGA_p(Va: float, Vin: float) -> np.float64:
+    """Gets prop speed as defined in the boook
+
+    Args:
+        Va (float): The airspeed
+        Vin (float): Vin as defined in the book
+
+    Returns:
+        np.float64: Omega_p
+    """
     KV = rpm_per_V_to_V_sec_rad(MAV.KV)
 
     a = ((MAV.rho * MAV.D_prop**5) / (2 * np.pi)**2) * MAV.C_Q0
     b = ((MAV.rho * MAV.D_prop**4) / (2 * np.pi)) * MAV.C_Q1 * Va + ((MAV.KQ * KV) / MAV.R_motor)
     c = (MAV.rho * MAV.D_prop**3) * MAV.C_Q2 * Va**2 - ((MAV.KQ/MAV.R_motor) * Vin) + MAV.KQ * MAV.i0
 
-    return (-b + np.sqrt(b**2 - 4*a*c)) / (2*a)
+    return np.float64((-b + np.sqrt(b**2 - 4*a*c)) / (2*a))
 
-def get_thrust_T_p(Va:float, omega_p:float):
+def get_thrust_T_p(Va:float, omega_p:float) -> float:
+    """Gets the thrust force
+
+    Args:
+        Va (float): Airspeed
+        omega_p (float): prop speed
+
+    Returns:
+        float: thrust force
+    """
     return (((MAV.rho * MAV.D_prop **4 * MAV.C_T0)/ (4 * np.pi**2))* omega_p**2) + \
             (((MAV.rho * MAV.D_prop**3 * MAV.C_T1 * Va) / (2*np.pi)) * omega_p) + \
                 (MAV.rho * MAV.D_prop**2 * MAV.C_T2 * Va**2)
 
-def get_torque_Q_p(Va:float, omega_p:float):
+def get_torque_Q_p(Va:float, omega_p:float) -> float:
+    """Gets thrust moment
+
+    Args:
+        Va (float): airspeed
+        omega_p (float): prop speed
+
+    Returns:
+        float: thrust moment
+    """
     return ((MAV.rho * MAV.D_prop**5 * MAV.C_Q0)/(4*np.pi**2)) * omega_p**2 + \
     ((MAV.rho * MAV.D_prop**4 * MAV.C_Q1 * Va)/(2*np.pi)) * omega_p + \
     (MAV.rho * MAV.D_prop**3 * MAV.C_Q2 * Va**2)
