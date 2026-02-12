@@ -470,6 +470,8 @@ def update_velocity_data(state: types.DynamicState, \
         beta: Side slip angle
         wind_inertial_frame: Wind vector in inertial frame
     """
+    st = DynamicState(state)
+
     # Calculate wind
     steady_state = wind[0:3]
     gust = wind[3:6]
@@ -480,15 +482,19 @@ def update_velocity_data(state: types.DynamicState, \
     wind_body_frame += gust  # add the gust
     wind_inertial_frame = R @ wind_body_frame # Wind in the world frame
 
+    u_w, v_w, w_w = wind_body_frame.flatten()
+    u_r = st.u - u_w
+    v_r = st.v - v_w
+    w_r = st.w - w_w
+
     # compute airspeed
-    Va = 50.
+    Va = np.sqrt(u_r**2 + v_r**2 + w_r**2)
 
     # compute angle of attack
-    alpha = 0.
+    alpha = np.arctan2(w_r, u_r)
 
     # compute sideslip angle
-    beta = 0.
+    beta = np.arctan2(v_r, np.sqrt(u_r**2 + w_r**2))
 
     # Return computed values
-    print('mav_dynamics::update_velocity_data() Needs to be implemented')
     return (Va, alpha, beta, wind_inertial_frame)
