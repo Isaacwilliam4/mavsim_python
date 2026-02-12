@@ -271,7 +271,7 @@ def forces_moments(state: types.DynamicState, delta: MsgDelta, Va: float, beta: 
     ])
 
     motor_torq = np.array([
-        [torq],
+        [-torq],
         [0.],
         [0.]
     ])
@@ -454,7 +454,7 @@ def motor_thrust_torque(Va: float, delta_t: float) -> tuple[float, float]:
     thrust_T_p = get_thrust_T_p(Va, omega_p)
     torque_Q_p = get_torque_Q_p(Va, omega_p)
 
-    return thrust_T_p, -torque_Q_p
+    return thrust_T_p, torque_Q_p
 
 def update_velocity_data(state: types.DynamicState, \
     wind: types.WindVector = np.zeros((6,1))  \
