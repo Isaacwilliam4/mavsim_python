@@ -398,20 +398,25 @@ def longitudinal_aerodynamics(q: float,
     return (f_lon, torque_lon)
 
 
-def get_J(Va: float):
-    return (2*np.pi*Va) / (MAV.D_prop)
+def get_J(Va: float, omega_p: float):
+    return (2*np.pi*Va) / (omega_p*MAV.D_prop)
 
-def get_CT():
-    return MAV.J
-
-def get_OMEGA_p(Va: float, delta_t: float):
-    Vin = MAV.V_max * delta_t
-
+def get_OMEGA_p(Va: float, Vin: float):
     a = ((MAV.rho * MAV.D_prop**5) / (2 * np.pi)**2) * MAV.C_Q0
     b = ((MAV.rho * MAV.D_prop**4) / (2 * np.pi)) * MAV.C_Q1 * Va + ((MAV.KQ * MAV.KV) / MAV.R_motor)
     c = (MAV.rho * MAV.D_prop**3) * MAV.C_Q2 * Va**2 - ((MAV.KQ/MAV.R_motor) * Vin) + MAV.KQ * MAV.i0
 
     return (-b + np.sqrt(b**2 - 4*a*c)) / 2*a
+
+def get_thrust_T_p(Va:float, omega_p:float):
+    return (((MAV.rho * MAV.D_prop **4 * MAV.C_T0)/ (4 * np.pi**2))* omega_p**2) + \
+            (((MAV.rho * MAV.D_prop**3 * MAV.C_T1 * Va) / (2*np.pi)) * omega_p) + \
+                (MAV.rho * MAV.D_prop**2 * MAV.CT2 * Va**2)
+
+def get_torque_Q_p(Va:float, omega_p:float):
+    return ((MAV.rho * MAV.D_prop**5 * MAV.C_Q0)/(4*np.pi**2)) * omega_p**2 + \
+    ((MAV.rho * MAV.D_prop**4 * MAV.C_Q1 * Va)/(2*np.pi)) * omega_p + \
+    (MAV.rho * MAV.D_prop**3 * MAV.C_Q2 * Va**2)
 
 def motor_thrust_torque(Va: float, delta_t: float) -> tuple[float, float]:
     """ compute thrust and torque due to propeller  (See addendum by McLain)
@@ -425,11 +430,13 @@ def motor_thrust_torque(Va: float, delta_t: float) -> tuple[float, float]:
         Q_p: Propeller torque
     """
     # thrust and torque due to propeller
-    thrust_prop = ((MAV.rho * MAV.D_prop**4) / (4*np.pi**2)) * MAV.C_T0
-    torque_prop = ((MAV.rho * MAV.D_prop**4) / (4*np.pi**2)) * MAV.C_Q0
+    Vin = MAV.V_max * delta_t
+    omega_p = get_OMEGA_p(Va, delta_t, Vin)
 
+    thrust_T_p = get_thrust_T_p(Va, omega_p)
+    torque_Q_p = get_torque_Q_p(Va, omega_p)
 
-    return thrust_prop, torque_prop
+    return thrust_T_p, torque_Q_p
 
 def update_velocity_data(state: types.DynamicState, \
     wind: types.WindVector = np.zeros((6,1))  \
