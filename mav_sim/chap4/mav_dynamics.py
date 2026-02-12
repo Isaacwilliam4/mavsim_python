@@ -397,21 +397,23 @@ def longitudinal_aerodynamics(q: float,
 
     return (f_lon, torque_lon)
 
+def rpm_per_V_to_V_sec_rad(kv:float):
+    return 60 / (2 * np.pi * kv)
 
-def get_J(Va: float, omega_p: float):
-    return (2*np.pi*Va) / (omega_p*MAV.D_prop)
 
 def get_OMEGA_p(Va: float, Vin: float):
+    KV = rpm_per_V_to_V_sec_rad(MAV.KV)
+
     a = ((MAV.rho * MAV.D_prop**5) / (2 * np.pi)**2) * MAV.C_Q0
-    b = ((MAV.rho * MAV.D_prop**4) / (2 * np.pi)) * MAV.C_Q1 * Va + ((MAV.KQ * MAV.KV) / MAV.R_motor)
+    b = ((MAV.rho * MAV.D_prop**4) / (2 * np.pi)) * MAV.C_Q1 * Va + ((MAV.KQ * KV) / MAV.R_motor)
     c = (MAV.rho * MAV.D_prop**3) * MAV.C_Q2 * Va**2 - ((MAV.KQ/MAV.R_motor) * Vin) + MAV.KQ * MAV.i0
 
-    return (-b + np.sqrt(b**2 - 4*a*c)) / 2*a
+    return (-b + np.sqrt(b**2 - 4*a*c)) / (2*a)
 
 def get_thrust_T_p(Va:float, omega_p:float):
     return (((MAV.rho * MAV.D_prop **4 * MAV.C_T0)/ (4 * np.pi**2))* omega_p**2) + \
             (((MAV.rho * MAV.D_prop**3 * MAV.C_T1 * Va) / (2*np.pi)) * omega_p) + \
-                (MAV.rho * MAV.D_prop**2 * MAV.CT2 * Va**2)
+                (MAV.rho * MAV.D_prop**2 * MAV.C_T2 * Va**2)
 
 def get_torque_Q_p(Va:float, omega_p:float):
     return ((MAV.rho * MAV.D_prop**5 * MAV.C_Q0)/(4*np.pi**2)) * omega_p**2 + \
@@ -431,7 +433,7 @@ def motor_thrust_torque(Va: float, delta_t: float) -> tuple[float, float]:
     """
     # thrust and torque due to propeller
     Vin = MAV.V_max * delta_t
-    omega_p = get_OMEGA_p(Va, delta_t, Vin)
+    omega_p = get_OMEGA_p(Va, Vin)
 
     thrust_T_p = get_thrust_T_p(Va, omega_p)
     torque_Q_p = get_torque_Q_p(Va, omega_p)
