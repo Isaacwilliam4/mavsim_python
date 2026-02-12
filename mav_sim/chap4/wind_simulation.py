@@ -51,17 +51,17 @@ class WindSimulation:
                                     Ts=Ts)
         
         a1 = sigma_v * (np.sqrt((3*Va)/(np.pi*Lv)))
-        b1 = Va/(np.sqrt(3)*Lv)
-        b2 = (Va/Lv)**2
-        self.v_w = TransferFunction(num=np.array([[a1]]),
-                                    den=np.array([[1, b2]]),
+        a2 = Va/(np.sqrt(3)*Lv)
+        b1 = (Va/Lv)
+        self.v_w = TransferFunction(num=np.array([[a1, a1*a2]]),
+                                    den=np.array([[1, 2 * b1, b1**2]]),
                                     Ts=Ts)
         
-        a1 = sigma_v * (np.sqrt((3*Va)/(np.pi*Lw)))
-        b1 = Va/(np.sqrt(3)*Lw)
-        b2 = (Va/Lw)**2
-        self.w_w = TransferFunction(num=np.array([[a1]]),
-                                    den=np.array([[1, b2]]),
+        a1 = sigma_w * (np.sqrt((3*Va)/(np.pi*Lw)))
+        a2 = Va/(np.sqrt(3)*Lw)
+        b1 = (Va/Lw)
+        self.w_w = TransferFunction(num=np.array([[a1, a1*a2]]),
+                                    den=np.array([[1, 2 * b1, b1**2]]),
                                     Ts=Ts)
         
         self._Ts = Ts
