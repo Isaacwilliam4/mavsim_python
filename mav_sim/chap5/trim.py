@@ -117,8 +117,14 @@ def velocity_constraint(x: types.NP_MAT, Va_desired: float) -> float:
 
     Returns:
         Va^2 - Va_desired^2
-    """
-    return 0.
+    """ 
+
+    state, _ = extract_state_input(x)
+
+    uvw = state[3:6]
+    Va = np.linalg.norm(uvw)
+
+    return Va**2 - Va_desired**2
 
 def velocity_constraint_partial(x: types.NP_MAT) -> list[float]:
     """Defines the partial of the velocity constraint with respect to x
@@ -130,7 +136,14 @@ def velocity_constraint_partial(x: types.NP_MAT) -> list[float]:
     Returns:
         16 element list containing the partial of the constraint wrt x
     """
-    return [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]
+
+    state, _ = extract_state_input(x)
+    u = state[IND_EULER.U]
+    v = state[IND_EULER.W]
+    w = state[IND_EULER.W]
+
+
+    return [0., 0., 0., 2*u, 2*v, 2*w, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]
 
 def variable_bounds(state0: types.DynamicStateEuler, eps: float) -> tuple[list[float], list[float]]:
     """Define the upper and lower bounds of each the states and inputs as one vector.
@@ -148,22 +161,25 @@ def variable_bounds(state0: types.DynamicStateEuler, eps: float) -> tuple[list[f
         lb: 16 element list defining the lower bound of each variable
         ub: 16 element list defining the upper bound of each variable
     """
+    state, delta = extract_state_input(state0)
+    psi = state[IND_EULER.PSI]
+
     # -lower             pn                 pe                             pd
-    lb = [  state0.item(IND_EULER.NORTH),   0.,                            0.,
+    lb = [  state0.item(IND_EULER.NORTH),   state0.item(IND_EULER.EAST),    state0.item(IND_EULER.DOWN),
         #      u     v     w        phi       theta          psi
-            -np.inf, 0.,  0.,        0.,    -np.pi/2+.1,     0.,
+            -np.inf, -np.inf,  -np.inf,        -np.pi/2,    -np.pi/2+.1,     psi,
         #   p,  q,     r
             0., 0.,   0.,
         #    \delta_e   \delta_a  \delta_r   \delta_t
-            -np.pi/2,     0.,      0.,        0]
+            -np.pi/2,     -np.pi/2,      -np.pi/2,        0.]
     # -upper             pn                       pe                             pd
-    ub = [  state0.item(IND_EULER.NORTH)+eps,     0.,                            0.,
+    ub = [  state0.item(IND_EULER.NORTH)+eps,     state0.item(IND_EULER.EAST)+eps,  state0.item(IND_EULER.DOWN)+eps,
         #      u     v          w        phi       theta          psi
-             np.inf, 0.,        0.,    0.,       np.pi/2-.1,       0.,
+             np.inf, np.inf, np.inf,    0.,       np.pi/2-.1,       psi+eps,
         #   p,      q,       r
-            0.+eps,  0.,    0.,
+            0.+eps,  0.+eps,    0.,
         #    \delta_e   \delta_a  \delta_r   \delta_t
-             np.pi/2,      0.,       0.,       0.]
+             np.pi/2,      np.pi/2,       np.pi/2,       1.]
     return lb, ub
 
 def trim_objective_fun(x: types.NP_MAT, Va: float, gamma: float, R: float, psi_weight: float) -> float:
