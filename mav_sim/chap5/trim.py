@@ -138,9 +138,9 @@ def velocity_constraint_partial(x: types.NP_MAT) -> list[float]:
     """
 
     state, _ = extract_state_input(x)
-    u = state[IND_EULER.U]
-    v = state[IND_EULER.W]
-    w = state[IND_EULER.W]
+    u = state[IND_EULER.U].item()
+    v = state[IND_EULER.V].item()
+    w = state[IND_EULER.W].item()
 
 
     return [0., 0., 0., 2*u, 2*v, 2*w, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]
@@ -161,23 +161,22 @@ def variable_bounds(state0: types.DynamicStateEuler, eps: float) -> tuple[list[f
         lb: 16 element list defining the lower bound of each variable
         ub: 16 element list defining the upper bound of each variable
     """
-    state, delta = extract_state_input(state0)
-    psi = state[IND_EULER.PSI]
+    psi = state0[IND_EULER.PSI].item()
 
     # -lower             pn                 pe                             pd
     lb = [  state0.item(IND_EULER.NORTH),   state0.item(IND_EULER.EAST),    state0.item(IND_EULER.DOWN),
         #      u     v     w        phi       theta          psi
-            -np.inf, -np.inf,  -np.inf,        -np.pi/2,    -np.pi/2+.1,     psi,
+            -np.inf, 0,  -np.inf,        -np.pi/2,    -np.pi/2+.1,     psi,
         #   p,  q,     r
-            0., 0.,   0.,
+            0., 0.,   -np.inf,
         #    \delta_e   \delta_a  \delta_r   \delta_t
             -np.pi/2,     -np.pi/2,      -np.pi/2,        0.]
     # -upper             pn                       pe                             pd
     ub = [  state0.item(IND_EULER.NORTH)+eps,     state0.item(IND_EULER.EAST)+eps,  state0.item(IND_EULER.DOWN)+eps,
         #      u     v          w        phi       theta          psi
-             np.inf, np.inf, np.inf,    0.,       np.pi/2-.1,       psi+eps,
+             np.inf, 0+eps, np.inf,    np.pi/2,       np.pi/2-.1,       psi+eps,
         #   p,      q,       r
-            0.+eps,  0.+eps,    0.,
+            0.+eps,  0.+eps,    np.inf,
         #    \delta_e   \delta_a  \delta_r   \delta_t
              np.pi/2,      np.pi/2,       np.pi/2,       1.]
     return lb, ub

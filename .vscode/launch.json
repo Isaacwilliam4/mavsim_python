@@ -5,6 +5,27 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Run Ch 5",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/book_assignments/mavsim_chap5.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Run Ch 5 additional tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch5_additional_tests.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Run Ch 5 unit tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch5_dynamics_test.py",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Run Ch 4",
             "type": "debugpy",
             "request": "launch",
