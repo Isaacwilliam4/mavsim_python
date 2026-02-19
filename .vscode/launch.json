@@ -9,63 +9,72 @@
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/book_assignments/mavsim_chap5.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
         },
         {
             "name": "Run Ch 5 additional tests",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mav_sim/unit_tests/ch5_additional_tests.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
         },
         {
             "name": "Run Ch 5 unit tests",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mav_sim/unit_tests/ch5_dynamics_test.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
         },
         {
             "name": "Run Ch 4",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/book_assignments/mavsim_chap4.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
         },
         {
             "name": "Run Ch 4 additional tests",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mav_sim/unit_tests/ch4_additional_tests.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
         },
         {
             "name": "Run Ch 4 unit tests",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mav_sim/unit_tests/ch4_dynamics_test.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
         },
         {
             "name": "Run Ch 3",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/book_assignments/mavsim_chap3.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
         },
         {
             "name": "Run Ch 3 Unit Tests",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mav_sim/unit_tests/ch3_derivatives_test.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
         },
         {
             "name": "Run Ch 2 Unit Tests",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/mav_sim/unit_tests/ch2_transforms_tests.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
         },
 
         
