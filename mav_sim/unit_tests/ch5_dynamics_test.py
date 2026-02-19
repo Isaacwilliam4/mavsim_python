@@ -117,8 +117,8 @@ def run_auto_tests()->None:
             succ = velocity_constraint_partial_test(tests=data["vel_constraint_partial"])
         if succ:
             succ = variable_bounds_test(tests=data["variable_bounds"])
-        # if succ:
-        #     succ = trim_objective_fun_test(tests=data["trim_objective_fun"])
+        if succ:
+            succ = trim_objective_fun_test(tests=data["trim_objective_fun"])
 
         if not succ:
             raise ValueError("Failed test")

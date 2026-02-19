@@ -181,6 +181,24 @@ def variable_bounds(state0: types.DynamicStateEuler, eps: float) -> tuple[list[f
              np.pi/2,      np.pi/2,       np.pi/2,       1.]
     return lb, ub
 
+def calculate_desired_derivatives(Va_desired, gamma_desired, radius_desired):
+    x_dot_desired = np.empty( (IND_EULER.NUM_STATES,1) )
+    x_dot_desired[IND_EULER.NORTH] = 0
+    x_dot_desired[IND_EULER.EAST] = 0
+    x_dot_desired[IND_EULER.DOWN] = -Va_desired * np.sin(gamma_desired)
+    x_dot_desired[IND_EULER.U] = 0
+    x_dot_desired[IND_EULER.V] = 0
+    x_dot_desired[IND_EULER.W] = 0
+    x_dot_desired[IND_EULER.PHI] = 0
+    x_dot_desired[IND_EULER.THETA] = 0
+    x_dot_desired[IND_EULER.PSI] = ((Va_desired / radius_desired) * np.cos(gamma_desired))
+    x_dot_desired[IND_EULER.P] = 0
+    x_dot_desired[IND_EULER.Q] = 0
+    x_dot_desired[IND_EULER.R] = 0
+
+    return x_dot_desired
+    
+
 def trim_objective_fun(x: types.NP_MAT, Va: float, gamma: float, R: float, psi_weight: float) -> float:
     """Calculates the cost on the trim trajectory being optimized using an Euler state representation
 
@@ -197,17 +215,26 @@ def trim_objective_fun(x: types.NP_MAT, Va: float, gamma: float, R: float, psi_w
         J: resulting cost of the current parameters
     """
     # Extract the state and input
-    state, delta = extract_state_input(x)
+    state_euler, delta = extract_state_input(x)
+    state_quat = euler_state_to_quat_state(state_euler)
+    Va_actual, alpha, beta, _ = update_velocity_data(state_quat)
 
     # Calculate the desired trim trajectory dynamics
-
+    desired_derivatives = calculate_desired_derivatives(Va, gamma, R)
 
     # Calculate forces
+    forces_moments_v = forces_moments(state_quat, delta, Va_actual, beta, alpha)
 
     # Calculate the dynamics based upon the current state and input (use euler derivatives)
+    derivatives = derivatives_euler(state_euler, forces_moments_v)
 
     # Calculate the difference between the desired and actual
 
+    diff = (desired_derivatives - derivatives)**2
+    diff[IND_EULER.PSI] *= psi_weight
+    diff_no_pn_pe = diff[2:]
 
     # Calculate the square of the difference (neglecting pn and pe)
-    return 0.
+    res = diff_no_pn_pe.sum()
+
+    return res

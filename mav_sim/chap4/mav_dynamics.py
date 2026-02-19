@@ -449,6 +449,9 @@ def get_OMEGA_p(Va: float, Vin: float) -> np.float64:
     b = ((MAV.rho * MAV.D_prop**4) / (2 * np.pi)) * MAV.C_Q1 * Va + ((MAV.KQ * KV) / MAV.R_motor)
     c = (MAV.rho * MAV.D_prop**3) * MAV.C_Q2 * Va**2 - ((MAV.KQ/MAV.R_motor) * Vin) + MAV.KQ * MAV.i0
 
+    if b**2 - 4*a*c < 0:
+        return np.nan
+
     return np.float64((-b + np.sqrt(b**2 - 4*a*c)) / (2*a))
 
 def get_thrust_T_p(Va:float, omega_p:float) -> float:
