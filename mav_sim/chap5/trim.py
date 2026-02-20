@@ -5,10 +5,8 @@ compute_trim
         12/29/2018 - RWB
         1/2022 - GND
 """
-from typing import Any
 
 import numpy as np
-import numpy.typing as npt
 from mav_sim.chap3.mav_dynamics_euler import (
     IND_EULER,
     derivatives_euler,
@@ -124,7 +122,7 @@ def velocity_constraint(x: types.NP_MAT, Va_desired: float) -> float:
     uvw = state[3:6]
     Va = np.linalg.norm(uvw)
 
-    return Va**2 - Va_desired**2
+    return np.float64(Va**2 - Va_desired**2) 
 
 def velocity_constraint_partial(x: types.NP_MAT) -> list[float]:
     """Defines the partial of the velocity constraint with respect to x
@@ -181,7 +179,17 @@ def variable_bounds(state0: types.DynamicStateEuler, eps: float) -> tuple[list[f
              np.pi/2,      np.pi/2,       np.pi/2,       1.]
     return lb, ub
 
-def calculate_desired_derivatives(Va_desired, gamma_desired, radius_desired):
+def calculate_desired_derivatives(Va_desired: float, gamma_desired: float, radius_desired: float) -> np.ndarray:
+    """Calculates desired euler derivatives
+
+    Args:
+        Va_desired (float): desired va
+        gamma_desired (float): desired gamma
+        radius_desired (float): desired radius
+
+    Returns:
+        np.ndarray: desired euler derivatives
+    """
     x_dot_desired = np.empty( (IND_EULER.NUM_STATES,1) )
     x_dot_desired[IND_EULER.NORTH] = 0
     x_dot_desired[IND_EULER.EAST] = 0
@@ -191,13 +199,26 @@ def calculate_desired_derivatives(Va_desired, gamma_desired, radius_desired):
     x_dot_desired[IND_EULER.W] = 0
     x_dot_desired[IND_EULER.PHI] = 0
     x_dot_desired[IND_EULER.THETA] = 0
-    x_dot_desired[IND_EULER.PSI] = ((Va_desired / radius_desired) * np.cos(gamma_desired))
+    x_dot_desired[IND_EULER.PSI] = (Va_desired / radius_desired) * np.cos(gamma_desired)
     x_dot_desired[IND_EULER.P] = 0
     x_dot_desired[IND_EULER.Q] = 0
     x_dot_desired[IND_EULER.R] = 0
 
     return x_dot_desired
-    
+
+def calculate_desired_derivatives_quat(Va_desired: float, gamma_desired: float, radius_desired: float) -> np.ndarray:
+    """calculates desired quaternion derivatives
+
+    Args:
+        Va_desired (float): desired va
+        gamma_desired (float): desired gamma
+        radius_desired (float): desired radiua
+
+    Returns:
+        np.ndarray: result
+    """
+    x_dot_desired = calculate_desired_derivatives(Va_desired, gamma_desired, radius_desired)
+    return euler_state_to_quat_state(x_dot_desired) 
 
 def trim_objective_fun(x: types.NP_MAT, Va: float, gamma: float, R: float, psi_weight: float) -> float:
     """Calculates the cost on the trim trajectory being optimized using an Euler state representation
@@ -237,4 +258,4 @@ def trim_objective_fun(x: types.NP_MAT, Va: float, gamma: float, R: float, psi_w
     # Calculate the square of the difference (neglecting pn and pe)
     res = diff_no_pn_pe.sum()
 
-    return res
+    return np.float64(res)
