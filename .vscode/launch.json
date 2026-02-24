@@ -5,6 +5,30 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Run Ch 6",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/book_assignments/mavsim_chap6.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
+            "name": "Run Ch 6 additional tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch6_additional_tests.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
+            "name": "Run Ch 6 unit tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch6_feedback_control_test.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
             "name": "Run Ch 5",
             "type": "debugpy",
             "request": "launch",
