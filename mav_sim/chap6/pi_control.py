@@ -42,16 +42,20 @@ class PIControl:
         """
 
         # compute the error
-        error = 0.
+        error = y_ref - y
 
         # Do something with the error
 
-        u = 0
-        u_sat = 0
+        self.integrator += ((self.Ts / 2)* (error + self.error_delay_1))
+
+        u = self.kp*error + self.ki*self.integrator
+        u_sat = saturate(u, -self.limit, self.limit)
 
         # integral anti-windup
 
-
+        if self.ki > 0:
+            self.integrator += ((self.Ts/self.ki) * (u_sat - u))
         # update the delayed variables
         self.error_delay_1 = error
+
         return u_sat

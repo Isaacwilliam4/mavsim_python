@@ -160,7 +160,7 @@ def autopilot_helper() -> None:
 
 
 if __name__ == "__main__":
-    pd_control_with_rate_helper()
-    #pi_control_helper()
+    # pd_control_with_rate_helper()
+    pi_control_helper()
     #tf_control_helper()
     # autopilot_helper()
