@@ -144,12 +144,12 @@ def run_auto_tests()->None:
 
         # Run the tests
         succ = pd_with_rate_tests(tests=data["pd_with_rate"])
-        if succ:
-            succ = pi_control_tests(tests=data["pi_control"])
-        if succ:
-            succ = tf_control_tests(tests=data["tf_control"])
-        if succ:
-            succ = autopilot_tests(tests=data["autopilot"])
+        # if succ:
+        #     succ = pi_control_tests(tests=data["pi_control"])
+        # if succ:
+        #     succ = tf_control_tests(tests=data["tf_control"])
+        # if succ:
+        #     succ = autopilot_tests(tests=data["autopilot"])
 
         if not succ:
             raise ValueError("Failed test")

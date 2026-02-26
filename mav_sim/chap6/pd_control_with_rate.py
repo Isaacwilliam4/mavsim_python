@@ -7,7 +7,6 @@ pd_control
 """
 from mav_sim.tools.wrap import saturate
 
-
 class PDControlWithRate:
     """
     PD control with rate information (i.e., the derivative is given as an input to update function)
@@ -36,5 +35,6 @@ class PDControlWithRate:
         Output:
             u_sat: a saturated pd controller
         """
-        u_sat = 0.
+        r = self.kp * (y_ref - y) - self.kd * ydot
+        u_sat = saturate(r, -self.limit, self.limit)
         return u_sat
