@@ -29,16 +29,22 @@ class Autopilot:
         Args:
             ts_control: time step for the control
         """
+        roll_limit = np.pi*45 / 180
+        course_angle_limit = np.pi*30 / 180
+        pitch_limit = np.pi*45 / 180
+        altitude_from_pitch_limit = np.pi*30 / 180
+        airspeed_from_throttle_limit = 1
+        yaw_damper_limit = 1
 
         # instantiate lateral-directional controllers (note, these should be objects, not numbers)
-        self.roll_from_aileron = 0.
-        self.course_from_roll = 0.
-        self.yaw_damper = 0.
+        self.roll_from_aileron = PDControlWithRate(AP.roll_kp, AP.roll_kd, roll_limit)
+        self.course_from_roll = PIControl(AP.course_kp, AP.course_ki, ts_control, course_angle_limit)
+        self.yaw_damper = TFControl(AP.yaw_damper_kr, 0, 1, 1, ts_control, ts_control, -yaw_damper_limit)
 
         # instantiate longitudinal controllers (note, these should be objects, not numbers)
-        self.pitch_from_elevator = 0.
-        self.altitude_from_pitch = 0.
-        self.airspeed_from_throttle = 0.
+        self.pitch_from_elevator = PDControlWithRate(AP.pitch_kp, AP.pitch_kd, pitch_limit)
+        self.altitude_from_pitch = PIControl(AP.altitude_kp, AP.altitude_ki, ts_control, altitude_from_pitch_limit)
+        self.airspeed_from_throttle = PIControl(AP.airspeed_throttle_kp, AP.airspeed_throttle_ki, ts_control, airspeed_from_throttle_limit)
         self.commanded_state = MsgState()
 
     def update(self, cmd: MsgAutopilot, state: MsgState) -> tuple[MsgDelta, MsgState]:
