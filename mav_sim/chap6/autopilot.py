@@ -39,7 +39,14 @@ class Autopilot:
         # instantiate lateral-directional controllers (note, these should be objects, not numbers)
         self.roll_from_aileron = PDControlWithRate(AP.roll_kp, AP.roll_kd, roll_limit)
         self.course_from_roll = PIControl(AP.course_kp, AP.course_ki, ts_control, course_angle_limit)
-        self.yaw_damper = TFControl(AP.yaw_damper_kr, 0, 1, 1, AP.yaw_damper_p_wo, ts_control, yaw_damper_limit)
+        self.yaw_damper = TFControl(
+            k=AP.yaw_damper_kr,
+            n0=0,
+            n1=AP.yaw_damper_kr/ts_control,
+            d0=1,
+            d1=ts_control,
+            limit=yaw_damper_limit
+            )
 
         # instantiate longitudinal controllers (note, these should be objects, not numbers)
         self.pitch_from_elevator = PDControlWithRate(AP.pitch_kp, AP.pitch_kd, pitch_limit)
