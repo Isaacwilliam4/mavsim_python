@@ -59,10 +59,18 @@ class Autopilot:
             commanded_state: the state being commanded
         """
 
+        phi_c_limit = np.pi*30/180
+
         # lateral autopilot
-        phi_c = 0. # commanded value for phi
-        theta_c = 0. # commanded value for theta
-        delta_a = 0.
+        chi_c = cmd.course_command
+
+        phi_c = saturate( # course hold loop, 6.1.1.2 with addition of feedforward term
+             cmd.phi_feedforward + 
+                self.course_from_roll.update(chi_c, state.chi), 
+                -np.radians(30), np.radians(30))
+        
+        theta_c = 0 # commanded value for theta
+        delta_a = self.roll_from_aileron.update(phi_c, state.phi, 0)
         delta_r = 0.
 
         # longitudinal autopilot
@@ -75,6 +83,8 @@ class Autopilot:
                          aileron=delta_a,
                          rudder=delta_r,
                          throttle=delta_t)
+        
+        cmd.altitude_command = saturate(cmd.altitude_command, -AP.altitude_zone, AP.altitude_zone)
         self.commanded_state.altitude = cmd.altitude_command
         self.commanded_state.Va = cmd.airspeed_command
         self.commanded_state.phi = phi_c

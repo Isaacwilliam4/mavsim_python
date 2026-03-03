@@ -29,9 +29,9 @@ yaw_damper_kr: float = 0.2
 wn_theta: float = 15.0
 zeta_theta: float = 0.707
 wn_theta_squared: float = wn_theta**2 # Created to avoid recomputation of the square
-pitch_kp: float = (wn_theta**2 - TF.a_phi2) / (TF.a_theta3) # Implement
-pitch_kd: float = (2 * zeta_theta * wn_theta - TF.a_theta1) / (TF.a_theta1) # Implement
-K_theta_DC: float = (pitch_kp * TF.a_theta1) / (TF.a_theta2 + pitch_kp * TF.a_theta3) # Implement
+pitch_kp: float = (wn_theta_squared - TF.a_theta2) / (TF.a_theta3) # Implement
+pitch_kd: float = (2 * zeta_theta * wn_theta - TF.a_theta1) / (TF.a_theta3) # Implement
+K_theta_DC: float = (pitch_kp * TF.a_theta3) / (TF.a_theta2 + pitch_kp * TF.a_theta3) # Implement
 
 #----------altitude loop------------- Section 6.1.2.2
 wn_altitude: float = wn_theta / 30.0
