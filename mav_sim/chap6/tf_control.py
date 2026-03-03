@@ -56,8 +56,10 @@ class TFControl:
             u_sat: saturated control
         """
 
+        u = -self.a1 * self.u_delay_1 + self.b0 * y + self.b1 * self.y_delay_1
+
         # saturate transfer function output at limit
-        u_sat = 0
+        u_sat = saturate(u, -self.limit, self.limit)
 
         # update the delayed variables
         self.y_delay_1 = y
