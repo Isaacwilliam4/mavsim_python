@@ -389,9 +389,9 @@ def autopilot_tests(tests: list[AutopilotTest], threshold: float = 1e-4) -> bool
 #############  Hand tests ########################
 def run_hand_tests() -> None:
     """Run all hand tests."""
-    # pd_control_with_rate_test()
-    # pi_control_test()
-    # tf_control_test()
+    pd_control_with_rate_test()
+    pi_control_test()
+    tf_control_test()
     # autopilot_test()
 
 def pd_control_with_rate_test() -> None:
