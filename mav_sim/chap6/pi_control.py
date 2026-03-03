@@ -45,15 +45,16 @@ class PIControl:
         error = y_ref - y
 
         # Do something with the error
-
+        
         self.integrator += ((self.Ts / 2)* (error + self.error_delay_1))
 
         u = self.kp*error + self.ki*self.integrator
         u_sat = saturate(u, -self.limit, self.limit)
 
-        # integral anti-windup
+        integrator_before_windup = self.integrator
 
-        if self.ki > 0:
+        # integral anti-windup
+        if np.abs(self.ki) > 0.0001:
             self.integrator += ((self.Ts/self.ki) * (u_sat - u))
         # update the delayed variables
         self.error_delay_1 = error
