@@ -39,7 +39,7 @@ class Autopilot:
         # instantiate lateral-directional controllers (note, these should be objects, not numbers)
         self.roll_from_aileron = PDControlWithRate(AP.roll_kp, AP.roll_kd, roll_limit)
         self.course_from_roll = PIControl(AP.course_kp, AP.course_ki, ts_control, course_angle_limit)
-        self.yaw_damper = TFControl(AP.yaw_damper_kr, 0, 1, 1, ts_control, ts_control, -yaw_damper_limit)
+        self.yaw_damper = TFControl(AP.yaw_damper_kr, 0, 1, 1, ts_control, ts_control, yaw_damper_limit)
 
         # instantiate longitudinal controllers (note, these should be objects, not numbers)
         self.pitch_from_elevator = PDControlWithRate(AP.pitch_kp, AP.pitch_kd, pitch_limit)
@@ -59,23 +59,25 @@ class Autopilot:
             commanded_state: the state being commanded
         """
 
-        phi_c_limit = np.pi*30/180
-
         # lateral autopilot
-        chi_c = cmd.course_command
+        cmd.altitude_command = saturate(cmd.altitude_command, -AP.altitude_zone, AP.altitude_zone)
+        chi_c = wrap(cmd.course_command, state.chi)
 
         phi_c = saturate( # course hold loop, 6.1.1.2 with addition of feedforward term
              cmd.phi_feedforward + 
                 self.course_from_roll.update(chi_c, state.chi), 
                 -np.radians(30), np.radians(30))
         
-        theta_c = 0 # commanded value for theta
+        theta_c = self.altitude_from_pitch.update(cmd.altitude_command, state.altitude) # commanded value for theta
         delta_a = self.roll_from_aileron.update(phi_c, state.phi, 0)
-        delta_r = 0.
+        delta_r = self.yaw_damper.update(state.r)
 
         # longitudinal autopilot
-        delta_e = 0.
-        delta_t = 0.
+        ydot = 0
+        pitch = self.pitch_from_elevator.update(theta_c, state.theta, ydot)
+
+        delta_e = self.pitch_from_elevator.update(0, 0, 0)
+        delta_t = self.airspeed_from_throttle.update(cmd.airspeed_command, state.Va)
         delta_t = saturate(delta_t, 0.0, 1.0)
 
         # construct control outputs and commanded states
@@ -84,7 +86,6 @@ class Autopilot:
                          rudder=delta_r,
                          throttle=delta_t)
         
-        cmd.altitude_command = saturate(cmd.altitude_command, -AP.altitude_zone, AP.altitude_zone)
         self.commanded_state.altitude = cmd.altitude_command
         self.commanded_state.Va = cmd.airspeed_command
         self.commanded_state.phi = phi_c

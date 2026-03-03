@@ -155,6 +155,7 @@ def autopilot_helper() -> None:
     cmd.phi_feedforward = 0.1
     delta, cmd_state = ap.update(cmd=cmd, state=st)
     print(delta, cmd_state)
+    print()
 
 
 
