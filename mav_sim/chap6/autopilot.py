@@ -29,17 +29,17 @@ class Autopilot:
         Args:
             ts_control: time step for the control
         """
-        roll_limit = np.pi*45 / 180
-        course_angle_limit = np.pi*30 / 180
-        pitch_limit = np.pi*45 / 180
-        altitude_from_pitch_limit = np.pi*30 / 180
+        roll_limit = np.radians(45)
+        course_angle_limit = np.radians(30)
+        pitch_limit = np.radians(45)
+        altitude_from_pitch_limit = np.radians(30)
         airspeed_from_throttle_limit = 1
         yaw_damper_limit = 1
 
         # instantiate lateral-directional controllers (note, these should be objects, not numbers)
         self.roll_from_aileron = PDControlWithRate(AP.roll_kp, AP.roll_kd, roll_limit)
         self.course_from_roll = PIControl(AP.course_kp, AP.course_ki, ts_control, course_angle_limit)
-        self.yaw_damper = TFControl(ts_control, 0, 1, 1, ts_control, ts_control, yaw_damper_limit)
+        self.yaw_damper = TFControl(AP.yaw_damper_kr, 0, 1, 1, AP.yaw_damper_p_wo, ts_control, yaw_damper_limit)
 
         # instantiate longitudinal controllers (note, these should be objects, not numbers)
         self.pitch_from_elevator = PDControlWithRate(AP.pitch_kp, AP.pitch_kd, pitch_limit)
@@ -60,7 +60,8 @@ class Autopilot:
         """
 
         # lateral autopilot
-        cmd.altitude_command = saturate(cmd.altitude_command, -AP.altitude_zone, AP.altitude_zone)
+        # cmd.altitude_command = saturate(cmd.altitude_command, -AP.altitude_zone, AP.altitude_zone)
+        cmd.altitude_command = saturate(cmd.altitude_command, -100, 100)
         chi_c = wrap(cmd.course_command, state.chi)
 
         phi_c = saturate( # course hold loop, 6.1.1.2 with addition of feedforward term
@@ -69,7 +70,7 @@ class Autopilot:
                 -np.radians(30), np.radians(30))
         
         theta_c = self.altitude_from_pitch.update(cmd.altitude_command, state.altitude) # commanded value for theta
-        delta_a = self.roll_from_aileron.update(phi_c, state.phi, 0)
+        delta_a = self.roll_from_aileron.update(phi_c, state.phi, state.p)
         delta_r = self.yaw_damper.update(state.r)
 
         # longitudinal autopilot
@@ -90,5 +91,5 @@ class Autopilot:
         self.commanded_state.Va = cmd.airspeed_command
         self.commanded_state.phi = phi_c
         self.commanded_state.theta = theta_c
-        self.commanded_state.chi = cmd.course_command
+        self.commanded_state.chi = chi_c
         return delta, self.commanded_state.copy()
