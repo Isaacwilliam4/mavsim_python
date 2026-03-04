@@ -81,10 +81,7 @@ class Autopilot:
         delta_r = self.yaw_damper.update(state.r)
 
         # longitudinal autopilot
-        ydot = 0
-        pitch = self.pitch_from_elevator.update(theta_c, state.theta, ydot)
-
-        delta_e = self.pitch_from_elevator.update(0, 0, 0)
+        delta_e = self.pitch_from_elevator.update(theta_c, state.theta, state.q)
         delta_t = self.airspeed_from_throttle.update(cmd.airspeed_command, state.Va)
         delta_t = saturate(delta_t, 0.0, 1.0)
 
