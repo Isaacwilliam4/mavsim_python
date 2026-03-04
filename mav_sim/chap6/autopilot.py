@@ -42,9 +42,9 @@ class Autopilot:
         self.yaw_damper = TFControl(
             k=AP.yaw_damper_kr,
             n0=0,
-            n1=AP.yaw_damper_kr/ts_control,
-            d0=1,
-            d1=ts_control,
+            n1=1,
+            d0=AP.yaw_damper_p_wo,
+            d1=1,
             limit=yaw_damper_limit
             )
 
@@ -67,8 +67,8 @@ class Autopilot:
         """
 
         # lateral autopilot
-        # cmd.altitude_command = saturate(cmd.altitude_command, -AP.altitude_zone, AP.altitude_zone)
-        cmd.altitude_command = saturate(cmd.altitude_command, -100, 100)
+        cmd.altitude_command = saturate(cmd.altitude_command, -AP.altitude_zone, AP.altitude_zone)
+        # cmd.altitude_command = saturate(cmd.altitude_command, -100, 100)
         chi_c = wrap(cmd.course_command, state.chi)
 
         phi_c = saturate( # course hold loop, 6.1.1.2 with addition of feedforward term
