@@ -45,6 +45,7 @@ class Autopilot:
             n1=1,
             d0=AP.yaw_damper_p_wo,
             d1=1,
+            Ts=ts_control,
             limit=yaw_damper_limit
             )
 
@@ -67,7 +68,7 @@ class Autopilot:
         """
 
         # lateral autopilot
-        cmd.altitude_command = saturate(cmd.altitude_command, -AP.altitude_zone, AP.altitude_zone)
+        altitude_command = saturate(cmd.altitude_command, state.altitude-AP.altitude_zone, state.altitude+AP.altitude_zone)
         # cmd.altitude_command = saturate(cmd.altitude_command, -100, 100)
         chi_c = wrap(cmd.course_command, state.chi)
 
@@ -76,7 +77,7 @@ class Autopilot:
                 self.course_from_roll.update(chi_c, state.chi), 
                 -np.radians(30), np.radians(30))
         
-        theta_c = self.altitude_from_pitch.update(cmd.altitude_command, state.altitude) # commanded value for theta
+        theta_c = self.altitude_from_pitch.update(altitude_command, state.altitude) # commanded value for theta
         delta_a = self.roll_from_aileron.update(phi_c, state.phi, state.p)
         delta_r = self.yaw_damper.update(state.r)
 
