@@ -51,8 +51,6 @@ class PIControl:
         u = self.kp*error + self.ki*self.integrator
         u_sat = saturate(u, -self.limit, self.limit)
 
-        integrator_before_windup = self.integrator
-
         # integral anti-windup
         if np.abs(self.ki) > 0.0001:
             self.integrator += ((self.Ts/self.ki) * (u_sat - u))

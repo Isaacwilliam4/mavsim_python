@@ -5,8 +5,6 @@ autopilot block for mavsim_python
         2/6/2019 - RWB
         12/21 - GND
 """
-from typing import Optional
-
 import mav_sim.parameters.control_parameters as AP
 import numpy as np
 from mav_sim.chap6.pd_control_with_rate import PDControlWithRate
