@@ -321,9 +321,9 @@ def gyro(p: float, q: float, r: float, noise_scale: float = 1.,
         Returns:
             gyro_x, gyro_y, gyro_z: body frame x-y-z gyro measurements
     """
-    gyro_x = 0.
-    gyro_y = 0.
-    gyro_z = 0.
+    gyro_x = p + np.random.normal(0., gyro_sigma)*noise_scale + gyro_x_bias
+    gyro_y = q + np.random.normal(0., gyro_sigma)*noise_scale + gyro_y_bias
+    gyro_z = r + np.random.normal(0., gyro_sigma)*noise_scale + gyro_z_bias
 
     return gyro_x, gyro_y, gyro_z
 
@@ -348,8 +348,8 @@ def pressure(down: float, Va: float, noise_scale: float = 1.,
             abs_pressure: Absolute pressure measurement
             diff_pressure: Differential pressure measurement
     """
-    abs_pressure = 0.
-    diff_pressure = 0.
+    abs_pressure = MAV.rho*MAV.gravity*(-down)  + abs_pres_bias + noise_scale*np.random.normal(0., abs_pres_sigma)
+    diff_pressure = (MAV.rho*(Va**2)) / 2 + diff_pres_bias + noise_scale*np.random.normal(0, diff_pres_bias)
 
     return abs_pressure, diff_pressure
 
