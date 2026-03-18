@@ -415,9 +415,10 @@ def gps_error_trans_update(nu: GpsTransient, noise_scale: float = 1.,
             nu: Updated GPS transient
     """
 
-    nu_n = 0.
-    nu_e = 0.
-    nu_h = 0.
+
+    nu_n = np.exp(-gps_k * ts_gps)*nu.n + ts_gps*np.random.normal(0., gps_n_sigma)*noise_scale
+    nu_e = np.exp(-gps_k * ts_gps)*nu.e + ts_gps*np.random.normal(0., gps_e_sigma)*noise_scale
+    nu_h = np.exp(-gps_k * ts_gps)*nu.h + ts_gps*np.random.normal(0., gps_h_sigma)*noise_scale
 
     return GpsTransient(nu_n, nu_e, nu_h)
 
