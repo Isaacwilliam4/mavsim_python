@@ -349,7 +349,7 @@ def pressure(down: float, Va: float, noise_scale: float = 1.,
             diff_pressure: Differential pressure measurement
     """
     abs_pressure = MAV.rho*MAV.gravity*(-down)  + abs_pres_bias + noise_scale*np.random.normal(0., abs_pres_sigma)
-    diff_pressure = (MAV.rho*(Va**2)) / 2 + diff_pres_bias + noise_scale*np.random.normal(0, diff_pres_bias)
+    diff_pressure = (MAV.rho*(Va**2)) / 2 + diff_pres_bias + noise_scale*np.random.normal(0, diff_pres_sigma)
 
     return abs_pressure, diff_pressure
 
@@ -372,10 +372,24 @@ def magnetometer(quat_b_to_i: types.Quaternion, noise_scale: float = 1.,
         Returns:
             mag_x, mag_y, mag_z: body frame x-y-z magnetometer measurements
     """
+    m_m = np.array([
+        [1.],
+        [0.],
+        [0.],
+    ])
 
-    mag_x = 0.
-    mag_y = 0.
-    mag_z = 0.
+    rot_m_to_i = Euler2Rotation(0, mag_inc, mag_dec)
+
+    m_i = rot_m_to_i.T@m_m
+    rot_b_to_i = Quaternion2Rotation(quat_b_to_i)
+
+    m_b = rot_b_to_i.T@m_i
+
+    final = m_b + np.random.normal(0., mag_sigma)*noise_scale
+
+    mag_x = final.item(0)
+    mag_y = final.item(1)
+    mag_z = final.item(2)
 
     return mag_x, mag_y, mag_z
 
