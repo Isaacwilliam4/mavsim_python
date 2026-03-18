@@ -292,9 +292,13 @@ def accelerometer(phi: float, theta: float, forces: types.NP_MAT, noise_scale: f
         Returns:
             accel_x, accel_y, accel_z: body frame x-y-z acceleration measurements
     """
-    accel_x = 0.
-    accel_y = 0.
-    accel_z = 0.
+    fx = forces.item(0)
+    fy = forces.item(1)
+    fz = forces.item(2)
+
+    accel_x = fx / MAV.mass + MAV.gravity*np.sin(theta) + noise_scale * np.random.normal(0., accel_sigma)
+    accel_y = fy / MAV.mass - MAV.gravity*np.cos(theta)*np.sin(phi) + noise_scale * np.random.normal(0., accel_sigma)
+    accel_z = fz / MAV.mass - MAV.gravity*np.cos(theta)*np.cos(phi) + noise_scale * np.random.normal(0., accel_sigma)
 
     return accel_x, accel_y, accel_z
 
