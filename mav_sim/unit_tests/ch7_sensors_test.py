@@ -167,8 +167,8 @@ def run_all_tests() -> None:
     # pressure_test(tests_archive["pressure"])
     # magnometer_test(tests_archive["magnometer"])
     # gps_error_trans_update_test(tests_archive["gps_error_tran_update"])
-    gps_test(tests_archive["gps"])
-    # calculate_sensor_readings_test(tests_archive["calculate_sensor_readings"])
+    # gps_test(tests_archive["gps"])
+    calculate_sensor_readings_test(tests_archive["calculate_sensor_readings"])
 
 
 if __name__ == "__main__":

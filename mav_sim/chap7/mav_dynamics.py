@@ -255,16 +255,77 @@ def calculate_sensor_readings(state: types.DynamicState, forces: types.NP_MAT, \
     """
     # Intialize the sensor reading
     sensors = MsgSensors()
+    quat = state[IND.QUAT]
 
 
+    phi, theta, psi = Quaternion2Euler(quat)
+
+    accel_x, accel_y, accel_z = accelerometer(
+        phi=phi,
+        theta=theta,
+        forces=forces,
+        noise_scale=noise_scale
+    )
+
+    gyro_x, gyro_y, gyro_z = gyro(
+        p=state[IND.P],
+        q=state[IND.Q],
+        r=state[IND.R],
+        noise_scale=noise_scale,
+    )
+
+    abs_pressure, diff_pressure = pressure(
+        down=state[IND.DOWN],
+        Va=Va,
+        noise_scale=noise_scale
+    )
+    mag_x, mag_y, mag_z = magnetometer(
+        quat_b_to_i=quat,
+        noise_scale=noise_scale
+    )
+
+    sensors.accel_x = accel_x
+    sensors.accel_y = accel_y
+    sensors.accel_z = accel_z
+    sensors.gyro_x = gyro_x
+    sensors.gyro_y = gyro_y
+    sensors.gyro_z = gyro_z
+    sensors.abs_pressure = abs_pressure
+    sensors.diff_pressure = diff_pressure
+    sensors.mag_x = mag_x
+    sensors.mag_y = mag_y
+    sensors.mag_z = mag_z
 
     # Populate all other sensors
     # simulate GPS sensor
     if update_gps:
         # Update the gps transient bias
+        nu_update = gps_error_trans_update(
+            nu=nu,
+            noise_scale=noise_scale
+        )
 
-        # Calculate the gps
-        pass
+        position = np.array([
+            state[IND.NORTH],
+            state[IND.EAST],
+            state[IND.DOWN],
+        ])
+
+        V_g_b = state[IND.VEL]
+
+        gps_n, gps_e, gps_h, gps_Vg, gps_course = gps(
+            position=position,
+            V_g_b=V_g_b,
+            e_quat=quat,
+            nu=nu_update,
+            noise_scale=noise_scale
+        )
+
+        sensors.gps_n = gps_n
+        sensors.gps_e = gps_e
+        sensors.gps_h = gps_h
+        sensors.gps_Vg = gps_Vg
+        sensors.gps_course = gps_course
 
     else:
         # Output previous values
@@ -325,7 +386,7 @@ def gyro(p: float, q: float, r: float, noise_scale: float = 1.,
     gyro_y = q + np.random.normal(0., gyro_sigma)*noise_scale + gyro_y_bias
     gyro_z = r + np.random.normal(0., gyro_sigma)*noise_scale + gyro_z_bias
 
-    return gyro_x, gyro_y, gyro_z
+    return gyro_x.item(0), gyro_y.item(0), gyro_z.item(0)
 
 def pressure(down: float, Va: float, noise_scale: float = 1.,
              abs_pres_bias: float = SENSOR.abs_pres_bias,
@@ -351,7 +412,7 @@ def pressure(down: float, Va: float, noise_scale: float = 1.,
     abs_pressure = MAV.rho*MAV.gravity*(-down)  + abs_pres_bias + noise_scale*np.random.normal(0., abs_pres_sigma)
     diff_pressure = (MAV.rho*(Va**2)) / 2 + diff_pres_bias + noise_scale*np.random.normal(0, diff_pres_sigma)
 
-    return abs_pressure, diff_pressure
+    return abs_pressure.item(0), diff_pressure
 
 def magnetometer(quat_b_to_i: types.Quaternion, noise_scale: float = 1.,
                  mag_inc: float = SENSOR.mag_inc,
