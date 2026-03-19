@@ -444,19 +444,16 @@ def gps(position: types.NP_MAT, V_g_b: types.NP_MAT, e_quat: types.Quaternion, n
             gps_course: GPS measurement of course angle
     """
 
-    rotation = Quaternion2Rotation(e_quat)
+    v_g_i = Quaternion2Rotation(e_quat) @ V_g_b
 
-    V_g_i = rotation.T@V_g_b
+    Vn = v_g_i.item(0) 
+    Ve = v_g_i.item(1)
 
-    V_n = V_g_i.item(0)
-    V_e = V_g_i.item(1)
+    gps_n = position.item(0) + nu.n
+    gps_e = position.item(1) + nu.e
+    gps_h = -position.item(2) + nu.h
 
-    nu_next = gps_error_trans_update(nu, noise_scale, 1/16000, 1.0, 2.1, 2.1, 4.0)
-
-    gps_n = position.item(0) + nu_next.n
-    gps_e = position.item(1) + nu_next.e
-    gps_h = -position.item(2) + nu_next.h
-    gps_Vg = np.sqrt(V_n**2 + V_e**2) + noise_scale*np.random.normal(0., gps_Vg_sigma)
-    gps_course = np.atan2(V_e, V_n) + noise_scale*np.random.normal(0., gps_course_sigma)
+    gps_Vg = np.sqrt(Vn**2 + Ve**2) + noise_scale*np.random.normal(0., gps_Vg_sigma)
+    gps_course = np.atan2(Ve, Vn) + noise_scale*np.random.normal(0., gps_course_sigma)
 
     return gps_n, gps_e, gps_h, gps_Vg, gps_course
