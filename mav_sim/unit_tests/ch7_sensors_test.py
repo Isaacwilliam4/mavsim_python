@@ -162,12 +162,12 @@ def run_all_tests() -> None:
     ) as file:
         tests_archive = pickle.load(file)
     # Run tests
-    # accelerometer_test(tests_archive["accelerometer"])
-    # gyro_test(tests_archive["gyro"])
-    # pressure_test(tests_archive["pressure"])
-    # magnometer_test(tests_archive["magnometer"])
-    # gps_error_trans_update_test(tests_archive["gps_error_tran_update"])
-    # gps_test(tests_archive["gps"])
+    accelerometer_test(tests_archive["accelerometer"])
+    gyro_test(tests_archive["gyro"])
+    pressure_test(tests_archive["pressure"])
+    magnometer_test(tests_archive["magnometer"])
+    gps_error_trans_update_test(tests_archive["gps_error_tran_update"])
+    gps_test(tests_archive["gps"])
     calculate_sensor_readings_test(tests_archive["calculate_sensor_readings"])
 
 

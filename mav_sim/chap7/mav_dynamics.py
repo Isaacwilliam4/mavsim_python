@@ -258,7 +258,7 @@ def calculate_sensor_readings(state: types.DynamicState, forces: types.NP_MAT, \
     quat = state[IND.QUAT]
 
 
-    phi, theta, psi = Quaternion2Euler(quat)
+    phi, theta, _ = Quaternion2Euler(quat)
 
     accel_x, accel_y, accel_z = accelerometer(
         phi=phi,
@@ -268,14 +268,14 @@ def calculate_sensor_readings(state: types.DynamicState, forces: types.NP_MAT, \
     )
 
     gyro_x, gyro_y, gyro_z = gyro(
-        p=state[IND.P],
-        q=state[IND.Q],
-        r=state[IND.R],
+        p=state[IND.P].item(),
+        q=state[IND.Q].item(),
+        r=state[IND.R].item(),
         noise_scale=noise_scale,
     )
 
     abs_pressure, diff_pressure = pressure(
-        down=state[IND.DOWN],
+        down=state[IND.DOWN].item(),
         Va=Va,
         noise_scale=noise_scale
     )
@@ -386,7 +386,7 @@ def gyro(p: float, q: float, r: float, noise_scale: float = 1.,
     gyro_y = q + np.random.normal(0., gyro_sigma)*noise_scale + gyro_y_bias
     gyro_z = r + np.random.normal(0., gyro_sigma)*noise_scale + gyro_z_bias
 
-    return gyro_x.item(0), gyro_y.item(0), gyro_z.item(0)
+    return gyro_x, gyro_y, gyro_z
 
 def pressure(down: float, Va: float, noise_scale: float = 1.,
              abs_pres_bias: float = SENSOR.abs_pres_bias,
@@ -412,7 +412,7 @@ def pressure(down: float, Va: float, noise_scale: float = 1.,
     abs_pressure = MAV.rho*MAV.gravity*(-down)  + abs_pres_bias + noise_scale*np.random.normal(0., abs_pres_sigma)
     diff_pressure = (MAV.rho*(Va**2)) / 2 + diff_pres_bias + noise_scale*np.random.normal(0, diff_pres_sigma)
 
-    return abs_pressure.item(0), diff_pressure
+    return abs_pressure, diff_pressure
 
 def magnetometer(quat_b_to_i: types.Quaternion, noise_scale: float = 1.,
                  mag_inc: float = SENSOR.mag_inc,
