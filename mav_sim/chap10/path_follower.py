@@ -59,22 +59,31 @@ def follow_straight_line(path: MsgPath, state: MsgState, k_path: float, chi_inf:
         [
             [state.north],
             [state.east],
-            [state.altitude]
+            [-state.altitude]
         ]
     )
 
-    # cos (theta) = a dot b / ||a|| * ||b||
+    e_p = p - r
+    e_p[2] = 0
 
-    north = np.array([
-        [1.],
-        [0.],
-        [0.],
+
+    n = np.array([
+        [q[1].item()],
+        [-q[0].item()],
+        [0],
     ])
 
-    cos_theta = np.dot(north.flatten(), q.flatten()) / (np.linalg.norm(north) * np.linalg.norm(q))
-    chi_q = np.arccos(cos_theta)
+    s = e_p - np.dot(e_p.flatten(), n.flatten()) * n
 
-    e_p = p - r
+    s_n = s[0].item()
+    s_e = s[1].item()
+
+    q_n = q[0].item()
+    q_e = q[1].item()
+    q_d = q[2].item()
+
+    chi_q = np.atan2(q_e, q_n)
+    chi_q = wrap(chi_q, state.chi)
 
     rot_p_i = np.array([
         [np.cos(chi_q), np.sin(chi_q), 0],
@@ -82,12 +91,18 @@ def follow_straight_line(path: MsgPath, state: MsgState, k_path: float, chi_inf:
         [0, 0, 1],
     ])
 
-    e_p = rot_p_i @ e_p
-    e_py = e_p[1].item()
+    e_p_i = rot_p_i @ e_p
+    e_py = e_p_i[1].item()
+    r_d = r[2].item()
 
     chi_c = chi_q - chi_inf * (2 / np.pi) * np.atan(k_path * e_py) 
+    h_d = -r_d - np.sqrt(s_n**2 + s_e**2)*(q_d / (np.sqrt(q_n**2 + q_e**2)))
+    h_c = h_d
 
     autopilot_commands.course_command = chi_c.item()
+    autopilot_commands.altitude_command = h_c
+    autopilot_commands.phi_feedforward = 0.
+    autopilot_commands.airspeed_command = state.Va
 
     return autopilot_commands
 
