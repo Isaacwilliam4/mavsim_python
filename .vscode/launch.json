@@ -5,6 +5,30 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Run Ch 10",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/book_assignments/mavsim_chap10.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
+            "name": "Run Ch 10 additional tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch10_additional_tests.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
+            "name": "Run Ch 10 unit tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch10_path_follower_test.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
             "name": "Run Ch 7",
             "type": "debugpy",
             "request": "launch",

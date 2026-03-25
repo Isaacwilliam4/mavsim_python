@@ -53,6 +53,41 @@ def follow_straight_line(path: MsgPath, state: MsgState, k_path: float, chi_inf:
     autopilot_commands = MsgAutopilot()
 
     # Create autopilot commands here
+    r = path.line_origin
+    q = path.line_direction
+    p = np.array(
+        [
+            [state.north],
+            [state.east],
+            [state.altitude]
+        ]
+    )
+
+    # cos (theta) = a dot b / ||a|| * ||b||
+
+    north = np.array([
+        [1.],
+        [0.],
+        [0.],
+    ])
+
+    cos_theta = np.dot(north.flatten(), q.flatten()) / (np.linalg.norm(north) * np.linalg.norm(q))
+    chi_q = np.arccos(cos_theta)
+
+    e_p = p - r
+
+    rot_p_i = np.array([
+        [np.cos(chi_q), np.sin(chi_q), 0],
+        [-np.sin(chi_q), np.cos(chi_q), 0],
+        [0, 0, 1],
+    ])
+
+    e_p = rot_p_i @ e_p
+    e_py = e_p[1].item()
+
+    chi_c = chi_q - chi_inf * (2 / np.pi) * np.atan(k_path * e_py) 
+
+    autopilot_commands.course_command = chi_c.item()
 
     return autopilot_commands
 
