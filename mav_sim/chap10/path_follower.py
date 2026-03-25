@@ -73,6 +73,8 @@ def follow_straight_line(path: MsgPath, state: MsgState, k_path: float, chi_inf:
         [0],
     ])
 
+    n /= np.linalg.norm(n)
+
     s = e_p - np.dot(e_p.flatten(), n.flatten()) * n
 
     s_n = s[0].item()
@@ -102,7 +104,7 @@ def follow_straight_line(path: MsgPath, state: MsgState, k_path: float, chi_inf:
     autopilot_commands.course_command = chi_c.item()
     autopilot_commands.altitude_command = h_c
     autopilot_commands.phi_feedforward = 0.
-    autopilot_commands.airspeed_command = state.Va
+    autopilot_commands.airspeed_command = path.airspeed
 
     return autopilot_commands
 
@@ -149,7 +151,7 @@ def follow_orbit(path: MsgPath, state: MsgState, k_orbit: float, gravity: float)
 
     if orbit_error < 10:
         # compute feed forward term
-        phi_ff = _lambda * np.atan2(state.Va**2 , gravity * rho)
+        phi_ff = _lambda * np.atan2(path.airspeed**2 , gravity * rho)
 
     orbit_psi = np.atan2(p_e - c_e, p_n - c_n)
     orbit_psi = wrap(orbit_psi, state.psi)
@@ -157,7 +159,7 @@ def follow_orbit(path: MsgPath, state: MsgState, k_orbit: float, gravity: float)
     chi_c = orbit_psi + _lambda*((np.pi / 2) +  np.atan2(k_orbit * (d - rho), rho))
 
     autopilot_commands.course_command = chi_c
-    autopilot_commands.airspeed_command = state.Va
+    autopilot_commands.airspeed_command = path.airspeed
     autopilot_commands.altitude_command = state.altitude
     autopilot_commands.phi_feedforward = phi_ff
 
