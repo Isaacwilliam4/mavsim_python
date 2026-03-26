@@ -148,5 +148,5 @@ def follow_orbit_helper() -> None:
 
 
 if __name__ == "__main__":
-    follow_straight_line_helper()
-    # follow_orbit_helper()
+    # follow_straight_line_helper()
+    follow_orbit_helper()

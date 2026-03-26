@@ -101,9 +101,9 @@ def run_all_tests() -> None:
     ) as file:
         tests_archive = pickle.load(file)
     # Run tests
-    # succ = follow_straight_line_test(tests_archive["follow_straight_line"])
-    # if succ:
-    succ = follow_orbit_test(tests_archive["follow_orbit"])
+    succ = follow_straight_line_test(tests_archive["follow_straight_line"])
+    if succ:
+        succ = follow_orbit_test(tests_archive["follow_orbit"])
 
     if not succ:
         raise ValueError("Failed test")

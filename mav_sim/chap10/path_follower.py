@@ -145,7 +145,7 @@ def follow_orbit(path: MsgPath, state: MsgState, k_orbit: float, gravity: float)
     d = np.linalg.norm(p[:2] - c[:2])
 
     _lambda = 1 if path.orbit_direction == "CW" else -1
-    phi_ff = 0
+    phi_ff = 0.
 
     orbit_error = (d - rho) / rho
 
@@ -154,13 +154,13 @@ def follow_orbit(path: MsgPath, state: MsgState, k_orbit: float, gravity: float)
         phi_ff = _lambda * np.atan2(path.airspeed**2 , gravity * rho)
 
     orbit_psi = np.atan2(p_e - c_e, p_n - c_n)
-    orbit_psi = wrap(orbit_psi, state.psi)
+    orbit_psi = wrap(orbit_psi, state.chi)
 
     chi_c = orbit_psi + _lambda*((np.pi / 2) +  np.atan2(k_orbit * (d - rho), rho))
 
     autopilot_commands.course_command = chi_c
     autopilot_commands.airspeed_command = path.airspeed
-    autopilot_commands.altitude_command = state.altitude
+    autopilot_commands.altitude_command = -path.orbit_center[2].item()
     autopilot_commands.phi_feedforward = phi_ff
 
     return autopilot_commands
