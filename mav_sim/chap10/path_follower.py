@@ -1,6 +1,6 @@
 """path_follower.py implements a class for following a path with a mav
 """
-from math import cos, sin
+# from math import cos, sin
 
 import numpy as np
 from mav_sim.message_types.msg_autopilot import MsgAutopilot
