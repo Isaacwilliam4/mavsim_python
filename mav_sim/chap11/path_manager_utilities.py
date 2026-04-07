@@ -133,4 +133,7 @@ def inHalfSpace(pos: NP_MAT, hs: HalfSpaceParams) -> bool:
     Returns:
         True if pos is in the halfpace, False otherwise
     """
-    return False
+
+    r = (pos - hs.point).T @ hs.normal
+
+    return (r >= 0).item()

@@ -5,6 +5,38 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Run Ch 11",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/book_assignments/mavsim_chap11.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
+            "name": "Run Ch 11 additional tests (a)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch11a_additional_tests.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
+            "name": "Run Ch 11 additional tests (b)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch11b_additional_tests.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
+            "name": "Run Ch 11 line and fillet unit tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch11_line_and_fillet_path_manager_test.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
             "name": "Run Ch 10",
             "type": "debugpy",
             "request": "launch",
