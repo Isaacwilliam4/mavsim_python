@@ -67,10 +67,35 @@ def construct_line(waypoints: MsgWaypoints, ptr: WaypointIndices) \
     # Extract the waypoints (w_{i-1}, w_i, w_{i+1})
     (previous, current, next_wp) = extract_waypoints(waypoints=waypoints, ptr=ptr)
 
+
+    line_direction = current - previous
+    line_direction /= np.linalg.norm(line_direction)
+
+    q_i_minus_1 = line_direction
+    q_i = next_wp - current
+    q_i /= np.linalg.norm(q_i)
+
+    type = "line"
+
+    airspeed = get_airspeed(waypoints, ptr)
+
+    line_origin = previous
+
     # Construct the path
-    path = MsgPath()
+    path = MsgPath(
+        type=type,
+        plot_updated=False,
+        airspeed=airspeed,
+        line_direction=line_direction,
+        line_origin=line_origin
+    )
     path.plot_updated = False
 
+    norm_i = (q_i_minus_1 + q_i) / np.linalg.norm(q_i_minus_1 + q_i)
+
     # Construct the halfspace
-    hs = HalfSpaceParams()
+    hs = HalfSpaceParams(
+        point=current,
+        normal=norm_i
+    )
     return (path, hs)

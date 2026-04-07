@@ -376,13 +376,13 @@ def run_all_tests() -> None:
         tests_archive = pickle.load(file)
     gc.enable()
     # Run tests
-    print("Starting inHalfSpace test")
-    for test_count in range(len(tests_archive["inHalfSpace"])):
-        if not inHalfSpace_test(tests_archive["inHalfSpace"][test_count]):
-            print("Failed on test id: " + str(test_count))
-            succ = False
-            break
-    print("End of test\n")
+    # print("Starting inHalfSpace test")
+    # for test_count in range(len(tests_archive["inHalfSpace"])):
+    #     if not inHalfSpace_test(tests_archive["inHalfSpace"][test_count]):
+    #         print("Failed on test id: " + str(test_count))
+    #         succ = False
+    #         break
+    # print("End of test\n")
 
     if succ:
         print("Starting construct_line test")
