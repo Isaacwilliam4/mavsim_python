@@ -44,6 +44,16 @@ def line_manager(state: MsgState, waypoints: MsgWaypoints, ptr_prv: WaypointIndi
 
     # Create manager here
 
+    pos = np.array([
+        [state.north],
+        [state.east],
+        [-state.altitude]
+    ])
+
+    if inHalfSpace(pos, hs):
+        ptr = ptr.next
+        path, hs = construct_line(waypoints=waypoints, ptr=ptr)
+
     # Output the updated path, halfspace, and index pointer
     return (path, hs, ptr)
 
