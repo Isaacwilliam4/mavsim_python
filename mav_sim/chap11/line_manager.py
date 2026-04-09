@@ -51,7 +51,7 @@ def line_manager(state: MsgState, waypoints: MsgWaypoints, ptr_prv: WaypointIndi
     ])
 
     if inHalfSpace(pos, hs):
-        ptr = ptr.next
+        ptr.increment_pointers(waypoints.num_waypoints)
         path, hs = construct_line(waypoints=waypoints, ptr=ptr)
 
     # Output the updated path, halfspace, and index pointer

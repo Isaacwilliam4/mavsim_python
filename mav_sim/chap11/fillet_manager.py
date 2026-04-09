@@ -48,7 +48,38 @@ def fillet_manager(state: MsgState, waypoints: MsgWaypoints, ptr_prv: WaypointIn
     hs = hs_prv
     ptr = ptr_prv
 
+    pos = np.array([
+        [state.north],
+        [state.east],
+        [-state.altitude]
+    ])
+
+    (previous, current, next_wp) = extract_waypoints(waypoints=waypoints, ptr=ptr)
+    # handle case when path folds back on itself
+    dir1 = (current - previous) / np.linalg.norm(current - previous)
+    dir2 = (next_wp - current) / np.linalg.norm(next_wp - current)
+    if (dir1 + dir2).sum() == 0:
+        manager_state = 3
+        path, hs = construct_fillet_line(waypoints, ptr, radius)
+
+    if manager_state == 3:
+        if np.linalg.norm(pos - current) < 1:
+            ptr.increment_pointers(waypoints.num_waypoints)
+            path, hs = construct_fillet_circle(waypoints, ptr, radius)
+            manager_state = 2
+        else:
+            path, hs = construct_fillet_line(waypoints, ptr, radius)
+
     # Insert code here
+    if inHalfSpace(pos, hs):
+        if manager_state == 1:
+            ptr.increment_pointers(waypoints.num_waypoints)
+            path, hs = construct_fillet_circle(waypoints, ptr, radius)
+            manager_state += 1
+        elif manager_state == 2:
+            ptr.increment_pointers(waypoints.num_waypoints)
+            path, hs = construct_fillet_line(waypoints, ptr, radius)
+            manager_state -= 1
 
     return (path, hs, ptr, manager_state)
 
