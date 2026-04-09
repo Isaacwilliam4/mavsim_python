@@ -73,13 +73,15 @@ def construct_fillet_line(waypoints: MsgWaypoints, ptr: WaypointIndices, radius:
 
     q_i_minus_one = (current - previous)
     q_i_minus_one_norm = np.linalg.norm(q_i_minus_one)
+    q_i_minus_one /= q_i_minus_one_norm
     
     q_i = (next_wp - current)
     q_i_norm = np.linalg.norm(next_wp - current)
+    q_i /= q_i_norm
 
-    rho = np.arccos(q_i_minus_one.T@q_i / (q_i_norm*q_i_minus_one_norm))
+    rho = np.arccos(-q_i_minus_one.T@q_i).item()
     r_1 = current - (radius / np.tan(rho/2))*q_i_minus_one
-    n_i = (q_i_minus_one + q_i) / np.linalg.norm(q_i_minus_one + q_i)
+    n_i = q_i_minus_one
 
 
     # Construct the path
@@ -114,15 +116,29 @@ def construct_fillet_circle(waypoints: MsgWaypoints, ptr: WaypointIndices, radiu
 
     q_i_minus_one = (current - previous)
     q_i_minus_one_norm = np.linalg.norm(q_i_minus_one)
+    q_i_minus_one /= q_i_minus_one_norm
     
     q_i = (next_wp - current)
     q_i_norm = np.linalg.norm(next_wp - current)
+    q_i /= q_i_norm
 
-    rho = np.arccos(q_i_minus_one.T@q_i / (q_i_norm*q_i_minus_one_norm))
-    c_i = current + ((-q_i_minus_one +  q_i)/(np.linalg.norm(-q_i_minus_one + q_i))) * (radius / np.sin(rho/2))
+    rho = np.arccos(-q_i_minus_one.T@q_i)
 
     orbit_dir = np.cross(q_i_minus_one.flatten(), q_i.flatten())
-    orbit_direction = "CW" if orbit_dir >= 0 else "CCW" 
+    orbit_direction = "CW" if orbit_dir[2] >= 0 else "CCW" 
+    _lambda = 1 if orbit_dir[2] > 0 else -1
+
+    J = np.array([
+        [0,1,0],
+        [-1,0,0],
+        [0,0,1],
+    ])
+
+    if (q_i - q_i_minus_one).sum() == 0:
+        c_i = current + _lambda*J@q_i_minus_one * radius
+    else:
+        c_i = current + ((-q_i_minus_one +  q_i)/(np.linalg.norm(-q_i_minus_one + q_i))) * (radius / np.sin(rho/2))
+
 
     r_2 = current + (radius / np.tan(rho/2))*q_i
     n_i = q_i
@@ -133,6 +149,8 @@ def construct_fillet_circle(waypoints: MsgWaypoints, ptr: WaypointIndices, radiu
     path.orbit_center = c_i
     path.orbit_radius = radius
     path.orbit_direction = orbit_direction
+    path.airspeed = get_airspeed(waypoints, ptr)
+    path.type = "orbit"
 
     # Define the switching halfspace
     hs = HalfSpaceParams()

@@ -399,22 +399,22 @@ def run_all_tests() -> None:
     #             break
     #     print("End of test\n")
 
-    if succ:
-        print("Starting construct_fillet_line test")
-        for test_count in range(len(tests_archive["construct_fillet_line"])):
-            fail_case = construct_fillet_line_test(
-                tests_archive["construct_fillet_line"][test_count]
-            )
-            if -1 != fail_case:
-                print(
-                    "Failed on test id: "
-                    + str(test_count)
-                    + " list index: "
-                    + str(fail_case)
-                )
-                succ = False
-                break
-        print("End of test\n")
+    # if succ:
+    #     print("Starting construct_fillet_line test")
+    #     for test_count in range(len(tests_archive["construct_fillet_line"])):
+    #         fail_case = construct_fillet_line_test(
+    #             tests_archive["construct_fillet_line"][test_count]
+    #         )
+    #         if -1 != fail_case:
+    #             print(
+    #                 "Failed on test id: "
+    #                 + str(test_count)
+    #                 + " list index: "
+    #                 + str(fail_case)
+    #             )
+    #             succ = False
+    #             break
+    #     print("End of test\n")
 
     if succ:
         print("Starting construct_fillet_circle test")

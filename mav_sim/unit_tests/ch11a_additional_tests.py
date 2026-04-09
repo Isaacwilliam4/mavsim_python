@@ -267,6 +267,6 @@ def construct_fillet_circle_helper() -> None:
 
 
 if __name__ == "__main__":
-    construct_line_helper()
-    #construct_fillet_line_helper()
-    # construct_fillet_circle_helper()
+    # construct_line_helper()
+    # construct_fillet_line_helper()
+    construct_fillet_circle_helper()
