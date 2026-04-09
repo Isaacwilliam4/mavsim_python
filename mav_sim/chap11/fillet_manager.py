@@ -59,26 +59,22 @@ def fillet_manager(state: MsgState, waypoints: MsgWaypoints, ptr_prv: WaypointIn
     dir1 = (current - previous) / np.linalg.norm(current - previous)
     dir2 = (next_wp - current) / np.linalg.norm(next_wp - current)
     if (dir1 + dir2).sum() == 0:
-        manager_state = 3
-        path, hs = construct_fillet_line(waypoints, ptr, radius)
+        manager_state = 1
 
-    if manager_state == 3:
+    if manager_state == 1:
         if np.linalg.norm(pos - current) < 1:
-            ptr.increment_pointers(waypoints.num_waypoints)
-            path, hs = construct_fillet_circle(waypoints, ptr, radius)
             manager_state = 2
-        else:
-            path, hs = construct_fillet_line(waypoints, ptr, radius)
 
     # Insert code here
-    if inHalfSpace(pos, hs):
-        if manager_state == 1:
-            ptr.increment_pointers(waypoints.num_waypoints)
-            path, hs = construct_fillet_circle(waypoints, ptr, radius)
+    if manager_state == 1:
+        path, hs = construct_fillet_line(waypoints, ptr, radius)
+        if inHalfSpace(pos, hs):
             manager_state += 1
-        elif manager_state == 2:
+
+    if manager_state == 2:
+        path, hs = construct_fillet_circle(waypoints, ptr, radius)
+        if inHalfSpace(pos, hs):
             ptr.increment_pointers(waypoints.num_waypoints)
-            path, hs = construct_fillet_line(waypoints, ptr, radius)
             manager_state -= 1
 
     return (path, hs, ptr, manager_state)
@@ -111,9 +107,13 @@ def construct_fillet_line(waypoints: MsgWaypoints, ptr: WaypointIndices, radius:
     q_i /= q_i_norm
 
     rho = np.arccos(-q_i_minus_one.T@q_i).item()
-    r_1 = current - (radius / np.tan(rho/2))*q_i_minus_one
-    n_i = q_i_minus_one
 
+    if np.tan(rho/2) < EPSILON:
+        r_1 = current
+    else:
+        r_1 = current - (radius / np.tan(rho/2))*q_i_minus_one
+
+    n_i = q_i_minus_one
 
     # Construct the path
     path = MsgPath()
@@ -165,15 +165,17 @@ def construct_fillet_circle(waypoints: MsgWaypoints, ptr: WaypointIndices, radiu
         [0,0,1],
     ])
 
-    if (q_i - q_i_minus_one).sum() == 0:
+    if (q_i - q_i_minus_one).sum() < EPSILON or rho/2 < EPSILON:
         c_i = current + _lambda*J@q_i_minus_one * radius
     else:
         c_i = current + ((-q_i_minus_one +  q_i)/(np.linalg.norm(-q_i_minus_one + q_i))) * (radius / np.sin(rho/2))
 
+    if rho/2 < EPSILON:
+        r_2 = current
+    else:
+        r_2 = current + (radius / np.tan(rho/2))*q_i
 
-    r_2 = current + (radius / np.tan(rho/2))*q_i
     n_i = q_i
-
     # Construct the path
     path = MsgPath()
     path.plot_updated = False
