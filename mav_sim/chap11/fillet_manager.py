@@ -71,12 +71,28 @@ def construct_fillet_line(waypoints: MsgWaypoints, ptr: WaypointIndices, radius:
     # Extract the waypoints (w_{i-1}, w_i, w_{i+1})
     (previous, current, next_wp) = extract_waypoints(waypoints=waypoints, ptr=ptr)
 
+    q_i_minus_one = (current - previous)
+    q_i_minus_one_norm = np.linalg.norm(q_i_minus_one)
+    
+    q_i = (next_wp - current)
+    q_i_norm = np.linalg.norm(next_wp - current)
+
+    rho = np.arccos(q_i_minus_one.T@q_i / (q_i_norm*q_i_minus_one_norm))
+    r_1 = current - (radius / np.tan(rho/2))*q_i_minus_one
+    n_i = (q_i_minus_one + q_i) / np.linalg.norm(q_i_minus_one + q_i)
+
+
     # Construct the path
     path = MsgPath()
     path.plot_updated = False
+    path.airspeed = get_airspeed(waypoints, ptr)
+    path.line_direction = q_i_minus_one
+    path.line_origin = previous
 
     # Construct the halfspace
     hs = HalfSpaceParams()
+    hs.point = r_1
+    hs.normal = n_i
 
     return (path, hs)
 
@@ -96,11 +112,31 @@ def construct_fillet_circle(waypoints: MsgWaypoints, ptr: WaypointIndices, radiu
     # Extract the waypoints (w_{i-1}, w_i, w_{i+1})
     (previous, current, next_wp) = extract_waypoints(waypoints=waypoints, ptr=ptr)
 
+    q_i_minus_one = (current - previous)
+    q_i_minus_one_norm = np.linalg.norm(q_i_minus_one)
+    
+    q_i = (next_wp - current)
+    q_i_norm = np.linalg.norm(next_wp - current)
+
+    rho = np.arccos(q_i_minus_one.T@q_i / (q_i_norm*q_i_minus_one_norm))
+    c_i = current + ((-q_i_minus_one +  q_i)/(np.linalg.norm(-q_i_minus_one + q_i))) * (radius / np.sin(rho/2))
+
+    orbit_dir = np.cross(q_i_minus_one.flatten(), q_i.flatten())
+    orbit_direction = "CW" if orbit_dir >= 0 else "CCW" 
+
+    r_2 = current + (radius / np.tan(rho/2))*q_i
+    n_i = q_i
+
     # Construct the path
     path = MsgPath()
     path.plot_updated = False
+    path.orbit_center = c_i
+    path.orbit_radius = radius
+    path.orbit_direction = orbit_direction
 
     # Define the switching halfspace
     hs = HalfSpaceParams()
+    hs.point = r_2
+    hs.normal = n_i
 
     return (path, hs)
