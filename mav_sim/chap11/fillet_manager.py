@@ -106,7 +106,8 @@ def construct_fillet_line(waypoints: MsgWaypoints, ptr: WaypointIndices, radius:
     q_i_norm = np.linalg.norm(next_wp - current)
     q_i /= q_i_norm
 
-    rho = np.arccos(-q_i_minus_one.T@q_i).item()
+    res = np.clip(-q_i_minus_one.T@q_i, -1, 1)
+    rho = np.arccos(res).item()
 
     if np.tan(rho/2) < EPSILON:
         r_1 = current
@@ -165,7 +166,7 @@ def construct_fillet_circle(waypoints: MsgWaypoints, ptr: WaypointIndices, radiu
         [0,0,1],
     ])
 
-    if (q_i - q_i_minus_one).sum() < EPSILON or rho/2 < EPSILON:
+    if (q_i - q_i_minus_one).sum() == 0 or rho/2 < EPSILON:
         c_i = current + _lambda*J@q_i_minus_one * radius
     else:
         c_i = current + ((-q_i_minus_one +  q_i)/(np.linalg.norm(-q_i_minus_one + q_i))) * (radius / np.sin(rho/2))

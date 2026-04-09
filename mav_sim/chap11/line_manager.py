@@ -42,6 +42,10 @@ def line_manager(state: MsgState, waypoints: MsgWaypoints, ptr_prv: WaypointIndi
     hs = hs_prv
     ptr = ptr_prv
 
+    if waypoints.flag_waypoints_changed is True: # True when waypoints are new
+        waypoints.flag_waypoints_changed = False # Set to False to indicate that the waypoints have now been seen
+        ptr = WaypointIndices() # Resets the pointers
+
     # Create manager here
 
     pos = np.array([
@@ -49,10 +53,11 @@ def line_manager(state: MsgState, waypoints: MsgWaypoints, ptr_prv: WaypointIndi
         [state.east],
         [-state.altitude]
     ])
+    
+    path, hs = construct_line(waypoints=waypoints, ptr=ptr)
 
     if inHalfSpace(pos, hs):
         ptr.increment_pointers(waypoints.num_waypoints)
-        path, hs = construct_line(waypoints=waypoints, ptr=ptr)
 
     # Output the updated path, halfspace, and index pointer
     return (path, hs, ptr)
