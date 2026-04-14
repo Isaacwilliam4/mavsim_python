@@ -282,18 +282,35 @@ def calculate_lsr(points: DubinsPoints) -> DubinsParamsStruct:
     # Initialize output and extract inputs
     dubin = DubinsParamsStruct()
     (p_s, chi_s, p_e, chi_e, R) = points.extract()
+    c_ls = p_s + R * np.array([[np.cos(chi_s+np.pi/2.)],[np.sin(chi_s+np.pi/2.)], [0.]])
+    c_re = p_e + R * np.array([[np.cos(chi_e-np.pi/2.)],[np.sin(chi_e-np.pi/2.)], [0.]])
+
+    # compute l3
+
+    ell = np.linalg.norm(c_re - c_ls)
+    theta = np.arctan2(c_re.item(1) - c_ls.item(1), c_re.item(0) - c_ls.item(0))
+    theta2 = np.arctan2(2*R, ell)
+
+    if np.isnan(theta2): # Occurs when 2R > ell
+        dubin.L = np.inf
+    else:
+        # Equation (11.10)
+        dubin.L = np.sqrt(ell ** 2 - 4 * R ** 2) \
+                + R * mod(2 * np.pi + mod(chi_s + np.pi / 2) - mod(theta + theta2)) \
+                + R * mod(2 * np.pi + mod(chi_e - np.pi / 2) - mod(theta + theta2 - np.pi))
+
 
     # Calculate distance and switching surfaces
-    dubin.L = 99999.
-    dubin.c_s = np.array([[0.], [0.],[0.]])
-    dubin.lam_s = 1
-    dubin.c_e = np.array([[0.], [0.],[0.]])
+    e1 = np.array([[1, 0, 0]]).T 
+    dubin.c_s = c_ls
+    dubin.lam_s = -1
+    dubin.c_e = c_re
     dubin.lam_e = 1
-    dubin.q1 = np.array([[0.], [0.],[0.]])
-    dubin.z1 = np.array([[0.], [0.],[0.]])
-    dubin.z2 = np.array([[0.], [0.],[0.]])
-    dubin.z3 = np.array([[0.], [0.],[0.]])
-    dubin.q3 = np.array([[0.], [0.],[0.]])
+    dubin.q1 = rotz(theta + theta2 - np.pi / 2)@e1
+    dubin.z1 = dubin.c_s + R*rotz(theta + theta2)@e1
+    dubin.z2 = dubin.c_e + R*rotz(theta + theta2 - np.pi)
+    dubin.z3 = p_e
+    dubin.q3 = rotz(chi_e) @ e1
 
     return dubin
 
