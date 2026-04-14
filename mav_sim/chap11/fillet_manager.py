@@ -1,7 +1,6 @@
 """Provides an implementation of the fillet path manager for waypoint following as described in
    Chapter 11 Algorithm 8
 """
-from typing import cast
 
 import numpy as np
 from mav_sim.chap11.path_manager_utilities import (
@@ -15,7 +14,6 @@ from mav_sim.chap11.path_manager_utilities import (
 from mav_sim.message_types.msg_path import MsgPath
 from mav_sim.message_types.msg_state import MsgState
 from mav_sim.message_types.msg_waypoints import MsgWaypoints
-from mav_sim.tools.types import NP_MAT
 
 
 def fillet_manager(state: MsgState, waypoints: MsgWaypoints, ptr_prv: WaypointIndices,
@@ -98,11 +96,11 @@ def construct_fillet_line(waypoints: MsgWaypoints, ptr: WaypointIndices, radius:
     # Extract the waypoints (w_{i-1}, w_i, w_{i+1})
     (previous, current, next_wp) = extract_waypoints(waypoints=waypoints, ptr=ptr)
 
-    q_i_minus_one = (current - previous)
+    q_i_minus_one = current - previous
     q_i_minus_one_norm = np.linalg.norm(q_i_minus_one)
     q_i_minus_one /= q_i_minus_one_norm
     
-    q_i = (next_wp - current)
+    q_i = next_wp - current
     q_i_norm = np.linalg.norm(next_wp - current)
     q_i /= q_i_norm
 
@@ -146,18 +144,17 @@ def construct_fillet_circle(waypoints: MsgWaypoints, ptr: WaypointIndices, radiu
     # Extract the waypoints (w_{i-1}, w_i, w_{i+1})
     (previous, current, next_wp) = extract_waypoints(waypoints=waypoints, ptr=ptr)
 
-    q_i_minus_one = (current - previous)
+    q_i_minus_one = current - previous
     q_i_minus_one_norm = np.linalg.norm(q_i_minus_one)
     q_i_minus_one /= q_i_minus_one_norm
     
-    q_i = (next_wp - current)
+    q_i = next_wp - current
     q_i_norm = np.linalg.norm(next_wp - current)
     q_i /= q_i_norm
 
     rho = np.arccos(-q_i_minus_one.T@q_i)
 
     orbit_dir = np.cross(q_i_minus_one.flatten(), q_i.flatten())
-    orbit_direction = "CW" if orbit_dir[2] >= 0 else "CCW" 
     _lambda = 1 if orbit_dir[2] > 0 else -1
 
     J = np.array([
@@ -182,7 +179,7 @@ def construct_fillet_circle(waypoints: MsgWaypoints, ptr: WaypointIndices, radiu
     path.plot_updated = False
     path.orbit_center = c_i
     path.orbit_radius = radius
-    path.orbit_direction = orbit_direction
+    path.orbit_direction = 'CW' if orbit_dir[2] >= 0 else 'CCW' 
     path.airspeed = get_airspeed(waypoints, ptr)
     path.type = "orbit"
 

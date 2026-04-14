@@ -2,8 +2,6 @@
    Chapter 11 Algorithm 7
 """
 
-from typing import cast
-
 import numpy as np
 from mav_sim.chap11.path_manager_utilities import (
     HalfSpaceParams,
@@ -15,8 +13,6 @@ from mav_sim.chap11.path_manager_utilities import (
 from mav_sim.message_types.msg_path import MsgPath
 from mav_sim.message_types.msg_state import MsgState
 from mav_sim.message_types.msg_waypoints import MsgWaypoints
-from mav_sim.tools.types import NP_MAT
-
 
 def line_manager(state: MsgState, waypoints: MsgWaypoints, ptr_prv: WaypointIndices,
                  path_prv: MsgPath, hs_prv: HalfSpaceParams) \
@@ -90,15 +86,13 @@ def construct_line(waypoints: MsgWaypoints, ptr: WaypointIndices) \
     q_i = next_wp - current
     q_i /= np.linalg.norm(q_i)
 
-    type = "line"
-
     airspeed = get_airspeed(waypoints, ptr)
 
     line_origin = previous
 
     # Construct the path
     path = MsgPath(
-        type=type,
+        type="line",
         plot_updated=False,
         airspeed=airspeed,
         line_direction=line_direction,
