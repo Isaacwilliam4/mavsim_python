@@ -167,20 +167,17 @@ def compute_parameters(points: DubinsPoints) -> DubinsParamsStruct:
     if ell < 2 * R:
         raise ValueError('Error in Dubins Parameters: The distance between nodes must be larger than 2R.')
 
-    # Initialize output and extract inputs
-    dubin = DubinsParamsStruct()
+    dubin = calculate_rsr(points=points)
 
-    # Calculate distance and switching surfaces
-    dubin.L = 99999.
-    dubin.c_s = np.array([[0.], [0.],[0.]])
-    dubin.lam_s = 1
-    dubin.c_e = np.array([[0.], [0.],[0.]])
-    dubin.lam_e = 1
-    dubin.q1 = np.array([[0.], [0.],[0.]])
-    dubin.z1 = np.array([[0.], [0.],[0.]])
-    dubin.z2 = np.array([[0.], [0.],[0.]])
-    dubin.z3 = np.array([[0.], [0.],[0.]])
-    dubin.q3 = np.array([[0.], [0.],[0.]])
+    rsl_dubin = calculate_rsl(points=points)
+    if rsl_dubin.L < dubin.L:
+        dubin = rsl_dubin
+    lsr_dubin = calculate_lsr(points=points)
+    if lsr_dubin.L < dubin.L:
+        dubin = lsr_dubin
+    lsl_dubin = calculate_lsl(points=points)
+    if lsl_dubin.L < dubin.L:
+        dubin = lsl_dubin
 
     return dubin
 
