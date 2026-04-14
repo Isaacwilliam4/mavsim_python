@@ -196,7 +196,7 @@ def construct_dubins_circle_end(desired_airspeed: float, dubins_path: DubinsPara
     path.orbit_center = dubins_path.center_e
 
     # Fill in remaining parameters
-    if dubins_path.dir_s == 1:
+    if dubins_path.dir_e == 1:
         path.orbit_direction = 'CW'
     else:
         path.orbit_direction = 'CCW'
