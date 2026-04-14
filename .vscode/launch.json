@@ -37,6 +37,14 @@
             "python": "${command:python.interpreterPath}"
         },
         {
+            "name": "Run Ch 11 dubins unit tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/mav_sim/unit_tests/ch11b_dubins_path_manager_test.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
             "name": "Run Ch 10",
             "type": "debugpy",
             "request": "launch",

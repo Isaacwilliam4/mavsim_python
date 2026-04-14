@@ -198,17 +198,27 @@ def calculate_rsr(points: DubinsPoints) -> DubinsParamsStruct:
     dubin = DubinsParamsStruct()
     (p_s, chi_s, p_e, chi_e, R) = points.extract()
 
-    # Calculate distance and switching surfaces
-    dubin.L = 99999.
-    dubin.c_s = np.array([[0.], [0.],[0.]])
+    # Compute the start and end circles
+    c_rs = p_s + R * np.array([[np.cos(chi_s+np.pi/2.)],[np.sin(chi_s+np.pi/2.)], [0.]])
+    c_re = p_e + R * np.array([[np.cos(chi_e+np.pi/2.)],[np.sin(chi_e+np.pi/2.)], [0.]])
+
+    # compute length for R-S-R case (Section 11.2.2.1)
+    theta = np.arctan2(c_re.item(1) - c_rs.item(1), c_re.item(0) - c_rs.item(0)) # Angle of line connecting centers
+    dubin.L = cast(float, np.linalg.norm(c_rs - c_re) \
+            + R * mod(2 * np.pi + mod(theta - np.pi / 2) - mod(chi_s - np.pi / 2)) \
+            + R * mod(2 * np.pi + mod(chi_e - np.pi / 2) - mod(theta - np.pi / 2)) )
+
+    # Compute the dubins parameters (lines 7-11, 34-35 of Algorithm 9)
+    e1 = np.array([[1, 0, 0]]).T
+    dubin.c_s = c_rs                                                            # Line 8
     dubin.lam_s = 1
-    dubin.c_e = np.array([[0.], [0.],[0.]])
+    dubin.c_e = c_re
     dubin.lam_e = 1
-    dubin.q1 = np.array([[0.], [0.],[0.]])
-    dubin.z1 = np.array([[0.], [0.],[0.]])
-    dubin.z2 = np.array([[0.], [0.],[0.]])
-    dubin.z3 = np.array([[0.], [0.],[0.]])
-    dubin.q3 = np.array([[0.], [0.],[0.]])
+    dubin.q1 = cast(NP_MAT, (dubin.c_e - dubin.c_s) / np.linalg.norm(dubin.c_e - dubin.c_s) )  # Line 9
+    dubin.z1 = dubin.c_s + R * rotz(-np.pi / 2) @ dubin.q1                      # Line 10
+    dubin.z2 = dubin.c_e + R * rotz(-np.pi / 2) @ dubin.q1                      # Line 11
+    dubin.z3 = p_e                                                              # Line 34
+    dubin.q3 = rotz(chi_e) @ e1                                                 # Line 35
 
     return dubin
 
@@ -226,17 +236,36 @@ def calculate_rsl(points: DubinsPoints) -> DubinsParamsStruct:
     dubin = DubinsParamsStruct()
     (p_s, chi_s, p_e, chi_e, R) = points.extract()
 
-    # Calculate distance and switching surfaces
-    dubin.L = 99999.
-    dubin.c_s = np.array([[0.], [0.],[0.]])
+    # compute start and end circles (equations (11.5) and (11.6) )
+    c_rs = p_s + R * np.array([[np.cos(chi_s+np.pi/2.)],[np.sin(chi_s+np.pi/2.)], [0.]])
+    c_le = p_e + R * np.array([[np.cos(chi_e-np.pi/2.)],[np.sin(chi_e-np.pi/2.)], [0.]])
+
+    # compute L2 (Section 11.2.2.2)
+    ell = np.linalg.norm(c_le - c_rs) # Little l in book, distance between center points
+    theta = np.arctan2(c_le.item(1) - c_rs.item(1), c_le.item(0) - c_rs.item(0))
+    theta2 = theta - np.pi / 2 + np.arcsin(2 * R / ell)
+    #if not np.isreal(theta2): # Occurs when 2R > ell
+    if np.isnan(theta2): # Occurs when 2R > ell
+        dubin.L = np.inf
+    else:
+        # Equation (11.10)
+        dubin.L = np.sqrt(ell ** 2 - 4 * R ** 2) \
+                + R * mod(2 * np.pi + mod(theta2) - mod(chi_s - np.pi / 2)) \
+                + R * mod(2 * np.pi + mod(theta2 + np.pi) - mod(chi_e + np.pi / 2))
+
+
+    # Halfplane parameters (Algorithm 9 lines 12-19 and 34-35)
+    e1 = np.array([[1, 0, 0]]).T
+    dubin.c_s = c_rs                                        # Line 13
     dubin.lam_s = 1
-    dubin.c_e = np.array([[0.], [0.],[0.]])
-    dubin.lam_e = 1
-    dubin.q1 = np.array([[0.], [0.],[0.]])
-    dubin.z1 = np.array([[0.], [0.],[0.]])
-    dubin.z2 = np.array([[0.], [0.],[0.]])
-    dubin.z3 = np.array([[0.], [0.],[0.]])
-    dubin.q3 = np.array([[0.], [0.],[0.]])
+    dubin.c_e = c_le
+    dubin.lam_e = -1
+    ell = np.linalg.norm(dubin.c_e - dubin.c_s)             # Line 14
+    dubin.q1 = rotz(theta2 + np.pi / 2) @ e1                # Line 17
+    dubin.z1 = dubin.c_s + R * rotz(theta2) @ e1            # Line 18
+    dubin.z2 = dubin.c_e + R * rotz(theta2 + np.pi) @ e1    # Line 19
+    dubin.z3 = p_e                                          # Line 34
+    dubin.q3 = rotz(chi_e) @ e1                             # Line 35
 
     return dubin
 
