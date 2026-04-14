@@ -56,7 +56,63 @@ def dubins_manager(state: MsgState, waypoints: MsgWaypoints, ptr_prv: WaypointIn
     dubins_path = dubins_path_prv # Note that this should be changed when new waypoints received or
                                   # a transition is made to a new waypoint path
 
-    # Manage the Dubins sections
+    # Extract the position and desired airspeed
+    mav_pos = np.array([[state.north, state.east, -state.altitude]]).T
+    desired_airspeed = get_airspeed(waypoints, ptr)
+
+    # if the waypoints have changed, update the waypoint pointer
+    if waypoints.flag_waypoints_changed is True:
+        waypoints.flag_waypoints_changed = False
+        ptr = WaypointIndices() # Resets the pointers
+
+        # dubins path parameters
+        dubins_path = DubinsParameters(
+            p_s=waypoints.get_ned(ptr.previous),
+            chi_s=waypoints.course.item(ptr.previous),
+            p_e=waypoints.get_ned(ptr.current),
+            chi_e=waypoints.course.item(ptr.current),
+            R=radius)
+        (path, hs) = construct_dubins_circle_start(desired_airspeed=desired_airspeed, dubins_path=dubins_path)
+        if inHalfSpace(mav_pos, hs):
+            manager_state = 1
+        else:
+            manager_state = 2
+
+    # state machine for dubins path
+    if manager_state == 1:
+        # follow start orbit until out of H1
+        if not inHalfSpace(mav_pos, hs):
+            manager_state = 2
+    if manager_state == 2:
+        # follow start orbit until cross into H1
+        if inHalfSpace(mav_pos, hs):
+            (path, hs) = construct_dubins_line(desired_airspeed=desired_airspeed, dubins_path=dubins_path)
+            manager_state = 3
+    if manager_state == 3:
+        # follow start orbit until cross into H2
+        if inHalfSpace(mav_pos, hs):
+            (path, hs) = construct_dubins_circle_end(desired_airspeed=desired_airspeed, dubins_path=dubins_path)
+            manager_state = 4
+    if manager_state == 4:
+        # follow end orbit until out of H3
+        if not inHalfSpace(mav_pos, hs):
+            manager_state = 5
+
+    if manager_state == 5:
+        # follow end orbit until cross into H3
+        if inHalfSpace(mav_pos, hs):
+            ptr.increment_pointers(waypoints.num_waypoints)
+            dubins_path = DubinsParameters(
+                p_s=waypoints.get_ned(ptr.previous),
+                chi_s=waypoints.course.item(ptr.previous),
+                p_e=waypoints.get_ned(ptr.current),
+                chi_e=waypoints.course.item(ptr.current),
+                R=radius)
+            (path, hs) = construct_dubins_circle_start(desired_airspeed=desired_airspeed, dubins_path=dubins_path)
+            if inHalfSpace(mav_pos, hs):
+                manager_state = 1
+            else:
+                manager_state = 2
 
     return (path, hs, ptr, manager_state, dubins_path)
 
@@ -65,8 +121,9 @@ def construct_dubins_circle_start(desired_airspeed: float, dubins_path: DubinsPa
     """ Create the starting orbit for the dubin's path
 
     Args:
-        desired_airspeed: The airspeed associated with the path
-        dubins_path: The parameters that make-up the Dubin's path between waypoints
+        waypoints: The waypoints to be followed
+        ptr: The indices of the waypoints being used for the path
+        dubins_Path: The parameters that make-up the Dubin's path between waypoints
 
     Returns:
         path: The first circle of the Dubin's path
@@ -77,11 +134,15 @@ def construct_dubins_circle_start(desired_airspeed: float, dubins_path: DubinsPa
     path.type = 'orbit'
     path.plot_updated = False
     path.airspeed = desired_airspeed
-
-    # Fill in remaining parameters
+    path.orbit_radius = dubins_path.radius
+    path.orbit_center = dubins_path.center_s
+    if dubins_path.dir_s == 1:
+        path.orbit_direction = 'CW'
+    else:
+        path.orbit_direction = 'CCW'
 
     # Define the switching halfspace
-    hs = HalfSpaceParams()
+    hs = HalfSpaceParams(normal=dubins_path.n1, point=dubins_path.r1)
 
     return (path, hs)
 
