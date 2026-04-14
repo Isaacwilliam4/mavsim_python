@@ -164,11 +164,13 @@ def construct_dubins_line(desired_airspeed: float, dubins_path: DubinsParameters
     path.type = 'line'
     path.plot_updated = False
     path.airspeed = desired_airspeed
+    path.line_origin = dubins_path.r1
+    path.line_direction = dubins_path.n1
 
     # Fill in remaining parameters
 
     # Define the switching halfspace
-    hs = HalfSpaceParams()
+    hs = HalfSpaceParams(point=dubins_path.r2, normal=dubins_path.n1)
 
     return (path, hs)
 

@@ -420,5 +420,5 @@ def construct_dubins_circle_end_helper() -> None:
 if __name__ == "__main__":
     # calculate_lsr_helper()
     # calculate_lsl_helper()
-    # construct_dubins_line_helper()
-    construct_dubins_circle_end_helper()
+    construct_dubins_line_helper()
+    # construct_dubins_circle_end_helper()
