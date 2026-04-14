@@ -190,10 +190,16 @@ def construct_dubins_circle_end(desired_airspeed: float, dubins_path: DubinsPara
     path.plot_updated = False
     path.type = 'orbit'
     path.airspeed = desired_airspeed
+    path.orbit_radius = dubins_path.radius
+    path.orbit_center = dubins_path.center_e
 
     # Fill in remaining parameters
+    if dubins_path.dir_s == 1:
+        path.orbit_direction = 'CW'
+    else:
+        path.orbit_direction = 'CCW'
 
     # Define the switching halfspace
-    hs = HalfSpaceParams()
+    hs = HalfSpaceParams(normal=dubins_path.n3, point=dubins_path.r3)
 
     return (path, hs)
