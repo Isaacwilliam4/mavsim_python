@@ -282,14 +282,14 @@ def calculate_lsr(points: DubinsPoints) -> DubinsParamsStruct:
     # Initialize output and extract inputs
     dubin = DubinsParamsStruct()
     (p_s, chi_s, p_e, chi_e, R) = points.extract()
-    c_ls = p_s + R * np.array([[np.cos(chi_s+np.pi/2.)],[np.sin(chi_s+np.pi/2.)], [0.]])
-    c_re = p_e + R * np.array([[np.cos(chi_e-np.pi/2.)],[np.sin(chi_e-np.pi/2.)], [0.]])
+    c_ls = p_s + R * np.array([[np.cos(chi_s-np.pi/2.)],[np.sin(chi_s-np.pi/2.)], [0.]])
+    c_re = p_e + R * np.array([[np.cos(chi_e+np.pi/2.)],[np.sin(chi_e+np.pi/2.)], [0.]])
 
     # compute l3
 
     ell = np.linalg.norm(c_re - c_ls)
     theta = np.arctan2(c_re.item(1) - c_ls.item(1), c_re.item(0) - c_ls.item(0))
-    theta2 = np.arctan2(2*R, ell)
+    theta2 = np.arccos(2*R / ell)
 
     if np.isnan(theta2): # Occurs when 2R > ell
         dubin.L = np.inf
@@ -308,7 +308,7 @@ def calculate_lsr(points: DubinsPoints) -> DubinsParamsStruct:
     dubin.lam_e = 1
     dubin.q1 = rotz(theta + theta2 - np.pi / 2)@e1
     dubin.z1 = dubin.c_s + R*rotz(theta + theta2)@e1
-    dubin.z2 = dubin.c_e + R*rotz(theta + theta2 - np.pi)
+    dubin.z2 = dubin.c_e + R*rotz(theta + theta2 - np.pi)@e1
     dubin.z3 = p_e
     dubin.q3 = rotz(chi_e) @ e1
 
@@ -328,17 +328,27 @@ def calculate_lsl(points: DubinsPoints) -> DubinsParamsStruct:
     dubin = DubinsParamsStruct()
     (p_s, chi_s, p_e, chi_e, R) = points.extract()
 
-    # Calculate distance and switching surfaces
-    dubin.L = 99999.
-    dubin.c_s = np.array([[0.], [0.],[0.]])
-    dubin.lam_s = 1
-    dubin.c_e = np.array([[0.], [0.],[0.]])
-    dubin.lam_e = 1
-    dubin.q1 = np.array([[0.], [0.],[0.]])
-    dubin.z1 = np.array([[0.], [0.],[0.]])
-    dubin.z2 = np.array([[0.], [0.],[0.]])
-    dubin.z3 = np.array([[0.], [0.],[0.]])
-    dubin.q3 = np.array([[0.], [0.],[0.]])
+    # Compute the start and end circles
+    c_ls = p_s + R * np.array([[np.cos(chi_s-np.pi/2.)],[np.sin(chi_s-np.pi/2.)], [0.]])
+    c_le = p_e + R * np.array([[np.cos(chi_e-np.pi/2.)],[np.sin(chi_e-np.pi/2.)], [0.]])
+
+    # compute length for R-S-R case (Section 11.2.2.1)
+    theta = np.arctan2(c_le.item(1) - c_ls.item(1), c_le.item(0) - c_ls.item(0)) # Angle of line connecting centers
+    dubin.L = cast(float, np.linalg.norm(c_ls - c_le) \
+            + R * mod(2 * np.pi + mod(chi_s + np.pi / 2) - mod(theta + np.pi / 2)) \
+            + R * mod(2 * np.pi + mod(theta + np.pi / 2) - mod(chi_e + np.pi / 2)) )
+
+    # Compute the dubins parameters (lines 7-11, 34-35 of Algorithm 9)
+    e1 = np.array([[1, 0, 0]]).T
+    dubin.c_s = c_ls                                                            # Line 8
+    dubin.lam_s = -1
+    dubin.c_e = c_le
+    dubin.lam_e = -1
+    dubin.q1 = cast(NP_MAT, (dubin.c_e - dubin.c_s) / np.linalg.norm(dubin.c_e - dubin.c_s) )  # Line 9
+    dubin.z1 = dubin.c_s + R * rotz(np.pi / 2) @ dubin.q1                      # Line 10
+    dubin.z2 = dubin.c_e + R * rotz(np.pi / 2) @ dubin.q1                      # Line 11
+    dubin.z3 = p_e                                                              # Line 34
+    dubin.q3 = rotz(chi_e) @ e1                                                 # Line 35
 
     return dubin
 
